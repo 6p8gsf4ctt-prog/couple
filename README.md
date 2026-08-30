@@ -2,21 +2,33 @@
 
 Application mobile privée de chèques-cadeaux pour deux partenaires.
 
-Ce dépôt peut être public, mais aucune donnée privée, clé, mot de passe, token ou contenu personnel réel ne doit y être stocké.
+## État du projet
+
+Phases validées :
+- Phase 0 — Cadrage
+- Phase 1 — Direction artistique
+- Phase 2 — Chèque Signature
+- Phase 3 — Révélation
+- Phase 4 — UX complète
+
+**Prochaine phase : Phase 5 — Prototype mobile navigable et animé.**
+
+## Dépôt public, application privée
+
+Le dépôt GitHub peut être public.
+
+Ne jamais y stocker :
+- mot de passe
+- secret
+- token
+- clé privée
+- données personnelles réelles
+- photos privées
+- contenu intime réel
 
 ## Documentation
 
-Voir le dossier `docs/` :
+Voir `docs/`.
 
-- `PRODUCT.md`
-- `ROADMAP.md`
-- `V1-SCOPE.md`
-- `DESIGN.md`
-- `ARCHITECTURE.md`
-- `DECISIONS.md`
-
-## État
-
-Phase 0 — Cadrage.
-
-Le développement applicatif n'a pas encore commencé.
+Les documents Markdown sont la source de vérité du projet.  
+Les planches visuelles validées sont disponibles dans `references/`.

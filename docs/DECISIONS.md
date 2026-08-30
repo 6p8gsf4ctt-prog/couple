@@ -242,3 +242,84 @@ Le cœur de valeur est le rituel, le chèque et la révélation.
 
 ### Statut
 VALIDÉ
+
+---
+
+## DEC-016 — Direction artistique finale
+
+### Décision
+La direction officielle est **Carnet Ivoire + discipline Lumière + douceur organique**.
+
+### Pourquoi
+Préserver la sophistication tout en ajoutant chaleur, rondeur, tactilité et intimité.
+
+### Conséquence
+Éviter les formes trop strictes, sans tomber dans une esthétique enfantine ou « bubble ».
+
+### Statut
+VALIDÉ
+
+---
+
+## DEC-017 — Chèque 01 Signature
+
+### Décision
+Le **Chèque 01 — Signature** devient la structure principale de la V1.
+
+### Pourquoi
+Il offre le meilleur équilibre entre identité, lisibilité, intemporalité et capacité à accueillir des contenus variés.
+
+### Conséquence
+Les autres pistes ne sont pas des modèles indépendants à développer en V1.
+
+### Statut
+VALIDÉ
+
+---
+
+## DEC-018 — Révélation par tirage contrôlé
+
+### Décision
+La révélation signature repose sur un chèque tiré manuellement d'une enveloppe avec légère résistance et haptique au point de bascule.
+
+### Pourquoi
+Faire de la découverte une interaction vécue et non une animation passive.
+
+### Conséquence
+Avant le point de bascule, un geste interrompu revient doucement à l'état fermé.
+
+### Statut
+VALIDÉ
+
+---
+
+## DEC-019 — Les documents écrits priment sur les détails accidentels des planches
+
+### Décision
+Les planches visuelles sont des références de design et de parcours ; elles ne remplacent pas les règles écrites.
+
+### Pourquoi
+Une génération visuelle peut introduire des micro-textes ou contrôles non décidés.
+
+### Conséquence
+En cas de conflit, le dossier `docs/` est la source de vérité.
+
+### Statut
+VALIDÉ
+
+---
+
+## DEC-020 — Phase 4 UX validée
+
+### Décision
+Les parcours Offrir, Recevoir/Découvrir/Utiliser et Carnet/Réglages sont validés comme base UX de la V1.
+
+### Pourquoi
+Le système couvre désormais le cycle émotionnel complet du chèque.
+
+### Conséquence
+La prochaine phase est le prototype mobile navigable et animé.
+
+### Statut
+VALIDÉ
+

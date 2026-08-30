@@ -2,11 +2,11 @@
 
 ## État du projet
 
-**Phase actuelle : 0 — Cadrage**  
-**Dernier jalon validé : vision produit et architecture de principe**  
-**Objectif actuel : installer la source de vérité du projet**  
-**Prochaine décision : valider ce socle documentaire**  
-**Développement : non commencé**
+**Phase actuelle : 4 — UX complète — VALIDÉE**  
+**Dernier jalon validé : parcours UX complets**  
+**Prochaine phase : 5 — Prototype mobile navigable et animé**  
+**Objectif suivant : tester le ressenti réel sur téléphone avant le backend**  
+**Développement fonctionnel : non commencé**
 
 ---
 
@@ -15,8 +15,6 @@
 Ordre de construction :
 
 **émotion → interaction → design → prototype → architecture → développement → finition**
-
-Nous ne coderons pas l'application complète avant d'avoir validé le ressenti du chèque et de la révélation.
 
 Cycle de travail :
 
@@ -30,10 +28,7 @@ Cycle de travail :
 
 ---
 
-## Phase 0 — Cadrage
-
-### Objectif
-Figer les principes du produit et créer les documents de référence.
+## Phase 0 — Cadrage — VALIDÉE
 
 ### Livrables
 - PRODUCT.md
@@ -43,220 +38,146 @@ Figer les principes du produit et créer les documents de référence.
 - ARCHITECTURE.md
 - DECISIONS.md
 
-### Critère de validation
-Le projet est suffisamment clair pour pouvoir reprendre le travail après une interruption sans dépendre de la mémoire de la conversation.
+### Résultat
+La vision, les principes produit, le périmètre V1 et l'architecture de principe sont figés.
 
 ---
 
-## Phase 1 — Direction artistique
+## Phase 1 — Direction artistique — VALIDÉE
 
-### Objectif
-Valider l'identité visuelle générale.
-
-### Travail
-- direction Carnet Ivoire + discipline Lumière
-- palette
-- typographies
-- matières
-- ombres
-- principes d'espacement
-- gestes
-- ton rédactionnel
-
-### Livrable
-Mini design system et premières planches d'ambiance.
-
-### Critère de validation
-« C'est bien notre application. »
-
----
-
-## Phase 2 — Le chèque
-
-### Objectif
-Créer l'objet central.
-
-### Travail
-- structure du chèque
-- hiérarchie typographique
-- talon / perforation
-- variantes
-- états
-- version utilisée
-- comportement sur petit écran
-
-### Livrable
-3 familles de chèques cohérentes.
-
-### Critère de validation
-Le chèque donne envie d'être offert même sans animation.
-
----
-
-## Phase 3 — La découverte
-
-### Objectif
-Créer la signature émotionnelle du produit.
-
-### Travail
-- enveloppe
-- geste de tirage
-- résistance
-- haptique
-- animation
-- transition vers le chèque ouvert
-
-### Livrable
-Prototype animé de la révélation.
-
-### Critère de validation
-L'expérience est élégante, fluide et non gadget.
-
----
-
-## Phase 4 — UX complète
-
-### Objectif
-Dessiner tous les parcours V1.
-
-### Écrans principaux
-- accueil
-- préparation
-- bibliothèque
-- édition du chèque
-- prêt à offrir
-- réception
-- révélation
-- chèque ouvert
-- utilisation
-- carnet
-- détail ancien chèque
-- réglages
-
-### Livrable
-Wireframes et maquettes V1.
-
----
-
-## Phase 5 — Prototype mobile
-
-### Objectif
-Tester le ressenti avant le backend.
-
-### Livrable
-Prototype navigable et animé sur téléphone.
+### Direction officielle
+**Carnet Ivoire + discipline Lumière + douceur organique**
 
 ### Validation
-Les gestes, proportions et transitions fonctionnent en situation réelle.
+- palette chaude et contenue
+- ivoire, blanc cassé, graphite, sable, rose poudré, bordeaux en accent
+- papier tactile mais discret
+- lumière diffuse
+- formes assouplies
+- rondeurs modérées
+- interface épurée
+- romance portée par le contenu et le geste
+
+### Référence
+`references/phase1_direction-artistique_v2.png`
 
 ---
 
-## Phase 6 — Architecture
+## Phase 2 — Le chèque — VALIDÉE
 
-### Objectif
-Installer les fondations techniques.
+### Décision
+**Chèque 01 — Signature** est la structure officielle de référence.
 
-### Livrables
-- projet Expo / React Native / TypeScript
+### Caractéristiques
+- structure intemporelle et équilibrée
+- talon/perforation
+- coins doux
+- typographie éditoriale
+- papier ivoire
+- accent bordeaux/rose discret
+- état utilisé conservé et marqué avec sobriété
+
+### Références
+- `references/phase2_comparatif-3-cheques.png`
+- `references/phase2_cheque-signature_specification.png`
+
+---
+
+## Phase 3 — La découverte — VALIDÉE
+
+### Interaction signature
+**enveloppe fermée → prise du chèque → tirage → résistance → ouverture → point de bascule → haptique → sortie → révélation**
+
+### Principes
+- interaction pilotée par le doigt
+- légère résistance
+- haptique subtile au point de bascule
+- aucune surenchère
+- pas de confettis
+- retour doux si le geste est interrompu avant le seuil
+- le chèque devient ensuite l'écran principal
+
+### Référence
+`references/phase3_storyboard-revelation.png`
+
+---
+
+## Phase 4 — UX complète — VALIDÉE
+
+### Parcours validés
+1. architecture UX globale
+2. offrir un bon
+3. recevoir, découvrir et utiliser
+4. carnet, anciens bons et réglages
+
+### Références
+- `references/phase4_architecture-ux-globale.png`
+- `references/phase4_ux01_offrir.png`
+- `references/phase4_ux02_recevoir-utiliser.png`
+- `references/phase4_ux03_carnet-reglages.png`
+
+### Règle
+Les planches générées sont des références de composition, d'atmosphère et de parcours.  
+En cas de détail textuel ou de contrôle contradictoire avec les documents du dossier `docs/`, **les documents écrits font foi**.
+
+---
+
+# Phase 5 — Prototype mobile — PROCHAINE ÉTAPE
+
+## Objectif
+Construire un prototype mobile navigable et animé sans dépendre du backend final.
+
+## À tester en priorité
+- proportions du Chèque Signature sur téléphone
+- création d'un bon
+- passage Brouillon → Prêt
+- geste « Offrir »
+- réception de l'enveloppe
+- révélation tactile
+- retour en cas de geste interrompu
+- affichage du chèque découvert
+- passage à Utilisé
+- parcours du Carnet
+- transitions et haptique
+
+## Validation
+Le prototype doit donner envie d'être utilisé sur un téléphone réel avant toute construction backend importante.
+
+---
+
+## Phase 6 — Architecture technique
+
+Après validation du prototype :
+- Expo / React Native / TypeScript
 - Supabase
 - modèle de données
-- migrations SQL
+- Auth
 - RLS
-- authentification
-- environnement de build
-- structure GitHub
-- règles de secrets
-
-### Validation
-Tests de sécurité du secret avant révélation.
+- Edge Functions
+- notifications
+- tests de sécurité
 
 ---
 
 ## Phase 7 — V1 fonctionnelle
 
-### Objectif
-Construire le parcours complet.
-
-### Fonctionnalités
-- connexion
-- couple à deux comptes
+- authentification
+- deux comptes
 - création secrète
-- brouillon
-- prêt
-- offre
-- notification générique
-- révélation
-- carnet
-- utilisation
 - bibliothèque
-- mode « Me surprendre »
-- création personnalisée
+- offre
+- notification
+- révélation
+- utilisation
+- carnet
 - verrouillage local
 
 ---
 
-## Phase 8 — Contenu
+## Phases 8 à 12
 
-### Objectif
-Donner de la richesse sans complexifier l'interface.
-
-### Livrable
-100+ idées catégorisées et rédigées.
-
----
-
-## Phase 9 — Finition
-
-### Objectif
-Atteindre le niveau de qualité premium.
-
-### Travail
-- animations
-- haptique
-- transitions
-- performance
-- accessibilité
-- microcopy
-- cohérence visuelle
-
----
-
-## Phase 10 — Tests à deux
-
-### Objectif
-Utiliser réellement l'application.
-
-### Validation
-Plusieurs cycles complets d'envoi, découverte et utilisation sans friction.
-
----
-
-## Phase 11 — V1 privée
-
-### Objectif
-Stabiliser la version 1.0.
-
-### Travail
-- distribution
-- sauvegardes
-- documentation
-- corrections
-- versioning
-
----
-
-## Phase 12 — Évolutions
-
-Après V1 uniquement :
-- souvenirs riches
-- photos
-- lieux
-- événements
-- anniversaires
-- vacances
-- calendrier
-- suggestions intelligentes
-- prévention des répétitions
-- nouveaux thèmes
-- statistiques légères et positives
-- IA personnalisée
+8. contenu 100+ idées  
+9. finition premium  
+10. tests à deux  
+11. V1 privée  
+12. évolutions
