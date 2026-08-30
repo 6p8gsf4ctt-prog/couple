@@ -8,12 +8,1548 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
   <meta name="apple-mobile-web-app-title" content="Couple" />
   <title>Couple — Prototype web 0.5</title>
-  <link rel="manifest" href="manifest.webmanifest" />
-  <link rel="icon" href="icon.svg" type="image/svg+xml" />
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='16' fill='%23F7F2E8'/><path d='M32 45C27 41 15 33 15 23c0-6 4-10 10-10 3 0 6 2 7 4 2-2 4-4 8-4 5 0 9 4 9 10 0 10-12 18-17 22z' fill='none' stroke='%237B3239' stroke-width='3'/></svg>">
+<style>
+
+:root {
+  --ivory:#F7F2E8;
+  --paper:#FCF8F0;
+  --paper2:#F2E8DA;
+  --graphite:#34302D;
+  --muted:#776F68;
+  --line:#DCCDBE;
+  --sand:#D8C5B0;
+  --blush:#DFAEA4;
+  --blush2:#F0D8D1;
+  --burgundy:#7B3239;
+  --burgundy2:#9B565B;
+  --white:#FFF;
+  --shadow:0 18px 46px rgba(60,43,34,.12);
+  --shadow-soft:0 10px 26px rgba(60,43,34,.08);
+  --safe-top:env(safe-area-inset-top,0px);
+  --safe-bottom:env(safe-area-inset-bottom,0px);
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;min-height:100%;background:var(--ivory);color:var(--graphite)}
+body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue",Arial,sans-serif;overscroll-behavior-y:none}
+button,input,textarea{font:inherit}
+button{cursor:pointer}
+button:disabled{cursor:default}
+#app{min-height:100dvh}
+.serif{font-family:Georgia,"Times New Roman",serif}
+
+.shell{
+  min-height:100dvh;
+  padding-top:calc(var(--safe-top) + 6px);
+  padding-bottom:calc(94px + var(--safe-bottom));
+  background:
+    radial-gradient(circle at 50% 8%,rgba(255,255,255,.42),transparent 32%),
+    linear-gradient(180deg,#F9F4EB 0%,var(--ivory) 60%,#F5EEE4 100%);
+}
+.shell.immersive{padding-bottom:calc(18px + var(--safe-bottom))}
+.screen{
+  width:min(100%,560px);
+  min-height:calc(100dvh - var(--safe-top));
+  margin:0 auto;
+  padding:0 24px 42px;
+  animation:screenIn .24s ease both
+}
+@keyframes screenIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.header{
+  height:70px;
+  display:grid;
+  grid-template-columns:48px 1fr 48px;
+  align-items:center
+}
+.brand{
+  text-align:center;
+  font-family:Georgia,"Times New Roman",serif;
+  letter-spacing:.34em;
+  font-size:16px;
+  white-space:nowrap
+}
+.icon-btn{
+  border:0;background:transparent;color:var(--graphite);
+  width:48px;height:48px;font-size:34px;line-height:1;text-align:left;padding:0
+}
+.icon-btn:disabled{opacity:0}
+.icon-btn:active{opacity:.5}
+
+.eyebrow{
+  text-align:center;color:var(--burgundy);font-size:10px;letter-spacing:.24em;margin-top:18px
+}
+.hero{
+  margin:16px 0 40px;
+  font-family:Georgia,"Times New Roman",serif;
+  font-weight:400;
+  font-size:clamp(41px,11vw,56px);
+  line-height:1.06;
+  text-align:center
+}
+.page-title{
+  margin:20px 0 0;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(34px,8.7vw,48px);
+  line-height:1.08;font-weight:400
+}
+.page-copy{margin:14px 0 28px;color:var(--muted);font-size:16px;line-height:1.55}
+.center-title{
+  margin:14px 0 0;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:34px;line-height:1.12;text-align:center;font-weight:400
+}
+.center-copy{
+  max-width:410px;margin:10px auto 0;text-align:center;color:var(--muted);line-height:1.55
+}
+.section-label{
+  margin:29px 0 13px;color:var(--muted);font-size:10px;letter-spacing:.23em
+}
+
+.btn-stack{display:grid;gap:10px;margin-top:22px}
+.btn{
+  width:100%;min-height:54px;border-radius:28px;border:1px solid transparent;
+  padding:0 22px;font-size:15px;font-weight:750;transition:transform .12s ease,opacity .12s ease
+}
+.btn:active{transform:scale(.99);opacity:.84}
+.btn-primary{background:var(--burgundy);color:#fff;box-shadow:0 8px 18px rgba(123,50,57,.14)}
+.btn-secondary{background:rgba(252,248,240,.92);color:var(--graphite);border-color:var(--line)}
+.btn-quiet{background:transparent;color:var(--burgundy);border-color:var(--line)}
+.btn-small{min-height:45px;font-size:13px}
+
+.soft-card,.choice,.setting-card,.info-card{
+  border:1px solid var(--line);background:rgba(252,248,240,.9);border-radius:26px
+}
+.soft-card{padding:22px}
+.soft-title{font-family:Georgia,"Times New Roman",serif;font-size:23px}
+.soft-copy{margin-top:9px;color:var(--muted);line-height:1.5}
+
+.choice-list{display:grid;gap:10px}
+.choice{
+  width:100%;min-height:92px;padding:17px 19px;
+  display:grid;grid-template-columns:44px 1fr 22px;gap:14px;align-items:center;
+  text-align:left;color:inherit
+}
+.choice-icon{
+  width:44px;height:44px;border-radius:50%;background:var(--blush2);
+  display:grid;place-items:center;color:var(--burgundy);font-size:21px
+}
+.choice-title{font-weight:750;font-size:16px}
+.choice-copy{margin-top:4px;color:var(--muted);font-size:13px;line-height:1.35}
+.chevron{color:var(--burgundy);font-size:29px}
+
+/* Accueil évènement */
+.event-hero{
+  position:relative;
+  margin:4px -4px 34px;
+  padding:34px 22px 26px;
+  border:1px solid rgba(123,50,57,.12);
+  border-radius:34px;
+  background:
+    radial-gradient(circle at 50% 28%,rgba(255,255,255,.9),rgba(240,216,209,.40) 45%,rgba(247,242,232,.2) 74%),
+    rgba(252,248,240,.75);
+  box-shadow:var(--shadow-soft);
+  overflow:hidden
+}
+.event-glow{
+  position:absolute;width:220px;height:220px;border-radius:50%;left:50%;top:14px;
+  transform:translateX(-50%);
+  background:radial-gradient(circle,rgba(223,174,164,.18),transparent 70%);
+  animation:breathe 3.6s ease-in-out infinite
+}
+@keyframes breathe{0%,100%{transform:translateX(-50%) scale(.94);opacity:.64}50%{transform:translateX(-50%) scale(1.05);opacity:1}}
+.event-title{
+  position:relative;margin-top:18px;
+  font-family:Georgia,"Times New Roman",serif;font-size:36px;text-align:center;font-weight:400
+}
+.event-copy{position:relative;margin:8px auto 0;max-width:330px;text-align:center;color:var(--muted);line-height:1.5}
+.event-actions{position:relative;margin-top:22px}
+
+/* Enveloppe */
+.envelope-art{
+  --scale:1;
+  position:relative;
+  width:min(86%,360px);
+  aspect-ratio:1.55/1;
+  margin:0 auto;
+  transform:scale(var(--scale))
+}
+.env-shadow{
+  position:absolute;left:10%;right:10%;bottom:-16px;height:26px;border-radius:50%;
+  background:rgba(88,58,45,.10);filter:blur(12px)
+}
+.env-back{
+  position:absolute;inset:9% 0 0;border:1px solid var(--line);
+  border-radius:25px;background:#F1E3D2;box-shadow:var(--shadow)
+}
+.env-paper{
+  position:absolute;left:5%;right:5%;top:2%;height:72%;
+  border:1px solid #E7DACB;border-radius:18px;background:var(--paper);
+}
+.env-front{
+  position:absolute;left:0;right:0;bottom:0;height:65%;
+  border:1px solid var(--line);border-radius:0 0 25px 25px;
+  background:linear-gradient(180deg,#F5EADB,#EFE0CD);
+  overflow:hidden
+}
+.env-front:before,.env-front:after{
+  content:"";position:absolute;top:37%;width:65%;height:1px;background:#DAC8B5
+}
+.env-front:before{left:-18%;transform:rotate(31deg)}
+.env-front:after{right:-18%;transform:rotate(-31deg)}
+.env-flap{
+  position:absolute;left:0;right:0;top:9%;height:48%;
+  clip-path:polygon(0 0,100% 0,50% 100%);
+  background:#F7EEDF;border-top:1px solid var(--line);
+  transform-origin:50% 0%;
+  z-index:3
+}
+.env-seal{
+  position:absolute;z-index:5;left:50%;top:47%;transform:translate(-50%,-50%);
+  width:48px;height:48px;border-radius:50%;
+  display:grid;place-items:center;background:var(--blush);color:white;
+  border:1px solid #E8C5BD;font-size:23px;box-shadow:0 6px 12px rgba(80,45,45,.08)
+}
+.env-mini{width:250px;margin:18px auto 24px}
+
+/* Chèque Signature */
+.cheque{
+  position:relative;display:grid;grid-template-columns:60px 1px 1fr;
+  width:100%;min-height:216px;background:var(--paper);
+  border:1px solid #E6D9CB;border-radius:28px;box-shadow:var(--shadow);
+  overflow:visible
+}
+.cheque.compact{min-height:174px}
+.cheque-stub{position:relative;overflow:hidden;display:grid;justify-items:center;padding-top:15px}
+.stub-heart{color:var(--burgundy);font-size:20px}
+.stub-rule{width:1px;height:25px;background:var(--line);margin-top:18px}
+.stub-brand-clip{position:absolute;left:4px;right:4px;bottom:10px;height:64px;overflow:hidden;display:grid;place-items:center}
+.stub-brand{
+  width:76px;transform:rotate(-90deg);text-align:center;color:var(--muted);
+  letter-spacing:.2em;font-size:9px
+}
+.perforation{margin:9px 0;border-left:1px dashed #BBA899}
+.cheque-body{
+  min-width:0;padding:19px 21px 17px;display:grid;justify-items:center;grid-template-rows:auto auto auto 1fr
+}
+.bon-pour{
+  font-family:Georgia,"Times New Roman",serif;font-size:clamp(22px,5.7vw,28px);
+  letter-spacing:.11em;color:var(--burgundy);margin-bottom:12px
+}
+.cheque-title{
+  max-width:100%;font-family:Georgia,"Times New Roman",serif;font-style:italic;
+  font-size:clamp(20px,5.5vw,26px);line-height:1.08;text-align:center;overflow-wrap:anywhere
+}
+.cheque-message{
+  margin-top:8px;min-height:38px;font-family:Georgia,"Times New Roman",serif;font-style:italic;
+  font-size:14px;line-height:1.35;color:var(--muted);text-align:center
+}
+.cheque-names{
+  align-self:end;width:100%;display:flex;justify-content:space-between;gap:9px;
+  color:var(--muted);font-size:9px;letter-spacing:.07em
+}
+.script{
+  color:var(--graphite);font-family:Georgia,"Times New Roman",serif;font-size:16px;
+  font-style:italic;letter-spacing:0
+}
+.cheque-seal{
+  position:absolute;right:-18px;top:42%;width:45px;height:45px;border-radius:50%;
+  display:grid;place-items:center;background:var(--blush);color:white;font-size:22px;
+  border:1px solid #E8C5BD
+}
+.used-stamp{
+  position:absolute;right:38px;top:68px;width:84px;height:84px;border-radius:50%;
+  border:2px solid rgba(123,50,57,.46);background:rgba(252,248,240,.82);
+  color:var(--burgundy);display:grid;place-items:center;align-content:center;transform:rotate(-10deg)
+}
+.used-stamp b{font-size:10px;letter-spacing:.13em}
+.used-stamp span{font-size:19px;margin-top:3px}
+.activation-mark{
+  position:absolute;right:36px;top:18px;padding:7px 10px;border-radius:15px;
+  background:var(--blush2);color:var(--burgundy);font-size:10px;font-weight:750
+}
+
+/* Bibliothèque */
+.library-lead{margin-bottom:40px}
+.category-block{margin-bottom:36px}
+.category-title{
+  margin:0 0 15px;font-family:Georgia,"Times New Roman",serif;
+  font-size:25px;font-weight:400;color:var(--burgundy)
+}
+.idea-row{
+  width:100%;min-height:82px;padding:15px 0;border:0;border-bottom:1px solid var(--line);
+  background:transparent;color:inherit;display:grid;grid-template-columns:1fr 22px;
+  align-items:center;gap:12px;text-align:left
+}
+.idea-title{font-weight:750;font-size:15px}
+.idea-copy{margin-top:5px;color:var(--muted);font-size:13px;line-height:1.4}
+
+/* Forms */
+.form{display:grid;gap:16px;margin-top:27px}
+.field{display:grid;gap:7px}
+.field label{color:var(--muted);font-size:12px}
+.field input,.field textarea{
+  width:100%;border:1px solid var(--line);border-radius:18px;background:var(--paper);
+  color:var(--graphite);padding:14px 16px;outline:none;font-size:16px
+}
+.field textarea{min-height:106px;resize:vertical}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+
+/* Scène envoi */
+.send-stage{
+  position:relative;height:470px;margin-top:10px;overflow:hidden
+}
+.send-cheque-wrap{
+  position:absolute;left:5%;right:5%;top:14px;z-index:4;
+  transform-origin:center;
+  animation:sendCheque 1.25s cubic-bezier(.25,.75,.18,1) forwards
+}
+.send-envelope{
+  position:absolute;left:8%;right:8%;bottom:36px;z-index:3;
+  animation:envRise .35s ease both
+}
+.send-envelope .env-flap{animation:closeFlap .48s .94s ease forwards}
+.send-envelope .env-seal{opacity:0;animation:sealIn .3s 1.26s ease forwards}
+.send-message{
+  opacity:0;transform:translateY(8px);
+  animation:messageIn .35s 1.55s ease forwards
+}
+@keyframes sendCheque{
+  0%{transform:translateY(0) scale(.94);opacity:1}
+  42%{transform:translateY(110px) scale(.88);opacity:1}
+  82%{transform:translateY(230px) scale(.78);opacity:.96}
+  100%{transform:translateY(282px) scale(.72);opacity:0}
+}
+@keyframes envRise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@keyframes closeFlap{from{transform:rotateX(0deg)}to{transform:perspective(800px) rotateX(178deg)}}
+@keyframes sealIn{from{opacity:0;transform:translate(-50%,-50%) scale(.7)}to{opacity:1;transform:translate(-50%,-50%) scale(1)}}
+@keyframes messageIn{to{opacity:1;transform:none}}
+
+/* Réception */
+.center-stage{
+  min-height:calc(100dvh - 170px - var(--safe-top));
+  display:grid;align-content:center;justify-items:center
+}
+.spark{
+  width:92px;height:92px;border-radius:50%;display:grid;place-items:center;
+  background:var(--blush2);color:var(--burgundy);font-size:37px
+}
+
+/* Révélation signature */
+.reveal-wrap{margin-top:2px}
+.reveal-stage{
+  --p:0;
+  position:relative;width:100%;height:430px;margin-top:24px;
+  touch-action:none;user-select:none;-webkit-user-select:none;cursor:grab
+}
+.reveal-stage.dragging{cursor:grabbing}
+.reveal-envelope{
+  position:absolute;left:5%;right:5%;bottom:5px;height:240px;z-index:3;
+  transform:translateY(calc(var(--p) * 18px))
+}
+.reveal-envelope .env-back{inset:16% 0 0}
+.reveal-envelope .env-flap{
+  top:16%;
+  transform:perspective(900px) rotateX(calc(var(--p) * -170deg));
+  transition:none
+}
+.reveal-envelope .env-seal{
+  top:55%;
+  opacity:calc(1 - min(1, var(--p) * 2.2));
+  transform:translate(-50%,-50%) scale(calc(1 - min(.2,var(--p)*.25)))
+}
+.reveal-ticket{
+  position:absolute;z-index:2;left:8%;right:8%;bottom:78px;
+  transform:
+    translateY(calc(74px - max(0, (var(--p) - .22)) * 405px))
+    scale(calc(.84 + var(--p) * .10));
+  opacity:calc(.30 + var(--p) * .70);
+  will-change:transform,opacity
+}
+.reveal-stage.settling .reveal-ticket,
+.reveal-stage.settling .reveal-envelope{pointer-events:none}
+.reveal-arrow{
+  position:absolute;z-index:6;left:50%;bottom:34px;transform:translateX(-50%);
+  color:var(--burgundy);font-size:30px;pointer-events:none;
+  animation:arrowFloat 1.5s ease-in-out infinite
+}
+@keyframes arrowFloat{0%,100%{transform:translate(-50%,3px);opacity:.55}50%{transform:translate(-50%,-5px);opacity:1}}
+.reveal-instruction{text-align:center;margin-top:10px;font-weight:750;font-size:14px}
+.reveal-detail{text-align:center;margin:6px auto 0;max-width:390px;color:var(--muted);font-size:12px;line-height:1.45}
+.reveal-progress{
+  --p:0;width:62%;height:3px;margin:14px auto 0;border-radius:4px;background:var(--paper2);overflow:hidden
+}
+.reveal-progress i{display:block;height:100%;width:calc(var(--p)*100%);background:var(--burgundy)}
+.reveal-threshold{
+  width:7px;height:7px;border-radius:50%;background:var(--blush);margin:-5px auto 0;
+  transform:translateX(17%);opacity:.75
+}
+
+/* Découverte */
+.discovery-card{margin-top:28px}
+.discovery-quiet{
+  margin-top:18px;text-align:center;color:var(--muted);
+  font-family:Georgia,"Times New Roman",serif;font-style:italic
+}
+
+/* Carnet album */
+.segmented{
+  margin-top:18px;padding:4px;border-radius:28px;background:var(--paper2);
+  display:grid;grid-template-columns:repeat(3,1fr);gap:2px
+}
+.segment-btn{
+  min-height:46px;border:0;background:transparent;border-radius:24px;color:var(--muted);font-size:13px
+}
+.segment-btn.active{background:var(--paper);color:var(--burgundy);font-weight:750;box-shadow:0 4px 12px rgba(70,45,35,.05)}
+.album-shell{margin-top:34px;min-height:370px}
+.album-stack{
+  position:relative;height:286px;margin:0 8px
+}
+.album-shadow-card{
+  position:absolute;left:7%;right:7%;height:205px;border-radius:26px;border:1px solid var(--line);background:#F0E4D5
+}
+.album-shadow-card.one{top:0;transform:scale(.91)}
+.album-shadow-card.two{top:13px;transform:scale(.95);background:#F6ECDF}
+.album-front{position:absolute;left:0;right:0;top:28px}
+.album-controls{
+  margin-top:20px;display:grid;grid-template-columns:46px 1fr 46px;align-items:center;gap:10px
+}
+.album-arrow{
+  height:44px;border:1px solid var(--line);border-radius:50%;background:var(--paper);color:var(--burgundy);font-size:23px
+}
+.album-count{text-align:center;color:var(--muted);font-size:12px}
+.album-note{
+  margin:18px auto 0;max-width:420px;text-align:center;color:var(--muted);
+  font-family:Georgia,"Times New Roman",serif;font-size:16px;font-style:italic;line-height:1.45
+}
+.record-status{text-align:center;margin-top:11px;color:var(--muted);font-size:12px}
+.empty-state{
+  padding:42px 24px;border-radius:28px;background:var(--paper2);text-align:center
+}
+.empty-book{
+  width:118px;height:76px;margin:0 auto 20px;position:relative
+}
+.empty-book:before,.empty-book:after{
+  content:"";position:absolute;top:8px;width:58px;height:64px;border:1px solid var(--line);background:var(--paper)
+}
+.empty-book:before{left:0;border-radius:16px 4px 4px 16px;transform:rotate(4deg)}
+.empty-book:after{right:0;border-radius:4px 16px 16px 4px;transform:rotate(-4deg)}
+.empty-title{font-family:Georgia,"Times New Roman",serif;font-size:22px}
+.empty-copy{margin-top:8px;color:var(--muted);line-height:1.5}
+
+/* Timing / activation */
+.timing-list{display:grid;gap:11px;margin-top:28px}
+.timing-choice{
+  min-height:74px;width:100%;border:1px solid var(--line);border-radius:22px;
+  background:var(--paper);padding:0 18px;
+  display:flex;align-items:center;justify-content:space-between;color:inherit
+}
+.timing-choice b{font-size:16px}
+.timing-choice span{color:var(--burgundy);font-size:21px}
+.confirm-orb{
+  width:104px;height:104px;border-radius:50%;display:grid;place-items:center;
+  background:radial-gradient(circle at 35% 28%,#F1D3CC,var(--blush));
+  color:white;font-size:42px;box-shadow:0 14px 30px rgba(123,50,57,.16)
+}
+
+/* Expéditeur informé */
+.sender-event{
+  position:relative;margin-top:26px;padding:34px 22px;border:1px solid var(--line);border-radius:32px;
+  background:linear-gradient(180deg,rgba(240,216,209,.42),rgba(252,248,240,.92));
+  overflow:hidden
+}
+.sender-event:before{
+  content:"";position:absolute;width:190px;height:190px;border-radius:50%;top:-70px;right:-50px;
+  background:rgba(223,174,164,.16)
+}
+.sender-fragment{width:82%;margin:18px auto 0;transform:rotate(-2deg);opacity:.96}
+
+/* Utilisation */
+.use-stamp-scene{position:relative;margin-top:34px}
+.use-stamp-scene .used-stamp{
+  right:50%;top:48%;transform:translate(50%,-50%) rotate(-10deg) scale(0);
+  animation:stampPop .46s .28s cubic-bezier(.2,.9,.25,1.25) forwards
+}
+@keyframes stampPop{to{transform:translate(50%,-50%) rotate(-10deg) scale(1)}}
+
+/* Settings */
+.settings-list{display:grid;gap:10px}
+.setting-card{
+  min-height:105px;padding:19px;display:grid;grid-template-columns:1fr auto;align-items:center;gap:13px
+}
+.setting-title{font-weight:750}
+.setting-copy{margin-top:5px;color:var(--muted);font-size:13px;line-height:1.45}
+.switch{width:59px;height:34px;border:0;border-radius:18px;background:var(--sand);padding:3px}
+.switch:after{content:"";display:block;width:28px;height:28px;border-radius:50%;background:white;transition:transform .16s ease}
+.switch.on{background:var(--blush)}
+.switch.on:after{transform:translateX(25px)}
+.info-card{padding:21px;margin-top:14px;background:var(--paper2);border:0}
+.info-title{font-family:Georgia,"Times New Roman",serif;color:var(--burgundy);font-size:22px}
+.info-copy{margin-top:8px;color:var(--muted);line-height:1.5}
+
+/* Prototype simulation */
+.proto-note{
+  margin-top:12px;text-align:center;color:var(--muted);font-size:10px;line-height:1.4
+}
+.proto-chip{
+  display:inline-flex;align-items:center;gap:6px;padding:7px 11px;border-radius:16px;
+  background:var(--paper2);color:var(--muted);font-size:10px
+}
+
+/* Modal */
+.modal-backdrop{
+  position:fixed;z-index:70;inset:0;padding:24px;padding-bottom:calc(24px + var(--safe-bottom));
+  background:rgba(52,48,45,.24);display:grid;align-items:end
+}
+.modal{
+  width:min(100%,520px);margin:0 auto;border-radius:30px;background:var(--paper);
+  padding:24px;box-shadow:0 22px 60px rgba(60,45,37,.22)
+}
+.modal-title{font-family:Georgia,"Times New Roman",serif;font-size:28px}
+.modal-copy{margin-top:8px;color:var(--muted);line-height:1.5}
+
+/* Navigation */
+.bottom-nav{
+  position:fixed;z-index:50;left:18px;right:18px;bottom:calc(10px + var(--safe-bottom));
+  height:64px;max-width:530px;margin:0 auto;border:1px solid var(--line);border-radius:34px;
+  background:rgba(252,248,240,.96);box-shadow:0 12px 34px rgba(60,45,37,.10);
+  display:grid;grid-template-columns:repeat(4,1fr);
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)
+}
+.nav-btn{
+  border:0;background:transparent;color:var(--muted);
+  display:grid;place-content:center;justify-items:center;gap:1px
+}
+.nav-btn b{font-size:18px;line-height:1.05;font-weight:500}
+.nav-btn span{font-size:10px}
+.nav-btn.active{color:var(--burgundy);font-weight:750}
+
+@media(min-width:700px){
+  .screen{padding-left:30px;padding-right:30px}
+}
+
+</style>
 </head>
 <body>
   <div id="app"></div>
-  <script src="app.js"></script>
+  <script>
+
+(() => {
+  'use strict';
+
+  const STORAGE_KEY = 'couple-web-prototype-v05';
+
+  const IDEAS = [
+    {id:'rom-1',title:'Un dîner improvisé',category:'Romantique',message:'Rien que nous deux, sans programme.'},
+    {id:'rom-2',title:'Un message aux heures chaudes',category:'Romantique',message:'Un moment à deux, juste pour se retrouver.'},
+    {id:'out-1',title:'Une promenade sans destination',category:'Sorties',message:'On marche jusqu’à avoir envie de s’arrêter.'},
+    {id:'out-2',title:'Une sortie choisie pour toi',category:'Sorties',message:'Je prépare l’endroit, tu n’as plus qu’à venir.'},
+    {id:'adv-1',title:'Une escapade surprise',category:'Aventure',message:'Je prépare tout, tu viens avec moi.'},
+    {id:'adv-2',title:'Une journée hors routine',category:'Aventure',message:'Un petit ailleurs, juste assez loin du quotidien.'},
+    {id:'home-1',title:'Une soirée cinéma',category:'Maison',message:'Tu choisis le film, je m’occupe du reste.'},
+    {id:'home-2',title:'Un petit déjeuner au lit',category:'Maison',message:'Un matin lent, rien qu’à nous.'},
+    {id:'att-1',title:'Une heure rien que pour toi',category:'Petites attentions',message:'Je m’occupe du reste, profite simplement.'},
+    {id:'att-2',title:'Ton dessert préféré',category:'Petites attentions',message:'Parce que les petits plaisirs comptent aussi.'},
+    {id:'int-1',title:'Une soirée rien que pour nous',category:'Intime / Couple',message:'À utiliser quand le moment vous ressemble.'},
+    {id:'int-2',title:'Un moment sans téléphone',category:'Intime / Couple',message:'Juste nous deux, sans interruption.'}
+  ];
+
+  const CATEGORIES = ['Romantique','Sorties','Aventure','Maison','Petites attentions','Intime / Couple'];
+
+  const INITIAL_DRAFT = {
+    title:'Un dîner improvisé',
+    message:'Rien que nous deux, ici et maintenant.',
+    to:'Toi',
+    from:'Moi',
+    category:'Romantique',
+    validity:''
+  };
+
+  function freshState() {
+    return {
+      version:5,
+      screen:'home',
+      draft:{...INITIAL_DRAFT},
+      records:[],
+      currentRecordId:null,
+      selectedRecordId:null,
+      carnetFilter:'available',
+      albumIndex:{available:0,used:0,offered:0},
+      settings:{notifications:true,faceId:true},
+      perspective:'recipient',
+      modal:null
+    };
+  }
+
+  function loadState() {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) return freshState();
+      const parsed = JSON.parse(raw);
+      return {
+        ...freshState(),
+        ...parsed,
+        screen:'home',
+        modal:null,
+        albumIndex:{...freshState().albumIndex,...(parsed.albumIndex||{})},
+        settings:{...freshState().settings,...(parsed.settings||{})}
+      };
+    } catch (_) {
+      return freshState();
+    }
+  }
+
+  let state = loadState();
+
+  function persist() {
+    const snapshot = {...state,screen:'home',modal:null};
+    localStorage.setItem(STORAGE_KEY,JSON.stringify(snapshot));
+  }
+
+  function setState(patch,{save=true}={}) {
+    state={...state,...patch};
+    if(save) persist();
+    render();
+  }
+
+  function escapeHtml(value='') {
+    return String(value)
+      .replaceAll('&','&amp;')
+      .replaceAll('<','&lt;')
+      .replaceAll('>','&gt;')
+      .replaceAll('"','&quot;')
+      .replaceAll("'","&#039;");
+  }
+
+  function makeId() {
+    return `${Date.now()}-${Math.random().toString(36).slice(2,8)}`;
+  }
+
+  function recordById(id) {
+    return state.records.find(r=>r.id===id)||null;
+  }
+
+  function currentRecord() {
+    return recordById(state.selectedRecordId)||recordById(state.currentRecordId)||null;
+  }
+
+  function updateRecord(id,patch) {
+    state.records=state.records.map(r=>r.id===id?{...r,...patch}:r);
+    persist();
+  }
+
+  function navigate(screen,patch={}) {
+    state={...state,...patch,screen,modal:null};
+    persist();
+    try { window.scrollTo({top:0,behavior:'instant'}); } catch (_) { window.scrollTo(0,0); }
+    render();
+  }
+
+  function header(title='COUPLE',back=null) {
+    return `
+      <div class="header">
+        <button class="icon-btn" data-back="${back||''}" ${back?'':'disabled'}>${back?'‹':''}</button>
+        <div class="brand">${escapeHtml(title)}</div>
+        <div></div>
+      </div>`;
+  }
+
+  function nav() {
+    const active =
+      ['carnet','discovered','usedScene','activation','timing'].includes(state.screen) ? 'carnet'
+      : state.screen==='library' ? 'ideas'
+      : state.screen==='settings' ? 'settings'
+      : 'home';
+
+    const items=[
+      ['home','⌂','Accueil'],
+      ['carnet','▤','Carnet'],
+      ['ideas','◇','Idées'],
+      ['settings','○','Réglages']
+    ];
+
+    return `<nav class="bottom-nav">
+      ${items.map(([key,glyph,label])=>`
+        <button class="nav-btn ${active===key?'active':''}" data-nav="${key}">
+          <b>${glyph}</b><span>${label}</span>
+        </button>`).join('')}
+    </nav>`;
+  }
+
+  function page(inner,{title='COUPLE',back=null,immersive=false}={}) {
+    return `
+      <main class="shell ${immersive?'immersive':''}">
+        <section class="screen">
+          ${header(title,back)}
+          ${inner}
+        </section>
+        ${immersive?'':nav()}
+      </main>`;
+  }
+
+  function btn(label,action,kind='primary',extra='') {
+    const cls=kind==='secondary'?'btn-secondary':kind==='quiet'?'btn-quiet':'btn-primary';
+    return `<button class="btn ${cls} ${extra}" data-action="${action}">${escapeHtml(label)}</button>`;
+  }
+
+  function chequeHTML(c,{compact=false,used=false,activation=null}={}) {
+    return `
+      <article class="cheque ${compact?'compact':''}">
+        <div class="cheque-stub">
+          <div class="stub-heart">♡</div>
+          <div class="stub-rule"></div>
+          <div class="stub-brand-clip"><div class="stub-brand">COUPLE</div></div>
+        </div>
+        <div class="perforation"></div>
+        <div class="cheque-body">
+          <div class="bon-pour">BON POUR</div>
+          <div class="cheque-title">${escapeHtml(c.title||'…')}</div>
+          <div class="cheque-message">${escapeHtml(c.message||'Une attention rien que pour toi.')}</div>
+          <div class="cheque-names">
+            <div>POUR : <span class="script">${escapeHtml(c.to||'Toi')}</span></div>
+            <div>DE : <span class="script">${escapeHtml(c.from||'Moi')}</span></div>
+          </div>
+        </div>
+        <div class="cheque-seal">♡</div>
+        ${activation?`<div class="activation-mark">${escapeHtml(activation)}</div>`:''}
+        ${used?`<div class="used-stamp"><b>UTILISÉ</b><span>♡</span></div>`:''}
+      </article>`;
+  }
+
+  function envelopeHTML({mini=false,paper=false}={}) {
+    return `<div class="envelope-art ${mini?'env-mini':''}">
+      <div class="env-shadow"></div>
+      <div class="env-back"></div>
+      ${paper?'<div class="env-paper"></div>':''}
+      <div class="env-flap"></div>
+      <div class="env-front"></div>
+      <div class="env-seal">♡</div>
+    </div>`;
+  }
+
+  function pendingRecord() {
+    return state.records.find(r=>r.status==='offered')||null;
+  }
+
+  function activeRecordForSender() {
+    return state.records.find(r=>r.status==='scheduled')||null;
+  }
+
+  function home() {
+    const pending=pendingRecord();
+    const senderActive=activeRecordForSender();
+
+    if(state.perspective==='sender' && senderActive) {
+      return page(`
+        <div class="eyebrow">UN MOMENT VA PRENDRE VIE</div>
+        <div class="sender-event">
+          <h1 class="center-title">Ton bon va prendre vie ${timingPhrase(senderActive.timing,true)}.</h1>
+          <p class="center-copy">La personne à qui tu l’as offert a choisi son moment.</p>
+          <div class="sender-fragment">${chequeHTML(senderActive.cheque,{compact:true,activation:timingLabel(senderActive.timing)})}</div>
+          <div class="btn-stack">${btn('Voir le bon',`sender-event:${senderActive.id}`)}</div>
+        </div>
+
+        <div class="section-label">TON BON À OFFRIR</div>
+        ${chequeHTML(state.draft,{compact:true})}
+        <div class="btn-stack">${btn('Préparer un bon','prepare')}</div>
+      `);
+    }
+
+    if(pending && state.perspective==='recipient') {
+      return page(`
+        <div class="event-hero">
+          <div class="event-glow"></div>
+          ${envelopeHTML({mini:true})}
+          <h1 class="event-title">Un bon t’attend.</h1>
+          <p class="event-copy">Quelqu’un a préparé quelque chose pour toi. Son contenu restera secret jusqu’à ce que tu choisisses de l’ouvrir.</p>
+          <div class="event-actions">${btn('Découvrir',`receive-intro:${pending.id}`)}</div>
+        </div>
+
+        <div class="section-label">TON BON À OFFRIR</div>
+        ${chequeHTML(state.draft,{compact:true})}
+        <div class="btn-stack">
+          ${btn('Préparer un bon','prepare','secondary')}
+          ${btn('Me surprendre','surprise','quiet')}
+        </div>
+      `);
+    }
+
+    return page(`
+      <div class="eyebrow">NOTRE CARNET</div>
+      <h1 class="hero">Chaque moment<br>compte.</h1>
+
+      <div class="section-label">TON BON À OFFRIR</div>
+      ${chequeHTML(state.draft,{compact:true})}
+      <div class="btn-stack">
+        ${btn('Préparer un bon','prepare')}
+        ${btn('Me surprendre','surprise','secondary')}
+      </div>
+
+      <div class="section-label">LE CARNET</div>
+      <div class="soft-card">
+        <div class="soft-title">${state.records.length?'Vos moments restent ici.':'Votre carnet commence ici.'}</div>
+        <div class="soft-copy">${state.records.length
+          ? `${state.records.length} bon${state.records.length>1?'s':''} conservé${state.records.length>1?'s':''}, qu’il soit encore disponible ou déjà vécu.`
+          : 'Les bons découverts et les moments vécus resteront ensemble, sans disparaître.'}</div>
+      </div>
+    `);
+  }
+
+  function prepare() {
+    const choices=[
+      ['Choisir une idée','Parcourir la bibliothèque.','library'],
+      ['Me surprendre','Laisser l’app choisir une belle idée.','surprise'],
+      ['Créer le mien','Partir d’un chèque vierge.','custom']
+    ];
+    return page(`
+      <h1 class="page-title">Comment veux-tu commencer ?</h1>
+      <p class="page-copy">Un seul choix maintenant. Tu personnaliseras ensuite tranquillement.</p>
+      <div class="choice-list">
+        ${choices.map(([t,c,a])=>`
+          <button class="choice" data-action="${a}">
+            <div class="choice-icon">♡</div>
+            <div><div class="choice-title">${t}</div><div class="choice-copy">${c}</div></div>
+            <div class="chevron">›</div>
+          </button>`).join('')}
+      </div>
+    `,{title:'PRÉPARER',back:'home'});
+  }
+
+  function library() {
+    return page(`
+      <div class="library-lead">
+        <h1 class="page-title">Qu’est-ce qui ferait plaisir aujourd’hui ?</h1>
+        <p class="page-copy">Une idée peut être choisie telle quelle puis personnalisée.</p>
+      </div>
+
+      ${CATEGORIES.map(cat=>{
+        const items=IDEAS.filter(i=>i.category===cat);
+        return `<section class="category-block">
+          <h2 class="category-title">${escapeHtml(cat)}</h2>
+          ${items.map(idea=>`
+            <button class="idea-row" data-idea-id="${idea.id}">
+              <div>
+                <div class="idea-title">${escapeHtml(idea.title)}</div>
+                <div class="idea-copy">${escapeHtml(idea.message)}</div>
+              </div>
+              <div class="chevron">›</div>
+            </button>`).join('')}
+        </section>`;
+      }).join('')}
+    `,{title:'IDÉES',back:'prepare'});
+  }
+
+  function surprise() {
+    return page(`
+      <div class="center-stage">
+        <div class="spark">✦</div>
+        <h1 class="center-title">Je prépare une surprise rien que pour toi.</h1>
+        <p class="center-copy">Une idée choisie dans notre carnet. Sans score, sans obligation.</p>
+        <div style="width:100%;margin-top:22px">${btn('Lancer la surprise','random')}</div>
+      </div>
+    `,{title:'SURPRISE',back:'prepare'});
+  }
+
+  function custom() {
+    const blank={title:'',message:'',to:'Toi',from:'Moi'};
+    return page(`
+      <h1 class="page-title">Créer le mien</h1>
+      <p class="page-copy">Partir de zéro, avec seulement l’intention.</p>
+      ${chequeHTML(blank)}
+      <div class="btn-stack">${btn('Commencer','custom-start')}</div>
+    `,{title:'CRÉER',back:'prepare'});
+  }
+
+  function edit() {
+    return page(`
+      <div class="section-label">APERÇU DU BON</div>
+      <div id="live-cheque">${chequeHTML(state.draft,{compact:true})}</div>
+
+      <form class="form" id="edit-form">
+        <div class="field">
+          <label>Titre du bon</label>
+          <input name="title" value="${escapeHtml(state.draft.title)}" placeholder="Ex. Un dîner improvisé">
+        </div>
+        <div class="field">
+          <label>Message personnel</label>
+          <textarea name="message" placeholder="Quelques mots rien que pour vous…">${escapeHtml(state.draft.message)}</textarea>
+        </div>
+        <div class="form-row">
+          <div class="field"><label>Pour</label><input name="to" value="${escapeHtml(state.draft.to)}"></div>
+          <div class="field"><label>De</label><input name="from" value="${escapeHtml(state.draft.from)}"></div>
+        </div>
+        <div class="field">
+          <label>Validité (optionnelle)</label>
+          <input name="validity" value="${escapeHtml(state.draft.validity||'')}" placeholder="Laisser vide si aucune">
+        </div>
+      </form>
+
+      <div class="btn-stack">${btn('Le bon est prêt','ready')}</div>
+    `,{title:'NOUVEAU BON',back:'prepare'});
+  }
+
+  function ready() {
+    return page(`
+      <h1 class="center-title">Ton bon est prêt.</h1>
+      <p class="center-copy">Prends un dernier instant pour le regarder avant de le confier.</p>
+      <div style="margin-top:28px">${chequeHTML(state.draft)}</div>
+      <div class="btn-stack">
+        ${btn('Offrir ce bon','send')}
+        ${btn('Modifier','edit','secondary')}
+      </div>
+    `,{title:'PRÊT',back:'edit'});
+  }
+
+  function sendScene() {
+    const rec=currentRecord();
+    if(!rec) return home();
+    return page(`
+      <div class="send-stage">
+        <div class="send-cheque-wrap">${chequeHTML(rec.cheque,{compact:true})}</div>
+        <div class="send-envelope">${envelopeHTML()}</div>
+      </div>
+      <div class="send-message">
+        <h1 class="center-title">C’est envoyé.</h1>
+        <p class="center-copy">Ton bon attend maintenant d’être découvert.</p>
+        <div class="btn-stack">
+          ${btn('Retour à l’accueil','home')}
+          ${btn('Voir côté destinataire',`switch-recipient:${rec.id}`,'secondary')}
+        </div>
+        <div class="proto-note"><span class="proto-chip">Prototype · simulation des deux personnes</span></div>
+      </div>
+    `,{title:'OFFERT',immersive:true});
+  }
+
+  function receiveIntro() {
+    const rec=currentRecord();
+    if(!rec) return home();
+    return page(`
+      <div class="center-stage">
+        ${envelopeHTML()}
+        <h1 class="center-title">Pour toi.</h1>
+        <p class="center-copy">Quelque chose t’attend. Tu choisis le moment où tu l’ouvres.</p>
+        <div style="width:100%;margin-top:22px">${btn('Découvrir','start-reveal')}</div>
+      </div>
+    `,{title:'POUR TOI',back:'home'});
+  }
+
+  function reveal() {
+    const rec=currentRecord();
+    if(!rec) return home();
+    return page(`
+      <div class="reveal-wrap">
+        <h1 class="center-title">Pour toi.</h1>
+        <p class="center-copy">Prends simplement le bon et tire doucement.</p>
+
+        <div class="reveal-stage" id="reveal-stage">
+          <div class="reveal-ticket">${chequeHTML(rec.cheque,{compact:true})}</div>
+          <div class="reveal-envelope">
+            <div class="env-back"></div>
+            <div class="env-flap"></div>
+            <div class="env-front"></div>
+            <div class="env-seal">♡</div>
+          </div>
+          <div class="reveal-arrow">↑</div>
+        </div>
+
+        <div class="reveal-instruction" id="reveal-instruction">Tire doucement.</div>
+        <div class="reveal-detail">Tu peux relâcher tant que le point de bascule n’est pas franchi : le bon retournera simplement dans son enveloppe.</div>
+        <div class="reveal-progress" id="reveal-progress"><i></i></div>
+        <div class="reveal-threshold"></div>
+      </div>
+    `,{title:'DÉCOUVRIR',immersive:true});
+  }
+
+  function discovered() {
+    const rec=currentRecord();
+    if(!rec) return home();
+    return page(`
+      <h1 class="center-title">Il est à toi.</h1>
+      <p class="center-copy">Le bon est maintenant découvert et conservé dans votre carnet.</p>
+      <div class="discovery-card">${chequeHTML(rec.cheque)}</div>
+      <div class="btn-stack">
+        ${btn('Utiliser ce bon',`timing:${rec.id}`)}
+        ${btn('Garder pour plus tard',`keep:${rec.id}`,'secondary')}
+        ${btn('Voir les détails',`details:${rec.id}`,'quiet')}
+      </div>
+      <div class="discovery-quiet">Tu n’as rien à décider maintenant.</div>
+    `,{title:'DÉCOUVERT'});
+  }
+
+  function timing() {
+    const rec=currentRecord();
+    if(!rec) return carnet();
+    return page(`
+      <h1 class="page-title">Quand veux-tu faire vivre ce bon ?</h1>
+      <p class="page-copy">Un choix simple. Pas de calendrier, pas de contrainte.</p>
+      <div style="margin-top:10px">${chequeHTML(rec.cheque,{compact:true})}</div>
+
+      <div class="timing-list">
+        <button class="timing-choice" data-timing="now"><b>Maintenant</b><span>☼</span></button>
+        <button class="timing-choice" data-timing="tonight"><b>Ce soir</b><span>◐</span></button>
+        <button class="timing-choice" data-timing="soon"><b>Bientôt</b><span>◇</span></button>
+      </div>
+    `,{title:'FAIRE VIVRE',back:'carnet'});
+  }
+
+  function activation() {
+    const rec=currentRecord();
+    if(!rec) return home();
+    return page(`
+      <div class="center-stage">
+        <div class="confirm-orb">♡</div>
+        <h1 class="center-title">C’est décidé.</h1>
+        <p class="center-copy">Ton bon va prendre vie ${timingPhrase(rec.timing,false)}. L’autre personne va être prévenue.</p>
+        <div style="width:100%;margin-top:24px">
+          ${btn('Voir ce que reçoit l’autre',`switch-sender:${rec.id}`)}
+          <div class="btn-stack">${btn('Retour au carnet','carnet','secondary')}</div>
+          <div class="proto-note"><span class="proto-chip">Prototype · notification simulée</span></div>
+        </div>
+      </div>
+    `,{title:'C’EST DÉCIDÉ',immersive:true});
+  }
+
+  function senderEvent() {
+    const rec=currentRecord();
+    if(!rec) return home();
+    return page(`
+      <div class="sender-event">
+        <div class="eyebrow">UN MOMENT À VENIR</div>
+        <h1 class="center-title">Ton bon va prendre vie ${timingPhrase(rec.timing,true)}.</h1>
+        <p class="center-copy">La personne à qui tu l’as offert a choisi son moment.</p>
+        <div class="sender-fragment">${chequeHTML(rec.cheque,{compact:true,activation:timingLabel(rec.timing)})}</div>
+      </div>
+
+      <div class="btn-stack">
+        ${btn('Voir mon carnet','carnet')}
+        ${btn('Retour côté destinataire',`switch-back:${rec.id}`,'secondary')}
+      </div>
+      <div class="proto-note"><span class="proto-chip">Prototype · perspective expéditeur</span></div>
+    `,{title:'À TOI',immersive:true});
+  }
+
+  function usedScene() {
+    const rec=currentRecord();
+    if(!rec) return carnet();
+    return page(`
+      <div class="center-stage">
+        <h1 class="center-title">C’est parti.</h1>
+        <p class="center-copy">Le bon devient maintenant un moment vécu et restera dans votre carnet.</p>
+        <div class="use-stamp-scene" style="width:100%">
+          ${chequeHTML(rec.cheque,{compact:true})}
+          <div class="used-stamp"><b>UTILISÉ</b><span>♡</span></div>
+        </div>
+        <div style="width:100%;margin-top:24px">${btn('Voir le carnet','carnet')}</div>
+      </div>
+    `,{title:'UTILISÉ',immersive:true});
+  }
+
+  function carnetRecords(filter) {
+    if(filter==='available') return state.records.filter(r=>r.status==='revealed'||r.status==='scheduled');
+    if(filter==='used') return state.records.filter(r=>r.status==='used');
+    return [...state.records];
+  }
+
+  function recordStatus(rec) {
+    if(rec.status==='offered') return 'Offert — il attend encore d’être découvert';
+    if(rec.status==='revealed') return 'Découvert — encore disponible';
+    if(rec.status==='scheduled') return `Va prendre vie ${timingPhrase(rec.timing,false)}`;
+    if(rec.status==='used') return 'Utilisé — conservé dans votre carnet';
+    return '';
+  }
+
+  function carnet() {
+    const list=carnetRecords(state.carnetFilter);
+    let idx=state.albumIndex[state.carnetFilter]||0;
+    if(idx>=list.length) idx=Math.max(0,list.length-1);
+    state.albumIndex[state.carnetFilter]=idx;
+    const rec=list[idx]||null;
+
+    let album='';
+    if(!rec) {
+      const copy=state.carnetFilter==='available'
+        ? 'Aucun bon disponible pour le moment. Les prochains bons découverts t’attendront ici.'
+        : state.carnetFilter==='used'
+          ? 'Aucun bon utilisé pour le moment. Les moments vécus resteront ici.'
+          : 'Aucun bon offert pour le moment.';
+      album=`<div class="empty-state">
+        <div class="empty-book"></div>
+        <div class="empty-title">Le carnet est calme.</div>
+        <div class="empty-copy">${copy}</div>
+      </div>`;
+    } else {
+      const activation=rec.status==='scheduled'?timingLabel(rec.timing):null;
+      album=`
+        <div class="album-stack">
+          ${list.length>2?'<div class="album-shadow-card one"></div>':''}
+          ${list.length>1?'<div class="album-shadow-card two"></div>':''}
+          <div class="album-front">${chequeHTML(rec.cheque,{compact:true,used:rec.status==='used',activation})}</div>
+        </div>
+        <div class="album-controls">
+          <button class="album-arrow" data-album="-1" ${idx===0?'disabled':''}>‹</button>
+          <div class="album-count">${idx+1} / ${list.length}</div>
+          <button class="album-arrow" data-album="1" ${idx===list.length-1?'disabled':''}>›</button>
+        </div>
+        <div class="record-status">${recordStatus(rec)}</div>
+        ${state.carnetFilter==='available'?`
+          <div class="btn-stack">
+            ${rec.status==='scheduled'
+              ? btn('Marquer comme utilisé',`confirm-use:${rec.id}`)
+              : btn('Utiliser ce bon',`timing:${rec.id}`)}
+            ${btn('Voir les détails',`details:${rec.id}`,'secondary')}
+          </div>`:''}
+      `;
+    }
+
+    return page(`
+      <h1 class="page-title">Notre carnet</h1>
+      <p class="page-copy">Un album à feuilleter, pas une liste à gérer.</p>
+
+      <div class="segmented">
+        ${segment('available','Disponibles')}
+        ${segment('used','Utilisés')}
+        ${segment('offered','Offerts')}
+      </div>
+
+      <div class="album-shell">${album}</div>
+      <div class="album-note">${albumPhrase()}</div>
+    `,{title:'CARNET'});
+  }
+
+  function segment(key,label) {
+    return `<button class="segment-btn ${state.carnetFilter===key?'active':''}" data-filter="${key}">${label}</button>`;
+  }
+
+  function albumPhrase() {
+    if(state.carnetFilter==='available') return 'Des attentions découvertes, à faire vivre quand le moment sera juste.';
+    if(state.carnetFilter==='used') return 'Les bons vécus restent là, comme des pages déjà écrites.';
+    return 'Les bons offerts racontent leur propre chemin : attente, découverte, moment à venir, souvenir.';
+  }
+
+  function ideas() {
+    return library();
+  }
+
+  function settings() {
+    return page(`
+      <h1 class="page-title">Réglages</h1>
+      <p class="page-copy">Peu d’options, uniquement celles qui protègent ou simplifient l’expérience.</p>
+
+      <div class="settings-list">
+        ${settingCard('notifications','Notifications discrètes','Aucun titre de bon ni message personnel ne doit apparaître publiquement.')}
+        ${settingCard('faceId','Verrouillage Face ID','Sera validé dans la version native finale.')}
+      </div>
+
+      <div class="info-card">
+        <div class="info-title">Prototype web 0.5</div>
+        <div class="info-copy">Cette version simule les deux personnes sur un seul appareil. Les bons restent stockés localement dans Safari.</div>
+      </div>
+
+      <div class="info-card">
+        <div class="info-title">Perspective de test</div>
+        <div class="info-copy">Actuelle : <b>${state.perspective==='recipient'?'destinataire':'expéditeur'}</b>. Les changements de perspective ne simulent pas encore deux comptes réels.</div>
+        <div class="btn-stack">
+          ${btn(state.perspective==='recipient'?'Passer côté expéditeur':'Passer côté destinataire','toggle-perspective','secondary')}
+        </div>
+      </div>
+
+      <div class="btn-stack">${btn('Réinitialiser les données de test','reset','secondary')}</div>
+    `,{title:'RÉGLAGES'});
+  }
+
+  function settingCard(key,title,copy) {
+    const on=!!state.settings[key];
+    return `<div class="setting-card">
+      <div><div class="setting-title">${title}</div><div class="setting-copy">${copy}</div></div>
+      <button class="switch ${on?'on':''}" data-setting="${key}" aria-pressed="${on}"></button>
+    </div>`;
+  }
+
+  function detailsModal(rec) {
+    return `<div class="modal-backdrop" data-modal-close="1">
+      <div class="modal" role="dialog" aria-modal="true" data-modal-panel="1">
+        <div class="modal-title">${escapeHtml(rec.cheque.title)}</div>
+        <div class="modal-copy">${escapeHtml(rec.cheque.message||'')}</div>
+        <div class="modal-copy">Pour ${escapeHtml(rec.cheque.to||'Toi')} · de ${escapeHtml(rec.cheque.from||'Moi')}</div>
+        ${rec.cheque.validity?`<div class="modal-copy">Validité : ${escapeHtml(rec.cheque.validity)}</div>`:''}
+        <div class="btn-stack">${btn('Fermer','close-modal','secondary')}</div>
+      </div>
+    </div>`;
+  }
+
+  function useModal(rec) {
+    return `<div class="modal-backdrop" data-modal-close="1">
+      <div class="modal" role="dialog" aria-modal="true" data-modal-panel="1">
+        <div class="modal-title">Prêt(e) à utiliser ce bon ?</div>
+        <div class="modal-copy">Cette action le marquera comme utilisé, mais il restera dans votre carnet.</div>
+        <div class="btn-stack">
+          ${btn('Oui, utiliser',`do-use:${rec.id}`)}
+          ${btn('Pas encore','close-modal','secondary')}
+        </div>
+      </div>
+    </div>`;
+  }
+
+  function modalHTML() {
+    if(!state.modal) return '';
+    const rec=recordById(state.modal.id);
+    if(!rec) return '';
+    if(state.modal.type==='details') return detailsModal(rec);
+    if(state.modal.type==='use') return useModal(rec);
+    return '';
+  }
+
+  function timingLabel(t) {
+    return t==='now'?'Maintenant':t==='tonight'?'Ce soir':'Bientôt';
+  }
+
+  function timingPhrase(t,sender=false) {
+    if(t==='now') return sender?'maintenant':'maintenant';
+    if(t==='tonight') return sender?'ce soir':'ce soir';
+    return sender?'bientôt':'bientôt';
+  }
+
+  function render() {
+    const screens={
+      home,prepare,library,ideas,surprise,custom,edit,ready,
+      sendScene,receiveIntro,reveal,discovered,carnet,timing,activation,senderEvent,usedScene,settings
+    };
+    const fn=screens[state.screen]||home;
+    document.getElementById('app').innerHTML=fn()+modalHTML();
+    bind();
+    if(state.screen==='reveal') setupReveal();
+  }
+
+  function bind() {
+    document.querySelectorAll('[data-back]').forEach(el=>{
+      if(!el.dataset.back) return;
+      el.addEventListener('click',()=>navigate(el.dataset.back));
+    });
+
+    document.querySelectorAll('[data-nav]').forEach(el=>{
+      el.addEventListener('click',()=>navigate(el.dataset.nav));
+    });
+
+    document.querySelectorAll('[data-action]').forEach(el=>{
+      el.addEventListener('click',()=>action(el.dataset.action));
+    });
+
+    document.querySelectorAll('[data-idea-id]').forEach(el=>{
+      el.addEventListener('click',()=>{
+        const idea=IDEAS.find(i=>i.id===el.dataset.ideaId);
+        if(!idea) return;
+        state.draft={...state.draft,title:idea.title,message:idea.message,category:idea.category};
+        persist();
+        navigate('edit');
+      });
+    });
+
+    document.querySelectorAll('[data-filter]').forEach(el=>{
+      el.addEventListener('click',()=>{
+        state.carnetFilter=el.dataset.filter;
+        state.albumIndex[state.carnetFilter]=0;
+        persist();
+        render();
+      });
+    });
+
+    document.querySelectorAll('[data-album]').forEach(el=>{
+      el.addEventListener('click',()=>{
+        const dir=Number(el.dataset.album)||0;
+        const list=carnetRecords(state.carnetFilter);
+        const current=state.albumIndex[state.carnetFilter]||0;
+        state.albumIndex[state.carnetFilter]=Math.max(0,Math.min(list.length-1,current+dir));
+        persist();
+        render();
+      });
+    });
+
+    document.querySelectorAll('[data-timing]').forEach(el=>{
+      el.addEventListener('click',()=>{
+        const rec=currentRecord();
+        if(!rec) return;
+        updateRecord(rec.id,{status:'scheduled',timing:el.dataset.timing,scheduledAt:Date.now()});
+        state.selectedRecordId=rec.id;
+        state.currentRecordId=rec.id;
+        persist();
+        navigate('activation');
+      });
+    });
+
+    document.querySelectorAll('[data-setting]').forEach(el=>{
+      el.addEventListener('click',()=>{
+        const key=el.dataset.setting;
+        state.settings[key]=!state.settings[key];
+        persist();render();
+      });
+    });
+
+    document.querySelectorAll('[data-modal-close]').forEach(el=>{
+      el.addEventListener('click',()=>setState({modal:null}));
+    });
+    document.querySelectorAll('[data-modal-panel]').forEach(el=>{
+      el.addEventListener('click',e=>e.stopPropagation());
+    });
+
+    const form=document.getElementById('edit-form');
+    if(form){
+      form.addEventListener('input',()=>{
+        const data=new FormData(form);
+        state.draft={
+          ...state.draft,
+          title:String(data.get('title')||''),
+          message:String(data.get('message')||''),
+          to:String(data.get('to')||''),
+          from:String(data.get('from')||''),
+          validity:String(data.get('validity')||'')
+        };
+        persist();
+        const live=document.getElementById('live-cheque');
+        if(live) live.innerHTML=chequeHTML(state.draft,{compact:true});
+      });
+    }
+  }
+
+  function action(raw) {
+    const first=raw.indexOf(':');
+    const name=first>=0?raw.slice(0,first):raw;
+    const arg=first>=0?raw.slice(first+1):'';
+
+    if(['home','prepare','library','ideas','surprise','custom','edit','ready','carnet','settings'].includes(name)){
+      navigate(name);return;
+    }
+
+    if(name==='random'){
+      const idea=IDEAS[Math.floor(Math.random()*IDEAS.length)];
+      state.draft={...state.draft,title:idea.title,message:idea.message,category:idea.category};
+      persist();navigate('edit');return;
+    }
+
+    if(name==='custom-start'){
+      state.draft={title:'',message:'',to:'Toi',from:'Moi',category:'',validity:''};
+      persist();navigate('edit');return;
+    }
+
+    if(name==='send'){
+      const rec={
+        id:makeId(),
+        cheque:{...state.draft},
+        status:'offered',
+        createdAt:Date.now(),
+        timing:null,
+        scheduledAt:null,
+        revealedAt:null,
+        usedAt:null
+      };
+      state.records=[rec,...state.records];
+      state.currentRecordId=rec.id;
+      state.selectedRecordId=rec.id;
+      state.perspective='sender';
+      persist();
+      navigate('sendScene');
+      return;
+    }
+
+    if(name==='switch-recipient'){
+      state.perspective='recipient';
+      state.currentRecordId=arg;
+      state.selectedRecordId=arg;
+      persist();
+      navigate('receiveIntro');
+      return;
+    }
+
+    if(name==='receive-intro'){
+      state.currentRecordId=arg;
+      state.selectedRecordId=arg;
+      persist();
+      navigate('receiveIntro');
+      return;
+    }
+
+    if(name==='start-reveal'){
+      navigate('reveal');return;
+    }
+
+    if(name==='keep'){
+      updateRecord(arg,{status:'revealed'});
+      state.selectedRecordId=arg;
+      state.carnetFilter='available';
+      persist();
+      navigate('carnet');
+      return;
+    }
+
+    if(name==='timing'){
+      state.selectedRecordId=arg;
+      persist();
+      navigate('timing');
+      return;
+    }
+
+    if(name==='switch-sender'){
+      state.perspective='sender';
+      state.selectedRecordId=arg;
+      persist();
+      navigate('senderEvent');
+      return;
+    }
+
+    if(name==='sender-event'){
+      state.selectedRecordId=arg;
+      persist();
+      navigate('senderEvent');
+      return;
+    }
+
+    if(name==='switch-back'){
+      state.perspective='recipient';
+      state.selectedRecordId=arg;
+      state.carnetFilter='available';
+      persist();
+      navigate('carnet');
+      return;
+    }
+
+    if(name==='confirm-use'){
+      state.selectedRecordId=arg;
+      state.modal={type:'use',id:arg};
+      persist();render();return;
+    }
+
+    if(name==='do-use'){
+      updateRecord(arg,{status:'used',usedAt:Date.now()});
+      state.selectedRecordId=arg;
+      state.modal=null;
+      state.carnetFilter='used';
+      persist();
+      navigate('usedScene');
+      return;
+    }
+
+    if(name==='details'){
+      state.selectedRecordId=arg;
+      state.modal={type:'details',id:arg};
+      persist();render();return;
+    }
+
+    if(name==='close-modal'){
+      setState({modal:null});return;
+    }
+
+    if(name==='toggle-perspective'){
+      state.perspective=state.perspective==='recipient'?'sender':'recipient';
+      persist();navigate('home');return;
+    }
+
+    if(name==='reset'){
+      if(confirm('Réinitialiser tous les bons de test de ce navigateur ?')){
+        localStorage.removeItem(STORAGE_KEY);
+        state=freshState();
+        render();
+      }
+    }
+  }
+
+  function setupReveal() {
+    const stage=document.getElementById('reveal-stage');
+    const instruction=document.getElementById('reveal-instruction');
+    const bar=document.getElementById('reveal-progress');
+    if(!stage) return;
+
+    const rec=currentRecord();
+    if(!rec) return;
+
+    let pointer=null;
+    let startY=0;
+    let p=0;
+    let locked=false;
+    const distance=320;
+    const threshold=.74;
+
+    const setP=value=>{
+      p=Math.max(0,Math.min(1,value));
+      stage.style.setProperty('--p',p.toFixed(4));
+      if(bar) bar.style.setProperty('--p',p.toFixed(4));
+    };
+
+    const animateTo=(target,duration,done)=>{
+      locked=true;
+      stage.classList.add('settling');
+      const from=p;
+      const start=performance.now();
+      const ease=t=>1-Math.pow(1-t,3);
+      const frame=now=>{
+        const t=Math.min(1,(now-start)/duration);
+        setP(from+(target-from)*ease(t));
+        if(t<1) requestAnimationFrame(frame);
+        else{
+          locked=false;
+          stage.classList.remove('settling');
+          done&&done();
+        }
+      };
+      requestAnimationFrame(frame);
+    };
+
+    stage.addEventListener('pointerdown',e=>{
+      if(locked) return;
+      pointer=e.pointerId;
+      startY=e.clientY;
+      stage.classList.add('dragging');
+      try{stage.setPointerCapture(pointer)}catch(_){}
+      instruction.textContent='Continue doucement…';
+    });
+
+    stage.addEventListener('pointermove',e=>{
+      if(e.pointerId!==pointer||locked) return;
+      const dy=Math.max(0,startY-e.clientY);
+      setP(dy/distance);
+      if(p>.20 && p<.46) instruction.textContent='L’enveloppe s’ouvre…';
+      else if(p>=.46 && p<threshold) instruction.textContent='Le bon se libère…';
+      else if(p>=threshold) instruction.textContent='Encore un peu…';
+    });
+
+    const finish=e=>{
+      if(e.pointerId!==pointer||locked) return;
+      stage.classList.remove('dragging');
+      try{stage.releasePointerCapture(pointer)}catch(_){}
+      pointer=null;
+
+      if(p>=threshold){
+        instruction.textContent='Le bon se révèle…';
+        if(navigator.vibrate) {
+          try{navigator.vibrate(24)}catch(_){}
+        }
+        animateTo(1,610,()=>{
+          updateRecord(rec.id,{status:'revealed',revealedAt:Date.now()});
+          state.selectedRecordId=rec.id;
+          state.currentRecordId=rec.id;
+          persist();
+          setTimeout(()=>navigate('discovered'),260);
+        });
+      }else{
+        instruction.textContent='Tire doucement.';
+        animateTo(0,340);
+      }
+    };
+
+    stage.addEventListener('pointerup',finish);
+    stage.addEventListener('pointercancel',finish);
+
+    // Si Safari retire la capture du pointeur avant la fin, on revient à l'état fermé.
+    stage.addEventListener('lostpointercapture',e=>{
+      if(pointer!==null && !locked){
+        pointer=null;
+        stage.classList.remove('dragging');
+        instruction.textContent='Tire doucement.';
+        animateTo(0,300);
+      }
+    });
+  }
+
+  render();
+})();
+
+</script>
 </body>
 </html>
