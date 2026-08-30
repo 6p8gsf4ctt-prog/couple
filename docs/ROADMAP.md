@@ -2,11 +2,11 @@
 
 ## État du projet
 
-**Phase actuelle : 4 — UX complète — VALIDÉE**  
-**Dernier jalon validé : parcours UX complets**  
-**Prochaine phase : 5 — Prototype mobile navigable et animé**  
-**Objectif suivant : tester le ressenti réel sur téléphone avant le backend**  
-**Développement fonctionnel : non commencé**
+**Phase actuelle : 5 — Prototype mobile — EN COURS**  
+**Dernier jalon validé : Phase 4 — UX complète**  
+**Livrable actuel : Prototype 0.1 navigable et animé**  
+**Objectif suivant : test sur téléphone et ajustements de ressenti**  
+**Backend : non commencé**
 
 ---
 

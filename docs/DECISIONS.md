@@ -323,3 +323,20 @@ La prochaine phase est le prototype mobile navigable et animé.
 ### Statut
 VALIDÉ
 
+
+
+---
+
+## DEC-021 — Prototype avant backend
+
+### Décision
+La Phase 5 est construite comme un prototype Expo local, navigable et animé, sans Supabase.
+
+### Pourquoi
+Valider le ressenti, les gestes, les proportions et le rythme avant d'investir dans l'architecture fonctionnelle.
+
+### Conséquence
+Les comptes, RLS, notifications push et synchronisation à deux téléphones restent hors du prototype 0.1.
+
+### Statut
+VALIDÉ

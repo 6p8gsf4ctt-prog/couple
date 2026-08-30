@@ -32,3 +32,12 @@ Voir `docs/`.
 
 Les documents Markdown sont la source de vérité du projet.  
 Les planches visuelles validées sont disponibles dans `references/`.
+
+
+## Prototype mobile — Phase 5
+
+Le prototype local 0.1 est disponible dans `mobile/`.
+
+Voir :
+- `mobile/README.md`
+- `docs/PROTOTYPE.md`
