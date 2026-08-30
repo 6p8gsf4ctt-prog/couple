@@ -7,7 +7,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
   <meta name="apple-mobile-web-app-title" content="Couple" />
-  <title>Couple — Prototype web 0.5 · final</title>
+  <title>Couple — Prototype web 0.6</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='16' fill='%23F7F2E8'/><path d='M32 45C27 41 15 33 15 23c0-6 4-10 10-10 3 0 6 2 7 4 2-2 4-4 8-4 5 0 9 4 9 10 0 10-12 18-17 22z' fill='none' stroke='%237B3239' stroke-width='3'/></svg>">
 <style>
 
@@ -631,6 +631,18 @@ button:disabled{cursor:default}
   *{scroll-behavior:auto!important}
 }
 
+
+/* ===== V0.6 ===== */
+:root{--paper-fiber:radial-gradient(circle at 17% 23%,rgba(122,91,66,.045) 0 1px,transparent 1.4px),radial-gradient(circle at 72% 64%,rgba(255,255,255,.40) 0 1px,transparent 1.5px),linear-gradient(118deg,rgba(255,255,255,.22),transparent 34%,rgba(116,83,58,.025) 72%,rgba(255,255,255,.14))}
+.envelope-v6{position:relative;width:min(91%,380px);aspect-ratio:1.48/1;margin:0 auto;isolation:isolate;filter:drop-shadow(0 17px 18px rgba(67,45,31,.11))}.env-v6-mini{width:264px}.env-v6-shadow{position:absolute;z-index:0;left:8%;right:8%;bottom:-9%;height:19%;background:radial-gradient(ellipse,rgba(80,54,38,.18),rgba(80,54,38,0) 68%);filter:blur(9px)}.env-v6-back{position:absolute;z-index:1;inset:7% 2% 3%;border-radius:22px;border:1px solid #d5c0aa;background:var(--paper-fiber),linear-gradient(155deg,#f1dfc8,#ead4bb);box-shadow:inset 0 1px rgba(255,255,255,.68),inset 0 -8px 20px rgba(116,82,55,.035)}.env-v6-lining{position:absolute;inset:5% 4% 36%;border-radius:17px 17px 8px 8px;background:linear-gradient(145deg,rgba(137,97,66,.10),transparent 35%),repeating-linear-gradient(135deg,rgba(136,93,63,.034) 0 1px,transparent 1px 5px),#e4ccb1;box-shadow:inset 0 0 16px rgba(91,63,42,.05)}.env-v6-flap{position:absolute;z-index:5;left:2%;right:2%;top:7%;height:54%;transform-origin:50% 4%;transform-style:preserve-3d;transition:transform .78s cubic-bezier(.18,.78,.18,1),filter .5s ease;clip-path:polygon(0 0,100% 0,50% 100%)}.env-v6-flap-paper{position:absolute;inset:0;background:var(--paper-fiber),linear-gradient(180deg,#f9ebd9,#eedbc4);border-top:1px solid #d5c0aa;box-shadow:inset 0 1px rgba(255,255,255,.72)}.env-v6-flap-edge{position:absolute;left:4%;right:4%;top:3%;height:1px;background:rgba(162,126,95,.18)}.envelope-v6.is-open .env-v6-flap{transform:translateY(-78%) rotateX(178deg);filter:brightness(.98)}.env-v6-pocket{position:absolute;z-index:6;left:2%;right:2%;bottom:3%;height:66%;overflow:hidden;border-radius:3px 3px 22px 22px;border:1px solid #d5c0aa;background:var(--paper-fiber),linear-gradient(165deg,#f6e6d2,#ecd6bd);box-shadow:inset 0 1px rgba(255,255,255,.72),inset 0 -14px 25px rgba(116,82,55,.03)}.env-v6-fold{position:absolute;pointer-events:none}.env-v6-fold-left{left:-8%;bottom:2%;width:66%;height:74%;border-top:1px solid rgba(165,128,97,.34);transform:rotate(32deg);transform-origin:left bottom}.env-v6-fold-right{right:-8%;bottom:2%;width:66%;height:74%;border-top:1px solid rgba(165,128,97,.34);transform:rotate(-32deg);transform-origin:right bottom}.env-v6-fold-bottom{left:18%;right:18%;bottom:-23%;height:54%;border-top:1px solid rgba(165,128,97,.18)}.env-v6-address{position:absolute;left:50%;top:45%;transform:translate(-50%,-50%);font-family:Georgia,"Times New Roman",serif;font-size:14px;letter-spacing:.20em;color:#76685d}.env-v6-address-line{position:absolute;left:35%;right:35%;top:58%;height:1px;background:#cdb69e}.env-v6-brand{position:absolute;right:17px;bottom:13px;font-size:8px;letter-spacing:.24em;color:#96877c}.env-v6-paper-peek{position:absolute;z-index:3;left:15%;right:15%;top:16%;height:47%;border-radius:12px 12px 5px 5px;border:1px solid #e1d1c1;background:var(--paper-fiber),#fbf5eb;display:grid;place-items:start center;padding-top:18px;box-shadow:0 7px 15px rgba(78,53,37,.07)}.env-v6-paper-title{color:var(--burgundy);font-family:Georgia,"Times New Roman",serif;font-size:13px;letter-spacing:.16em}
+.wax-v6{position:absolute;z-index:9;left:50%;top:51%;transform:translate(-50%,-50%);width:58px;height:58px;border-radius:46% 54% 48% 52%/51% 43% 57% 49%;background:radial-gradient(circle at 31% 25%,rgba(255,238,232,.55),transparent 18%),radial-gradient(circle at 62% 68%,rgba(113,45,47,.16),transparent 34%),linear-gradient(145deg,#eab7ae,#cb7777 72%,#b96366);box-shadow:0 7px 12px rgba(104,51,50,.19),inset 0 2px 4px rgba(255,238,232,.36),inset 0 -4px 8px rgba(118,50,52,.16);transition:transform .33s cubic-bezier(.2,.8,.2,1),opacity .30s ease,filter .3s ease}.wax-v6-edge{position:absolute;inset:4px;border-radius:inherit;border:1px solid rgba(125,53,55,.18);box-shadow:inset 0 0 0 1px rgba(255,230,225,.18)}.wax-v6-ring{position:absolute;inset:12px;border-radius:50%;border:1px solid rgba(122,51,54,.30);box-shadow:0 0 0 2px rgba(255,231,225,.12)}.wax-v6-heart{position:absolute;inset:0;display:grid;place-items:center;color:#fff7f3;font-size:27px;text-shadow:0 1px rgba(119,48,51,.12)}.wax-v6-mark{position:absolute;width:9px;height:1px;background:rgba(121,49,52,.22);transform-origin:left center}.wax-v6-mark.one{left:7px;top:18px;transform:rotate(-28deg)}.wax-v6-mark.two{right:6px;top:34px;transform:rotate(20deg)}.wax-v6-mark.three{left:20px;bottom:5px;transform:rotate(11deg)}
+.envelope-ritual{position:relative;width:100%;margin:28px auto 6px}.seal-hold-target{position:absolute;z-index:20;left:50%;top:51%;transform:translate(-50%,-50%);width:86px;height:86px;border-radius:50%;border:0;background:transparent;touch-action:none}.seal-hold-progress{position:absolute;inset:3px;border-radius:50%;border:2px solid transparent;opacity:0}.envelope-ritual.pressing .wax-v6{transform:translate(-50%,-50%) scale(.91);filter:saturate(1.08) brightness(.98)}.envelope-ritual.pressing .seal-hold-progress{opacity:1;border-color:rgba(123,50,57,.22);animation:sealHoldV6 .56s linear forwards}@keyframes sealHoldV6{from{transform:scale(.82);opacity:.2}to{transform:scale(1);opacity:1}}.envelope-ritual.unsealing .wax-v6{transform:translate(-50%,-36%) rotate(-9deg) scale(1.04);opacity:.15}.envelope-ritual.opened .wax-v6,.envelope-v6.is-open .wax-v6{opacity:0;transform:translate(-50%,-20%) scale(.72)}.seal-hold-target.hidden{display:none}.seal-instruction{margin-top:9px;text-align:center;color:var(--muted);font-size:12px}.seal-instruction.done{color:var(--burgundy)}.envelope-open-cta{width:100%;max-height:0;overflow:hidden;opacity:0;transition:max-height .4s ease,opacity .28s .12s ease,margin .35s ease}.envelope-open-cta.visible{max-height:90px;opacity:1;margin-top:18px}
+.send-envelope .envelope-v6{width:100%}.send-envelope .wax-v6{opacity:0;animation:sealIn .34s 1.52s ease forwards}.send-envelope .env-v6-flap{animation:sendFlapV6 .64s 1.02s cubic-bezier(.18,.76,.18,1) forwards}@keyframes sendFlapV6{from{transform:translateY(-78%) rotateX(178deg)}to{transform:translateY(0) rotateX(0)}}
+.extract-stage-v6{--p:0;position:relative;height:548px;margin:18px -4px 0;touch-action:none;user-select:none;-webkit-user-select:none;overflow:hidden;cursor:grab}.extract-stage-v6.dragging{cursor:grabbing}.extract-envelope-v6{position:absolute;left:3%;right:3%;bottom:0;height:410px;transform:translateY(calc(var(--p)*122px));will-change:transform}.extract-back-v6{position:absolute;z-index:1;left:2%;right:2%;bottom:0;height:67%;border-radius:23px;border:1px solid #d4bea7;background:var(--paper-fiber),linear-gradient(155deg,#f0ddc5,#e7cdb0);box-shadow:0 17px 30px rgba(67,45,31,.11)}.extract-lining-v6{position:absolute;inset:4% 4% 38%;border-radius:17px;background:repeating-linear-gradient(135deg,rgba(128,88,57,.038) 0 1px,transparent 1px 5px),#dfc4a6}.extract-ticket-v6{position:absolute;z-index:3;left:8%;right:8%;bottom:92px;transform:translateY(calc(158px - (var(--p)*356px))) scale(calc(.89 + var(--p)*.08));transform-origin:center top;opacity:calc(.56 + (var(--p)*.44));will-change:transform,opacity}.extract-flap-v6{position:absolute;z-index:2;left:2%;right:2%;bottom:45%;height:34%;clip-path:polygon(0 100%,50% 0,100% 100%);background:var(--paper-fiber),linear-gradient(180deg,#ecd7bf,#f7e6d2);border-bottom:1px solid #d4bea7}.extract-pocket-v6{position:absolute;z-index:5;left:2%;right:2%;bottom:0;height:47%;overflow:hidden;border-radius:3px 3px 23px 23px;border:1px solid #d4bea7;background:var(--paper-fiber),linear-gradient(160deg,#f5e4cf,#ead1b5)}.extract-fold-v6{position:absolute;top:31%;width:67%;height:1px;background:#d0b79d}.extract-fold-v6.left{left:-14%;transform:rotate(31deg)}.extract-fold-v6.right{right:-14%;transform:rotate(-31deg)}.extract-fold-v6.bottom{left:17%;right:17%;top:auto;bottom:18%;width:auto;opacity:.48}.extract-pocket-brand{position:absolute;right:16px;bottom:13px;font-size:8px;letter-spacing:.24em;color:#98887c}.extract-guide-v6{position:absolute;z-index:10;left:18%;right:18%;top:11px;display:flex;align-items:center;justify-content:space-between}.extract-guide-v6:before{content:"";position:absolute;left:0;right:0;height:1px;background:#d9c8b8}.extract-guide-v6 span{position:relative;width:7px;height:7px;border-radius:50%;background:#e1d2c3;border:1px solid #d2bdac;transition:.15s ease}.extract-guide-v6 span.active{background:var(--burgundy);transform:scale(1.12)}.extract-stage-v6 .reveal-arrow{bottom:68px}.extract-stage-v6.settling{pointer-events:none}.extract-stage-v6.revealed .extract-envelope-v6{opacity:.30;transition:opacity .45s ease}.extract-stage-v6.revealed .extract-ticket-v6{filter:drop-shadow(0 14px 22px rgba(60,43,34,.11))}
+.available-focus{margin-top:2px}.available-status-pill{width:max-content;margin:0 auto 14px;padding:6px 11px;border-radius:14px;border:1px solid #dac8b7;background:rgba(252,248,240,.82);color:var(--burgundy);font-size:8px;letter-spacing:.15em;font-weight:750}.available-main-cheque{padding-right:17px}.available-actions-v6{display:grid;gap:9px;margin-top:18px}.available-others-head{margin:28px 3px 12px;display:flex;align-items:center;justify-content:space-between;font-family:Georgia,"Times New Roman",serif;font-size:16px}.available-others-head small{min-width:24px;height:24px;border-radius:50%;display:grid;place-items:center;background:var(--paper2);font-family:inherit;color:var(--muted)}.available-strip{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(180px,66%);gap:10px;overflow-x:auto;padding:3px 3px 12px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}.available-strip::-webkit-scrollbar{display:none}.available-mini{scroll-snap-align:start;min-height:116px;border:1px solid #dfcfbf;border-radius:20px;background:var(--paper-fiber),var(--paper);color:inherit;display:grid;grid-template-columns:42px 1fr;text-align:left;padding:0;overflow:hidden;box-shadow:0 7px 16px rgba(60,43,34,.055)}.available-mini-stub{display:grid;place-items:center;background:rgba(240,216,209,.26);color:var(--burgundy);font-family:Georgia,"Times New Roman",serif;font-size:18px;border-right:1px dashed #cdb8a7}.available-mini-body{padding:15px 13px}.available-mini-kicker{font-size:8px;letter-spacing:.13em;color:var(--burgundy)}.available-mini-title{margin-top:7px;font-family:Georgia,"Times New Roman",serif;font-style:italic;font-size:17px;line-height:1.15}.available-mini-status{margin-top:9px;color:var(--muted);font-size:10px}
+.timing-cheque-v6,.planner-cheque{margin-top:9px}.timing-list-v6 .timing-choice{padding:0 18px;text-align:left}.timing-list-v6 .timing-choice>div{display:grid;gap:3px}.timing-list-v6 .timing-choice small{font-size:11px;color:var(--muted);font-weight:400}.plan-quick-list{display:grid;gap:11px;margin-top:28px}.plan-quick{min-height:82px;border:1px solid var(--line);border-radius:23px;background:var(--paper);display:grid;grid-template-columns:44px 1fr 20px;align-items:center;gap:13px;padding:0 17px;color:inherit;text-align:left}.plan-quick-icon{width:43px;height:43px;border-radius:50%;display:grid;place-items:center;background:var(--blush2);color:var(--burgundy);font-size:20px}.plan-quick b{font-size:15px}.plan-quick small{display:block;margin-top:4px;color:var(--muted);font-size:11px;font-weight:400}.plan-quick>span{font-size:26px;color:var(--burgundy)}.plan-soft-note{margin:24px auto 0;max-width:380px;text-align:center;color:var(--muted);font-family:Georgia,"Times New Roman",serif;font-style:italic;font-size:14px;line-height:1.5}.planner-form{display:grid;gap:16px;margin-top:25px}.planner-form select{width:100%;border:1px solid var(--line);border-radius:18px;background:var(--paper);color:var(--graphite);padding:14px 16px;font-size:16px;appearance:none}.field-counter{text-align:right;margin-top:-3px;color:var(--muted);font-size:10px}.activation-recap{width:100%;margin-top:28px;border:1px solid var(--line);border-radius:24px;background:rgba(252,248,240,.86);overflow:hidden}.activation-recap>div{padding:15px 17px;display:grid;grid-template-columns:88px 1fr;gap:12px;border-bottom:1px solid rgba(220,205,190,.7)}.activation-recap>div:last-child{border-bottom:0}.activation-recap span{color:var(--muted);font-size:10px;letter-spacing:.08em;text-transform:uppercase}.activation-recap strong{font-family:Georgia,"Times New Roman",serif;font-size:15px;font-weight:400}.sender-note{margin:18px auto 0;padding:16px 18px;border-radius:20px;background:rgba(252,248,240,.76);border:1px solid rgba(220,205,190,.75);text-align:center}.sender-note span{font-size:9px;letter-spacing:.13em;color:var(--muted);text-transform:uppercase}.sender-note p{margin:8px 0 0;font-family:Georgia,"Times New Roman",serif;font-style:italic;line-height:1.45}
+@media(max-width:390px){.extract-stage-v6{height:510px}.available-main-cheque .cheque{grid-template-columns:60px 1px 1fr}.envelope-v6{width:94%}}
+
 </style>
 </head>
 <body>
@@ -640,7 +652,8 @@ button:disabled{cursor:default}
 (() => {
   'use strict';
 
-  const STORAGE_KEY = 'couple-web-prototype-v05';
+  const STORAGE_KEY = 'couple-web-prototype-v06';
+  const PREVIOUS_STORAGE_KEY = 'couple-web-prototype-v05';
 
   const IDEAS = [
     {id:'rom-1',title:'Un dîner improvisé',category:'Romantique',message:'Rien que nous deux, sans programme.'},
@@ -670,7 +683,7 @@ button:disabled{cursor:default}
 
   function freshState() {
     return {
-      version:5,
+      version:6,
       screen:'home',
       draft:{...INITIAL_DRAFT},
       records:[],
@@ -681,27 +694,36 @@ button:disabled{cursor:default}
       settings:{notifications:true,faceId:true},
       perspective:'recipient',
       envelopeOpened:false,
+      plannerDate:'',
+      plannerMoment:'evening',
       modal:null
     };
   }
 
+  function migrateRecordV05(record) {
+    if (!record || record.schedule || record.status !== 'scheduled') return record;
+    const now=new Date();
+    let moment='evening', label='Bientôt';
+    if(record.timing==='now'){moment='now';label='Maintenant'}
+    else if(record.timing==='tonight'){moment='evening';label='Ce soir'}
+    return {...record,schedule:{type:'legacy',date:toLocalISO(now),moment,label,note:''}};
+  }
+
   function loadState() {
     try {
-      const raw = localStorage.getItem(STORAGE_KEY);
-      if (!raw) return freshState();
-      const parsed = JSON.parse(raw);
-      return {
-        ...freshState(),
-        ...parsed,
-        screen:'home',
-        modal:null,
+      let raw=localStorage.getItem(STORAGE_KEY), migrated=false;
+      if(!raw){raw=localStorage.getItem(PREVIOUS_STORAGE_KEY);migrated=!!raw}
+      if(!raw) return freshState();
+      const parsed=JSON.parse(raw);
+      const next={...freshState(),...parsed,version:6,screen:'home',modal:null,envelopeOpened:false,
+        records:(parsed.records||[]).map(migrateRecordV05),
         albumIndex:{...freshState().albumIndex,...(parsed.albumIndex||{})},
-        settings:{...freshState().settings,...(parsed.settings||{})}
-      };
-    } catch (_) {
-      return freshState();
-    }
+        settings:{...freshState().settings,...(parsed.settings||{})}};
+      if(migrated) localStorage.setItem(STORAGE_KEY,JSON.stringify({...next,screen:'home',modal:null,envelopeOpened:false}));
+      return next;
+    } catch (_) { return freshState(); }
   }
+
 
   let state = loadState();
 
@@ -723,6 +745,32 @@ button:disabled{cursor:default}
       .replaceAll('>','&gt;')
       .replaceAll('"','&quot;')
       .replaceAll("'","&#039;");
+  }
+
+  function pad2(n){return String(n).padStart(2,'0')}
+  function toLocalISO(date){return `${date.getFullYear()}-${pad2(date.getMonth()+1)}-${pad2(date.getDate())}`}
+  function fromLocalISO(value){if(!value)return null;const [y,m,d]=value.split('-').map(Number);return y&&m&&d?new Date(y,m-1,d,12,0,0,0):null}
+  function addDays(date,days){const d=new Date(date);d.setHours(12,0,0,0);d.setDate(d.getDate()+days);return d}
+  function nextSaturdayDate(){const now=new Date();let delta=(6-now.getDay()+7)%7;if(delta===0)delta=7;return addDays(now,delta)}
+  function formatDateLong(value){const d=fromLocalISO(value);return d?new Intl.DateTimeFormat('fr-FR',{weekday:'long',day:'numeric',month:'long'}).format(d):''}
+  function formatDateShort(value){const d=fromLocalISO(value);return d?new Intl.DateTimeFormat('fr-FR',{day:'numeric',month:'short'}).format(d).replace('.',''):''}
+  function momentLabel(moment){return ({now:'maintenant',morning:'le matin',noon:'à midi',afternoon:"dans l’après-midi",evening:'le soir'})[moment]||'dans la journée'}
+  function scheduleLabel(rec){
+    if(!rec)return'';const s=rec.schedule;
+    if(!s){if(rec.timing==='now')return'Maintenant';if(rec.timing==='tonight')return'Ce soir';if(rec.timing==='soon')return'Bientôt';return''}
+    if(s.type==='now')return'Maintenant';if(s.type==='tonight')return'Ce soir';if(s.label)return s.label;
+    return `${formatDateShort(s.date)}${s.moment&&s.moment!=='now'?` · ${momentLabel(s.moment)}`:''}`;
+  }
+  function scheduleSentence(rec){
+    if(!rec||!rec.schedule)return timingPhrase(rec?.timing,false);const s=rec.schedule;
+    if(s.type==='now')return'maintenant';if(s.type==='tonight')return'ce soir';if(s.type==='tomorrow-evening')return'demain soir';
+    if(s.type==='saturday')return `samedi${s.date?` ${formatDateShort(s.date)}`:''}`;
+    if(s.type==='custom')return `${formatDateLong(s.date)}${s.moment?` ${momentLabel(s.moment)}`:''}`;
+    return s.label?s.label.toLowerCase():'bientôt';
+  }
+  function scheduleRecord(rec,schedule){
+    updateRecord(rec.id,{status:'scheduled',schedule,timing:schedule.type==='now'?'now':schedule.type==='tonight'?'tonight':'soon',scheduledAt:Date.now()});
+    state.selectedRecordId=rec.id;state.currentRecordId=rec.id;persist();navigate('activation');
   }
 
   function makeId() {
@@ -760,7 +808,7 @@ button:disabled{cursor:default}
 
   function nav() {
     const active =
-      ['carnet','discovered','usedScene','activation','timing'].includes(state.screen) ? 'carnet'
+      ['carnet','discovered','usedScene','activation','timing','planSoon','planner'].includes(state.screen) ? 'carnet'
       : ['library','ideas'].includes(state.screen) ? 'ideas'
       : state.screen==='settings' ? 'settings'
       : 'home';
@@ -848,21 +896,16 @@ button:disabled{cursor:default}
       </article>`;
   }
 
-  function envelopeHTML({mini=false,paper=false,open=false,label='POUR TOI'}={}) {
-    return `<div class="envelope-art ${mini?'env-mini':''} ${open?'is-open':'is-closed'}">
-      <div class="env-shadow"></div>
-      <div class="env-back"></div>
-      ${paper?'<div class="env-paper"></div>':''}
-      <div class="env-open-inside"></div>
-      <div class="env-flap"></div>
-      <div class="env-front">
-        <div class="env-address">${escapeHtml(label)}</div>
-        <div class="env-address-line"></div>
-        <div class="env-corner-mark">COUPLE</div>
-      </div>
-      <div class="env-seal">♡</div>
+  function envelopeHTML({mini=false,open=false,label='POUR TOI',showPaper=false}={}) {
+    return `<div class="envelope-v6 ${mini?'env-v6-mini':''} ${open?'is-open':'is-closed'}">
+      <div class="env-v6-shadow"></div><div class="env-v6-back"><div class="env-v6-lining"></div></div>
+      ${showPaper?`<div class="env-v6-paper-peek"><div class="env-v6-paper-title">BON POUR</div></div>`:''}
+      <div class="env-v6-flap"><div class="env-v6-flap-paper"></div><div class="env-v6-flap-edge"></div></div>
+      <div class="env-v6-pocket"><div class="env-v6-fold env-v6-fold-left"></div><div class="env-v6-fold env-v6-fold-right"></div><div class="env-v6-fold env-v6-fold-bottom"></div><div class="env-v6-address">${escapeHtml(label)}</div><div class="env-v6-address-line"></div><div class="env-v6-brand">COUPLE</div></div>
+      <div class="wax-v6"><div class="wax-v6-edge"></div><div class="wax-v6-ring"></div><div class="wax-v6-heart">♡</div><i class="wax-v6-mark one"></i><i class="wax-v6-mark two"></i><i class="wax-v6-mark three"></i></div>
     </div>`;
   }
+
 
   function pendingRecord() {
     return state.records.find(r=>r.status==='offered')||null;
@@ -880,9 +923,9 @@ button:disabled{cursor:default}
       return page(`
         <div class="eyebrow">UN MOMENT VA PRENDRE VIE</div>
         <div class="sender-event">
-          <h1 class="center-title">Ton bon va prendre vie ${timingPhrase(senderActive.timing,true)}.</h1>
+          <h1 class="center-title">Ton bon va prendre vie ${scheduleSentence(senderActive)}.</h1>
           <p class="center-copy">La personne à qui tu l’as offert a choisi son moment.</p>
-          <div class="sender-fragment">${chequeHTML(senderActive.cheque,{compact:true,activation:timingLabel(senderActive.timing)})}</div>
+          <div class="sender-fragment">${chequeHTML(senderActive.cheque,{compact:true,activation:scheduleLabel(senderActive)})}</div>
           <div class="btn-stack">${btn('Voir le bon',`sender-event:${senderActive.id}`)}</div>
         </div>
 
@@ -1102,51 +1145,24 @@ button:disabled{cursor:default}
   }
 
   function openEnvelope() {
-    const rec=currentRecord();
-    if(!rec) return home();
-    return page(`
-      <div class="center-stage reveal-chapter envelope-chapter">
-        <div class="chapter-index">03</div>
-        <h1 class="center-title">Ouvre ton enveloppe.</h1>
-        <p class="center-copy" id="envelope-copy">${state.envelopeOpened?'Elle est ouverte. Le bon t’attend à l’intérieur.':'Touchez le sceau. Rien d’autre ne se révélera encore.'}</p>
-
-        <button class="envelope-interaction ${state.envelopeOpened?'opened':''}" data-open-envelope="1" aria-label="Ouvrir l’enveloppe">
-          ${envelopeHTML({open:state.envelopeOpened,paper:state.envelopeOpened})}
-          <div class="env-ticket-edge">BON POUR</div>
-        </button>
-
-        <div class="envelope-open-cta ${state.envelopeOpened?'visible':''}" id="envelope-open-cta">
-          ${btn('Prendre le bon','start-extract')}
-        </div>
-      </div>
-    `,{title:'OUVRIR',back:'clue',immersive:true});
+    const rec=currentRecord();if(!rec)return home();
+    return page(`<div class="center-stage reveal-chapter envelope-chapter-v6"><div class="chapter-index">03</div><h1 class="center-title">Ouvre ton enveloppe.</h1>
+      <p class="center-copy" id="envelope-copy">${state.envelopeOpened?'Elle est ouverte. Le bon t’attend à l’intérieur.':'Maintiens doucement le sceau pour libérer le rabat.'}</p>
+      <div class="envelope-ritual ${state.envelopeOpened?'opened':''}" id="envelope-ritual">${envelopeHTML({open:state.envelopeOpened,showPaper:state.envelopeOpened})}
+        <button class="seal-hold-target ${state.envelopeOpened?'hidden':''}" id="seal-hold-target" aria-label="Maintenir le sceau"><span class="seal-hold-progress"></span></button></div>
+      <div class="seal-instruction ${state.envelopeOpened?'done':''}" id="seal-instruction">${state.envelopeOpened?'Le sceau est libéré.':'Maintiens le sceau un court instant.'}</div>
+      <div class="envelope-open-cta ${state.envelopeOpened?'visible':''}" id="envelope-open-cta">${btn('Prendre le bon','start-extract')}</div></div>`,{title:'OUVRIR L’ENVELOPPE',back:'clue',immersive:true});
   }
+
 
   function extract() {
-    const rec=currentRecord();
-    if(!rec) return home();
-    return page(`
-      <div class="reveal-wrap">
-        <div class="chapter-index">04</div>
-        <h1 class="center-title">À toi de le découvrir.</h1>
-        <p class="center-copy">Le bon est là. Tire-le doucement hors de l’enveloppe.</p>
-
-        <div class="extract-stage" id="reveal-stage">
-          <div class="extract-ticket">${chequeHTML(rec.cheque,{compact:true})}</div>
-          <div class="extract-envelope">
-            ${envelopeHTML({open:true})}
-          </div>
-          <div class="extract-grip"></div>
-          <div class="reveal-arrow">↑</div>
-        </div>
-
-        <div class="reveal-instruction" id="reveal-instruction">Tire doucement.</div>
-        <div class="reveal-detail">Si tu relâches trop tôt, le bon revient dans son enveloppe. Après le point de bascule, la découverte se termine toute seule.</div>
-        <div class="reveal-progress" id="reveal-progress"><i></i></div>
-        <div class="reveal-threshold"></div>
-      </div>
-    `,{title:'DÉCOUVRIR',back:'openEnvelope',immersive:true});
+    const rec=currentRecord();if(!rec)return home();
+    return page(`<div class="reveal-wrap extract-chapter-v6"><div class="chapter-index">04</div><h1 class="center-title">Extrais ton bon.</h1><p class="center-copy">Le papier se libère ligne après ligne. Tire doucement vers le haut.</p>
+      <div class="extract-stage-v6" id="reveal-stage"><div class="extract-envelope-v6"><div class="extract-back-v6"><div class="extract-lining-v6"></div></div><div class="extract-ticket-v6">${chequeHTML(rec.cheque,{compact:true})}</div><div class="extract-flap-v6"></div><div class="extract-pocket-v6"><div class="extract-fold-v6 left"></div><div class="extract-fold-v6 right"></div><div class="extract-fold-v6 bottom"></div><div class="extract-pocket-brand">COUPLE</div></div></div>
+      <div class="extract-guide-v6"><span></span><span></span><span></span><span></span><span></span></div><div class="reveal-arrow">↑</div></div>
+      <div class="reveal-instruction" id="reveal-instruction">Tire doucement.</div><div class="reveal-detail">Avant le point de bascule, le bon revient dans l’enveloppe. Après, l’enveloppe s’efface pour laisser le chèque entièrement lisible.</div><div class="reveal-progress" id="reveal-progress"><i></i></div><div class="reveal-threshold"></div></div>`,{title:'EXTRAIRE LE BON',back:'openEnvelope',immersive:true});
   }
+
 
   function discovered() {
     const rec=currentRecord();
@@ -1165,56 +1181,37 @@ button:disabled{cursor:default}
   }
 
   function timing() {
-    const rec=currentRecord();
-    if(!rec) return carnet();
-    return page(`
-      <h1 class="page-title">Quand veux-tu faire vivre ce bon ?</h1>
-      <p class="page-copy">Un choix simple. Pas de calendrier, pas de contrainte.</p>
-      <div style="margin-top:10px">${chequeHTML(rec.cheque,{compact:true})}</div>
+    const rec=currentRecord();if(!rec)return carnet();
+    return page(`<h1 class="page-title">Quand veux-tu faire vivre ce bon ?</h1><p class="page-copy">Tu peux en profiter tout de suite ou choisir un moment concret.</p><div class="timing-cheque-v6">${chequeHTML(rec.cheque,{compact:true})}</div>
+      <div class="timing-list timing-list-v6"><button class="timing-choice" data-timing-v6="now"><div><b>Maintenant</b><small>Le moment est déjà là</small></div><span>☼</span></button><button class="timing-choice" data-timing-v6="tonight"><div><b>Ce soir</b><small>Aujourd’hui, en soirée</small></div><span>◐</span></button><button class="timing-choice" data-timing-v6="soon"><div><b>Bientôt</b><small>Demain, samedi ou une date précise</small></div><span>◇</span></button></div>`,{title:'CHOISIR UN MOMENT',back:'carnet'});
+  }
 
-      <div class="timing-list">
-        <button class="timing-choice" data-timing="now"><b>Maintenant</b><span>☼</span></button>
-        <button class="timing-choice" data-timing="tonight"><b>Ce soir</b><span>◐</span></button>
-        <button class="timing-choice" data-timing="soon"><b>Bientôt</b><span>◇</span></button>
-      </div>
-    `,{title:'FAIRE VIVRE',back:'carnet'});
+
+  function planSoon() {
+    const rec=currentRecord();if(!rec)return carnet();const tomorrow=addDays(new Date(),1),saturday=nextSaturdayDate();
+    return page(`<h1 class="page-title">Quel moment te ressemble ?</h1><p class="page-copy">Choisis un raccourci ou précise librement la date.</p><div class="plan-quick-list">
+      <button class="plan-quick" data-plan-quick="tomorrow-evening"><div class="plan-quick-icon">☾</div><div><b>Demain soir</b><small>${escapeHtml(formatDateLong(toLocalISO(tomorrow)))}</small></div><span>›</span></button>
+      <button class="plan-quick" data-plan-quick="saturday"><div class="plan-quick-icon">◇</div><div><b>Samedi</b><small>${escapeHtml(formatDateLong(toLocalISO(saturday)))}</small></div><span>›</span></button>
+      <button class="plan-quick" data-plan-quick="custom"><div class="plan-quick-icon">□</div><div><b>Choisir une date</b><small>Et préciser le moment de la journée</small></div><span>›</span></button></div><div class="plan-soft-note">Tu pourras modifier ce moment tant que le bon n’est pas utilisé.</div>`,{title:'BIENTÔT',back:'timing'});
+  }
+
+  function planner() {
+    const rec=currentRecord();if(!rec)return carnet();const today=toLocalISO(new Date()),initialDate=state.plannerDate||toLocalISO(addDays(new Date(),1)),initialMoment=state.plannerMoment||'evening';
+    return page(`<h1 class="page-title">Planifier ce moment</h1><p class="page-copy">Une date, un moment de la journée et, si tu en as envie, quelques mots.</p><div class="planner-cheque">${chequeHTML(rec.cheque,{compact:true})}</div>
+      <form class="planner-form" id="planner-form"><div class="field"><label>Date</label><input type="date" id="planner-date" name="date" min="${today}" value="${escapeHtml(initialDate)}"></div><div class="field"><label>Moment</label><select id="planner-moment" name="moment"><option value="morning" ${initialMoment==='morning'?'selected':''}>Matin</option><option value="noon" ${initialMoment==='noon'?'selected':''}>Midi</option><option value="afternoon" ${initialMoment==='afternoon'?'selected':''}>Après-midi</option><option value="evening" ${initialMoment==='evening'?'selected':''}>Soirée</option></select></div><div class="field"><label>Petit mot pour prévenir l’autre (optionnel)</label><textarea id="planner-note" name="note" maxlength="120" placeholder="Quelques mots doux…"></textarea><div class="field-counter"><span id="planner-count">0</span>/120</div></div></form><div class="btn-stack">${btn('Enregistrer ce moment','save-plan')}</div>`,{title:'PLANIFIER',back:'planSoon'});
   }
 
   function activation() {
-    const rec=currentRecord();
-    if(!rec) return home();
-    return page(`
-      <div class="center-stage">
-        <div class="confirm-orb">♡</div>
-        <h1 class="center-title">C’est décidé.</h1>
-        <p class="center-copy">Ton bon va prendre vie ${timingPhrase(rec.timing,false)}. L’autre personne va être prévenue.</p>
-        <div style="width:100%;margin-top:24px">
-          ${btn('Voir ce que reçoit l’autre',`switch-sender:${rec.id}`)}
-          <div class="btn-stack">${btn('Retour au carnet','carnet','secondary')}</div>
-          <div class="proto-note"><span class="proto-chip">Prototype · notification simulée</span></div>
-        </div>
-      </div>
-    `,{title:'C’EST DÉCIDÉ',immersive:true});
+    const rec=currentRecord();if(!rec)return home();const when=scheduleSentence(rec),note=rec.schedule?.note||'';
+    return page(`<div class="center-stage activation-v6"><div class="confirm-orb">♡</div><div class="eyebrow">MOMENT PRÉVU</div><h1 class="center-title">Bon prévu pour<br>${escapeHtml(when)}.</h1><p class="center-copy">La personne qui te l’a offert sera prévenue avec délicatesse.</p><div class="activation-recap"><div><span>Moment</span><strong>${escapeHtml(scheduleLabel(rec))}</strong></div><div><span>Bon pour</span><strong>${escapeHtml(rec.cheque.title)}</strong></div>${note?`<div><span>Petit mot</span><strong>« ${escapeHtml(note)} »</strong></div>`:''}</div><div style="width:100%;margin-top:24px">${btn('Voir ce que reçoit l’autre',`switch-sender:${rec.id}`)}<div class="btn-stack">${btn('Retour au carnet','carnet','secondary')}</div><div class="proto-note"><span class="proto-chip">Prototype · notification simulée</span></div></div></div>`,{title:'CONFIRMATION',immersive:true});
   }
+
 
   function senderEvent() {
-    const rec=currentRecord();
-    if(!rec) return home();
-    return page(`
-      <div class="sender-event">
-        <div class="eyebrow">UN MOMENT À VENIR</div>
-        <h1 class="center-title">Ton bon va prendre vie ${timingPhrase(rec.timing,true)}.</h1>
-        <p class="center-copy">La personne à qui tu l’as offert a choisi son moment.</p>
-        <div class="sender-fragment">${chequeHTML(rec.cheque,{compact:true,activation:timingLabel(rec.timing)})}</div>
-      </div>
-
-      <div class="btn-stack">
-        ${btn('Voir mon carnet','carnet')}
-        ${btn('Retour côté destinataire',`switch-back:${rec.id}`,'secondary')}
-      </div>
-      <div class="proto-note"><span class="proto-chip">Prototype · perspective expéditeur</span></div>
-    `,{title:'À TOI',immersive:true});
+    const rec=currentRecord();if(!rec)return home();
+    return page(`<div class="sender-event sender-event-v6"><div class="eyebrow">UN MOMENT À VENIR</div><h1 class="center-title">Ton bon va prendre vie<br>${escapeHtml(scheduleSentence(rec))}.</h1><p class="center-copy">La personne à qui tu l’as offert a choisi son moment.</p><div class="sender-fragment">${chequeHTML(rec.cheque,{compact:true,activation:scheduleLabel(rec)})}</div>${rec.schedule?.note?`<div class="sender-note"><span>Son petit mot</span><p>« ${escapeHtml(rec.schedule.note)} »</p></div>`:''}</div><div class="btn-stack">${btn('Voir mon carnet','carnet')}${btn('Retour côté destinataire',`switch-back:${rec.id}`,'secondary')}</div><div class="proto-note"><span class="proto-chip">Prototype · perspective expéditeur</span></div>`,{title:'À TOI',immersive:true});
   }
+
 
   function usedScene() {
     const rec=currentRecord();
@@ -1241,70 +1238,25 @@ button:disabled{cursor:default}
   function recordStatus(rec) {
     if(rec.status==='offered') return 'Offert — il attend encore d’être découvert';
     if(rec.status==='revealed') return 'Découvert — encore disponible';
-    if(rec.status==='scheduled') return `Va prendre vie ${timingPhrase(rec.timing,false)}`;
+    if(rec.status==='scheduled') return `Prévu ${scheduleSentence(rec)}`;
     if(rec.status==='used') return 'Utilisé — conservé dans votre carnet';
     return '';
   }
 
+  function miniAvailableHTML(rec,index) {
+    return `<button class="available-mini" data-available-index="${index}"><div class="available-mini-stub">${categoryGlyph(rec.cheque.category)}</div><div class="available-mini-body"><div class="available-mini-kicker">BON POUR</div><div class="available-mini-title">${escapeHtml(rec.cheque.title)}</div><div class="available-mini-status">${escapeHtml(rec.status==='scheduled'?scheduleLabel(rec):'Disponible')}</div></div></button>`;
+  }
+
   function carnet() {
-    const list=carnetRecords(state.carnetFilter);
-    let idx=state.albumIndex[state.carnetFilter]||0;
-    if(idx>=list.length) idx=Math.max(0,list.length-1);
-    state.albumIndex[state.carnetFilter]=idx;
-
-    let album='';
-    if(!list.length) {
-      const copy=state.carnetFilter==='available'
-        ? 'Aucun bon disponible pour le moment. Les prochains bons découverts t’attendront ici.'
-        : state.carnetFilter==='used'
-          ? 'Aucun bon utilisé pour le moment. Les moments vécus resteront ici.'
-          : 'Aucun bon offert pour le moment.';
-      album=`<div class="empty-state">
-        <div class="empty-book"></div>
-        <div class="empty-title">Le carnet est calme.</div>
-        <div class="empty-copy">${copy}</div>
-      </div>`;
+    const list=carnetRecords(state.carnetFilter);let idx=state.albumIndex[state.carnetFilter]||0;if(idx>=list.length)idx=Math.max(0,list.length-1);state.albumIndex[state.carnetFilter]=idx;let album='';
+    if(!list.length){const copy=state.carnetFilter==='available'?'Aucun bon disponible pour le moment. Les prochains bons découverts t’attendront ici.':state.carnetFilter==='used'?'Aucun bon utilisé pour le moment. Les moments vécus resteront ici.':'Aucun bon offert pour le moment.';album=`<div class="empty-state"><div class="empty-book"></div><div class="empty-title">Le carnet est calme.</div><div class="empty-copy">${copy}</div></div>`}
+    else if(state.carnetFilter==='available'){
+      const rec=list[idx],activation=rec.status==='scheduled'?scheduleLabel(rec):null,others=list.filter((_,i)=>i!==idx);
+      album=`<div class="available-focus"><div class="available-status-pill">${rec.status==='scheduled'?'MOMENT PRÉVU':'DISPONIBLE MAINTENANT'}</div><div class="available-main-cheque">${chequeHTML(rec.cheque,{compact:false,activation})}</div><div class="record-status">${recordStatus(rec)}</div><div class="available-actions-v6">${rec.status==='scheduled'?`${btn('Marquer comme utilisé',`confirm-use:${rec.id}`)}${btn('Modifier le moment',`timing:${rec.id}`,'secondary')}`:`${btn('Utiliser maintenant',`use-now:${rec.id}`)}${btn('Planifier ce bon',`plan-soon:${rec.id}`,'secondary')}`}${btn('Voir le détail',`details:${rec.id}`,'quiet')}</div></div>${others.length?`<div class="available-others-head"><span>Autres bons disponibles</span><small>${others.length}</small></div><div class="available-strip">${others.map(other=>miniAvailableHTML(other,list.indexOf(other))).join('')}</div>`:''}`;
     } else {
-      album=`
-        <div class="wallet-stack">
-          ${list.map((rec,i)=>{
-            const selected=i===idx;
-            const activation=rec.status==='scheduled'?timingLabel(rec.timing):null;
-            return `
-              <div class="wallet-card ${selected?'selected':'collapsed'}" data-wallet-index="${i}" style="--wallet-i:${i}">
-                <div class="wallet-clip">
-                  ${chequeHTML(rec.cheque,{compact:true,used:rec.status==='used',activation})}
-                </div>
-                ${selected?`
-                  <div class="wallet-selected-meta">${recordStatus(rec)}</div>
-                  ${state.carnetFilter==='available'?`
-                    <div class="wallet-actions">
-                      ${rec.status==='scheduled'
-                        ? btn('Marquer comme utilisé',`confirm-use:${rec.id}`)
-                        : btn('Utiliser ce bon',`timing:${rec.id}`)}
-                      ${btn('Voir les détails',`details:${rec.id}`,'secondary')}
-                    </div>`:''}
-                `:''}
-              </div>`;
-          }).join('')}
-        </div>
-        <div class="wallet-hint">${list.length>1?'Touchez un bon pour le placer au premier plan.':''}</div>
-      `;
+      album=`<div class="wallet-stack">${list.map((rec,i)=>{const selected=i===idx,activation=rec.status==='scheduled'?scheduleLabel(rec):null;return `<div class="wallet-card ${selected?'selected':'collapsed'}" data-wallet-index="${i}"><div class="wallet-clip">${chequeHTML(rec.cheque,{compact:true,used:rec.status==='used',activation})}</div>${selected?`<div class="wallet-selected-meta">${recordStatus(rec)}</div>`:''}</div>`}).join('')}</div><div class="wallet-hint">${list.length>1?'Touchez un bon pour le placer au premier plan.':''}</div>`;
     }
-
-    return page(`
-      <h1 class="page-title">Notre carnet</h1>
-      <p class="page-copy">Une pile de moments à retrouver, pas une liste à gérer.</p>
-
-      <div class="segmented">
-        ${segment('available','Disponibles')}
-        ${segment('used','Utilisés')}
-        ${segment('offered','Offerts')}
-      </div>
-
-      <div class="album-shell">${album}</div>
-      <div class="album-note">${albumPhrase()}</div>
-    `,{title:'CARNET'});
+    return page(`<h1 class="page-title">Notre carnet</h1><p class="page-copy">${state.carnetFilter==='available'?'Un bon disponible doit être immédiatement clair et facile à faire vivre.':'Une pile de moments à retrouver, pas une liste à gérer.'}</p><div class="segmented">${segment('available','Disponibles')}${segment('used','Utilisés')}${segment('offered','Offerts')}</div><div class="album-shell">${album}</div><div class="album-note">${albumPhrase()}</div>`,{title:'CARNET'});
   }
 
   function segment(key,label) {
@@ -1332,7 +1284,7 @@ button:disabled{cursor:default}
       </div>
 
       <div class="info-card">
-        <div class="info-title">Prototype web 0.5</div>
+        <div class="info-title">Prototype web 0.6</div>
         <div class="info-copy">Cette version simule les deux personnes sur un seul appareil. Les bons restent stockés localement dans Safari.</div>
       </div>
 
@@ -1357,16 +1309,9 @@ button:disabled{cursor:default}
   }
 
   function detailsModal(rec) {
-    return `<div class="modal-backdrop" data-modal-close="1">
-      <div class="modal" role="dialog" aria-modal="true" data-modal-panel="1">
-        <div class="modal-title">${escapeHtml(rec.cheque.title)}</div>
-        <div class="modal-copy">${escapeHtml(rec.cheque.message||'')}</div>
-        <div class="modal-copy">Pour ${escapeHtml(rec.cheque.to||'Toi')} · de ${escapeHtml(rec.cheque.from||'Moi')}</div>
-        ${rec.cheque.validity?`<div class="modal-copy">Validité : ${escapeHtml(rec.cheque.validity)}</div>`:''}
-        <div class="btn-stack">${btn('Fermer','close-modal','secondary')}</div>
-      </div>
-    </div>`;
+    return `<div class="modal-backdrop" data-modal-close="1"><div class="modal" role="dialog" aria-modal="true" data-modal-panel="1"><div class="modal-title">${escapeHtml(rec.cheque.title)}</div><div class="modal-copy">${escapeHtml(rec.cheque.message||'')}</div><div class="modal-copy">Pour ${escapeHtml(rec.cheque.to||'Toi')} · de ${escapeHtml(rec.cheque.from||'Moi')}</div>${rec.cheque.validity?`<div class="modal-copy">Validité : ${escapeHtml(rec.cheque.validity)}</div>`:''}${rec.status==='scheduled'?`<div class="modal-copy"><strong>Prévu ${escapeHtml(scheduleSentence(rec))}</strong></div>`:''}${rec.schedule?.note?`<div class="modal-copy">Petit mot : « ${escapeHtml(rec.schedule.note)} »</div>`:''}<div class="btn-stack">${btn('Fermer','close-modal','secondary')}</div></div></div>`;
   }
+
 
   function useModal(rec) {
     return `<div class="modal-backdrop" data-modal-close="1">
@@ -1403,7 +1348,7 @@ button:disabled{cursor:default}
   function render() {
     const screens={
       home,prepare,library,ideas,surprise,custom,edit,ready,
-      sendScene,receiveIntro,clue,openEnvelope,extract,discovered,carnet,timing,activation,senderEvent,usedScene,settings
+      sendScene,receiveIntro,clue,openEnvelope,extract,discovered,carnet,timing,planSoon,planner,activation,senderEvent,usedScene,settings
     };
     const fn=screens[state.screen]||home;
     document.getElementById('app').innerHTML=fn()+modalHTML();
@@ -1455,17 +1400,6 @@ button:disabled{cursor:default}
       });
     });
 
-    document.querySelectorAll('[data-timing]').forEach(el=>{
-      el.addEventListener('click',()=>{
-        const rec=currentRecord();
-        if(!rec) return;
-        updateRecord(rec.id,{status:'scheduled',timing:el.dataset.timing,scheduledAt:Date.now()});
-        state.selectedRecordId=rec.id;
-        state.currentRecordId=rec.id;
-        persist();
-        navigate('activation');
-      });
-    });
 
 
     document.querySelectorAll('[data-wallet-index]').forEach(el=>{
@@ -1477,26 +1411,16 @@ button:disabled{cursor:default}
       });
     });
 
-    document.querySelectorAll('[data-open-envelope]').forEach(el=>{
-      el.addEventListener('click',()=>{
-        if(el.classList.contains('opened')) return;
-        el.classList.add('opened');
-        const art=el.querySelector('.envelope-art');
-        if(art){
-          art.classList.remove('is-closed');
-          art.classList.add('is-open');
-        }
-        const edge=el.querySelector('.env-ticket-edge');
-        if(edge) edge.classList.add('visible');
-        const cta=document.getElementById('envelope-open-cta');
-        if(cta) cta.classList.add('visible');
-        const copy=document.getElementById('envelope-copy');
-        if(copy) copy.textContent='Elle est ouverte. Le bon t’attend à l’intérieur.';
-        state.envelopeOpened=true;
-        persist();
-        if(navigator.vibrate){ try{navigator.vibrate(16)}catch(_){} }
-      });
+    document.querySelectorAll('[data-timing-v6]').forEach(el=>{
+      el.addEventListener('click',()=>{const rec=currentRecord();if(!rec)return;const choice=el.dataset.timingV6;if(choice==='now')scheduleRecord(rec,{type:'now',date:toLocalISO(new Date()),moment:'now',label:'Maintenant',note:''});else if(choice==='tonight')scheduleRecord(rec,{type:'tonight',date:toLocalISO(new Date()),moment:'evening',label:'Ce soir',note:''});else navigate('planSoon')});
     });
+    document.querySelectorAll('[data-plan-quick]').forEach(el=>{
+      el.addEventListener('click',()=>{const rec=currentRecord();if(!rec)return;const choice=el.dataset.planQuick;if(choice==='tomorrow-evening'){const d=addDays(new Date(),1);scheduleRecord(rec,{type:'tomorrow-evening',date:toLocalISO(d),moment:'evening',label:'Demain soir',note:''})}else if(choice==='saturday'){const d=nextSaturdayDate();scheduleRecord(rec,{type:'saturday',date:toLocalISO(d),moment:'evening',label:`Samedi · ${formatDateShort(toLocalISO(d))}`,note:''})}else{state.plannerDate=toLocalISO(addDays(new Date(),1));state.plannerMoment='evening';persist();navigate('planner')}});
+    });
+    document.querySelectorAll('[data-available-index]').forEach(el=>{el.addEventListener('click',()=>{state.albumIndex.available=Number(el.dataset.availableIndex)||0;persist();render()})});
+    const sealTarget=document.getElementById('seal-hold-target');
+    if(sealTarget){let holdTimer=null,completed=false;const ritual=document.getElementById('envelope-ritual'),instruction=document.getElementById('seal-instruction');const cancelHold=()=>{if(completed)return;if(holdTimer)clearTimeout(holdTimer);holdTimer=null;ritual?.classList.remove('pressing');sealTarget.classList.remove('pressing');if(instruction)instruction.textContent='Maintiens le sceau un court instant.'};const completeHold=()=>{if(completed)return;completed=true;holdTimer=null;ritual?.classList.remove('pressing');ritual?.classList.add('unsealing');if(instruction)instruction.textContent='Le sceau se libère…';if(navigator.vibrate){try{navigator.vibrate([14,30,22])}catch(_){}}setTimeout(()=>{ritual?.classList.remove('unsealing');ritual?.classList.add('opened');const env=ritual?.querySelector('.envelope-v6');env?.classList.remove('is-closed');env?.classList.add('is-open');sealTarget.classList.add('hidden');state.envelopeOpened=true;persist();document.getElementById('envelope-open-cta')?.classList.add('visible');const copy=document.getElementById('envelope-copy');if(copy)copy.textContent='Elle est ouverte. Le bon t’attend à l’intérieur.';if(instruction)instruction.textContent='Le rabat est ouvert.'},420)};sealTarget.addEventListener('pointerdown',e=>{if(completed)return;e.preventDefault();ritual?.classList.add('pressing');sealTarget.classList.add('pressing');if(instruction)instruction.textContent='Encore un instant…';holdTimer=setTimeout(completeHold,560);try{sealTarget.setPointerCapture(e.pointerId)}catch(_){}});sealTarget.addEventListener('pointerup',cancelHold);sealTarget.addEventListener('pointercancel',cancelHold);sealTarget.addEventListener('lostpointercapture',cancelHold)}
+    const plannerForm=document.getElementById('planner-form');if(plannerForm){const note=document.getElementById('planner-note'),count=document.getElementById('planner-count'),dateEl=document.getElementById('planner-date'),momentEl=document.getElementById('planner-moment');note?.addEventListener('input',()=>{if(count)count.textContent=String(note.value.length)});const remember=()=>{state.plannerDate=dateEl?.value||state.plannerDate;state.plannerMoment=momentEl?.value||state.plannerMoment;persist()};dateEl?.addEventListener('change',remember);momentEl?.addEventListener('change',remember)}
 
     document.querySelectorAll('[data-setting]').forEach(el=>{
       el.addEventListener('click',()=>{
@@ -1621,6 +1545,10 @@ button:disabled{cursor:default}
       return;
     }
 
+    if(name==='use-now'){const rec=recordById(arg);if(!rec)return;state.selectedRecordId=arg;scheduleRecord(rec,{type:'now',date:toLocalISO(new Date()),moment:'now',label:'Maintenant',note:''});return;}
+    if(name==='plan-soon'){state.selectedRecordId=arg;persist();navigate('planSoon');return;}
+    if(name==='save-plan'){const rec=currentRecord(),dateEl=document.getElementById('planner-date'),momentEl=document.getElementById('planner-moment'),noteEl=document.getElementById('planner-note');if(!rec||!dateEl?.value)return;const date=dateEl.value,moment=momentEl?.value||'evening',note=String(noteEl?.value||'').trim();scheduleRecord(rec,{type:'custom',date,moment,label:`${formatDateShort(date)} · ${momentLabel(moment)}`,note});return;}
+
     if(name==='switch-sender'){
       state.perspective='sender';
       state.selectedRecordId=arg;
@@ -1686,101 +1614,16 @@ button:disabled{cursor:default}
   }
 
   function setupReveal() {
-    const stage=document.getElementById('reveal-stage');
-    const instruction=document.getElementById('reveal-instruction');
-    const bar=document.getElementById('reveal-progress');
-    if(!stage) return;
-
-    const rec=currentRecord();
-    if(!rec) return;
-
-    let pointer=null;
-    let startY=0;
-    let p=0;
-    let locked=false;
-    const distance=300;
-    const threshold=.72;
-
-    const setP=value=>{
-      p=Math.max(0,Math.min(1,value));
-      stage.style.setProperty('--p',p.toFixed(4));
-      if(bar) bar.style.setProperty('--p',p.toFixed(4));
-    };
-
-    const animateTo=(target,duration,done)=>{
-      locked=true;
-      stage.classList.add('settling');
-      const from=p;
-      const start=performance.now();
-      const ease=t=>1-Math.pow(1-t,3);
-      const frame=now=>{
-        const t=Math.min(1,(now-start)/duration);
-        setP(from+(target-from)*ease(t));
-        if(t<1) requestAnimationFrame(frame);
-        else{
-          locked=false;
-          stage.classList.remove('settling');
-          done&&done();
-        }
-      };
-      requestAnimationFrame(frame);
-    };
-
-    stage.addEventListener('pointerdown',e=>{
-      if(locked) return;
-      pointer=e.pointerId;
-      startY=e.clientY;
-      stage.classList.add('dragging');
-      try{stage.setPointerCapture(pointer)}catch(_){}
-      instruction.textContent='Continue doucement…';
-    });
-
-    stage.addEventListener('pointermove',e=>{
-      if(e.pointerId!==pointer||locked) return;
-      const dy=Math.max(0,startY-e.clientY);
-      setP(dy/distance);
-      if(p>.12 && p<.42) instruction.textContent='Le papier glisse…';
-      else if(p>=.42 && p<threshold) instruction.textContent='Tu y es presque…';
-      else if(p>=threshold) instruction.textContent='Le point de bascule est franchi…';
-    });
-
-    const finish=e=>{
-      if(e.pointerId!==pointer||locked) return;
-      stage.classList.remove('dragging');
-      try{stage.releasePointerCapture(pointer)}catch(_){}
-      pointer=null;
-
-      if(p>=threshold){
-        instruction.textContent='Le bon se révèle…';
-        if(navigator.vibrate) {
-          try{navigator.vibrate(24)}catch(_){}
-        }
-        animateTo(1,610,()=>{
-          updateRecord(rec.id,{status:'revealed',revealedAt:Date.now()});
-          state.selectedRecordId=rec.id;
-          state.currentRecordId=rec.id;
-          persist();
-          setTimeout(()=>navigate('discovered'),260);
-        });
-      }else{
-        instruction.textContent='Tire doucement.';
-        animateTo(0,340);
-      }
-    };
-
-    stage.addEventListener('pointerup',finish);
-    stage.addEventListener('pointercancel',finish);
-
-    // Si Safari retire la capture du pointeur avant la fin, on revient à l'état fermé.
-    stage.addEventListener('lostpointercapture',e=>{
-      if(pointer!==null && !locked){
-        pointer=null;
-        stage.classList.remove('dragging');
-        instruction.textContent='Tire doucement.';
-        animateTo(0,300);
-      }
-    });
+    const stage=document.getElementById('reveal-stage'),instruction=document.getElementById('reveal-instruction'),bar=document.getElementById('reveal-progress');if(!stage)return;const rec=currentRecord();if(!rec)return;let pointer=null,startY=0,p=0,locked=false;const distance=310,threshold=.70;
+    const setP=value=>{p=Math.max(0,Math.min(1,value));stage.style.setProperty('--p',p.toFixed(4));if(bar)bar.style.setProperty('--p',p.toFixed(4));const dots=stage.querySelectorAll('.extract-guide-v6 span');dots.forEach((dot,i)=>dot.classList.toggle('active',p>=(i/(dots.length-1))*0.92))};
+    const animateTo=(target,duration,done)=>{locked=true;stage.classList.add('settling');const from=p,start=performance.now(),ease=t=>1-Math.pow(1-t,3);const frame=now=>{const t=Math.min(1,(now-start)/duration);setP(from+(target-from)*ease(t));if(t<1)requestAnimationFrame(frame);else{locked=false;stage.classList.remove('settling');done&&done()}};requestAnimationFrame(frame)};
+    stage.addEventListener('pointerdown',e=>{if(locked)return;pointer=e.pointerId;startY=e.clientY;stage.classList.add('dragging');try{stage.setPointerCapture(pointer)}catch(_){};instruction.textContent='Le papier commence à glisser…'});
+    stage.addEventListener('pointermove',e=>{if(e.pointerId!==pointer||locked)return;setP(Math.max(0,startY-e.clientY)/distance);if(p<.28)instruction.textContent='Le papier se libère…';else if(p<.52)instruction.textContent='Le chèque apparaît…';else if(p<threshold)instruction.textContent='Encore doucement…';else instruction.textContent='Le point de bascule est franchi.'});
+    const finish=e=>{if(e.pointerId!==pointer||locked)return;stage.classList.remove('dragging');try{stage.releasePointerCapture(pointer)}catch(_){};pointer=null;if(p>=threshold){instruction.textContent='Le bon est à toi…';if(navigator.vibrate){try{navigator.vibrate(24)}catch(_){}}animateTo(1,760,()=>{stage.classList.add('revealed');updateRecord(rec.id,{status:'revealed',revealedAt:Date.now()});state.selectedRecordId=rec.id;state.currentRecordId=rec.id;persist();setTimeout(()=>navigate('discovered'),620)})}else{instruction.textContent='Tire doucement.';animateTo(0,360)}};
+    stage.addEventListener('pointerup',finish);stage.addEventListener('pointercancel',finish);stage.addEventListener('lostpointercapture',()=>{if(pointer!==null&&!locked){pointer=null;stage.classList.remove('dragging');instruction.textContent='Tire doucement.';animateTo(0,320)}});
   }
+
+
 
   render();
 })();
