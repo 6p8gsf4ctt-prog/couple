@@ -1,0 +1,5 @@
+Couple prototype mobile v0.2
+Navigation: Accueil · Carnet · Idées · Réglages
+Carnet statuses corrected
+Cheque vertical COUPLE corrected
+Reveal interaction revised
