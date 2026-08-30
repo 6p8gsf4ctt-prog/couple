@@ -1,4 +1,4 @@
-# Couple — Prototype mobile Phase 5
+# Couple — Prototype mobile Phase 5 — v0.2
 
 ## Objectif
 
@@ -68,3 +68,13 @@ Constantes principales :
 - `MAX_PULL`
 - `RELEASE_THRESHOLD`
 - facteur de résistance dans `g.dy * 0.86`
+
+
+## Re-test v0.2
+
+Priorités :
+1. changer de grande section depuis Préparer / Créer / Éditer ;
+2. vérifier que le mot `COUPLE` ne sort plus du chèque ;
+3. comparer clairement Disponibles / Utilisés / Offerts ;
+4. tester volontairement plusieurs tirages trop courts ;
+5. évaluer si la révélation est désormais assez progressive.

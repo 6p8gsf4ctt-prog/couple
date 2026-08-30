@@ -14,7 +14,7 @@ import { ScreenShell } from './src/components/ScreenShell';
 import { PrimaryButton } from './src/components/PrimaryButton';
 import { ChequeCard } from './src/components/ChequeCard';
 import { EnvelopeReveal } from './src/components/EnvelopeReveal';
-import { BottomNav } from './src/components/BottomNav';
+import { BottomNav, Tab } from './src/components/BottomNav';
 import { categories, ideas } from './src/data/ideas';
 import { ChequeDraft, ScreenName } from './src/types';
 import { colors, radius, shadow, spacing, typography } from './src/theme';
@@ -25,6 +25,23 @@ const initialDraft: ChequeDraft = {
   to: 'Toi',
   from: 'Moi',
   category: 'Romantique',
+};
+
+
+const availableExample: ChequeDraft = {
+  title: 'Une soirée cinéma',
+  message: 'Tu choisis le film, je m’occupe du reste.',
+  to: 'Toi',
+  from: 'Moi',
+  category: 'Maison',
+};
+
+const usedExample: ChequeDraft = {
+  title: 'Un petit déjeuner au lit',
+  message: 'Un matin lent, rien qu’à nous.',
+  to: 'Toi',
+  from: 'Moi',
+  category: 'Petites attentions',
 };
 
 export default function App() {
@@ -95,6 +112,18 @@ export default function App() {
 
   const headerHome = () => navigate('home');
 
+  const immersiveScreens: ScreenName[] = ['sent', 'receive', 'useConfirm'];
+  const showGlobalNav = !immersiveScreens.includes(screen);
+
+  const activeTab: Tab =
+    screen === 'carnet' || screen === 'revealed' || screen === 'used'
+      ? 'carnet'
+      : screen === 'library'
+        ? 'ideas'
+        : screen === 'settings'
+          ? 'settings'
+          : 'home';
+
   const screenNode = useMemo(() => {
     if (screen === 'home') {
       return (
@@ -124,12 +153,6 @@ export default function App() {
               <PrimaryButton label="Me surprendre" secondary onPress={() => navigate('surprise')} />
             </View>
           </View>
-
-          <BottomNav
-            onCarnet={() => navigate('carnet')}
-            onIdeas={() => navigate('library')}
-            onSettings={() => navigate('settings')}
-          />
         </ScreenShell>
       );
     }
@@ -171,12 +194,6 @@ export default function App() {
               </View>
             );
           })}
-          <BottomNav
-            active="ideas"
-            onCarnet={() => navigate('carnet')}
-            onIdeas={() => undefined}
-            onSettings={() => navigate('settings')}
-          />
         </ScreenShell>
       );
     }
@@ -383,23 +400,27 @@ export default function App() {
           <View style={styles.stack}>
             <View style={[styles.stackGhost, { top: 18, transform: [{ scale: 0.94 }] }]} />
             <View style={[styles.stackGhost, { top: 9, transform: [{ scale: 0.97 }] }]} />
-            <ChequeCard cheque={draft} compact used={carnetFilter === 'used' || used} />
+
+            {carnetFilter === 'available' && (
+              <ChequeCard cheque={availableExample} compact />
+            )}
+
+            {carnetFilter === 'used' && (
+              <ChequeCard cheque={usedExample} compact used />
+            )}
+
+            {carnetFilter === 'offered' && (
+              <ChequeCard cheque={draft} compact />
+            )}
           </View>
 
           <Text style={styles.albumNote}>
             {carnetFilter === 'used'
-              ? 'Les bons utilisés restent visibles pour toujours.'
+              ? 'Ici, uniquement les bons déjà vécus — conservés sans disparaître.'
               : carnetFilter === 'offered'
-                ? 'Les bons offerts forment aussi votre histoire.'
-                : 'Les bons découverts attendent simplement leur moment.'}
+                ? 'Ici, les bons que tu as offerts à l’autre.'
+                : 'Ici, uniquement les bons découverts et encore utilisables.'}
           </Text>
-
-          <BottomNav
-            active="carnet"
-            onCarnet={() => undefined}
-            onIdeas={() => navigate('library')}
-            onSettings={() => navigate('settings')}
-          />
         </ScreenShell>
       );
     }
@@ -429,18 +450,11 @@ export default function App() {
             </Text>
           </View>
           <View style={styles.infoCard}>
-            <Text style={styles.infoTitle}>Prototype 0.1</Text>
+            <Text style={styles.infoTitle}>Prototype 0.2</Text>
             <Text style={styles.infoText}>
-              Les actions « Simuler la réception » disparaîtront lorsque le backend à deux comptes sera installé.
+              La navigation, les statuts du Carnet et la révélation ont été corrigés après le premier test sur téléphone.
             </Text>
           </View>
-
-          <BottomNav
-            active="settings"
-            onCarnet={() => navigate('carnet')}
-            onIdeas={() => navigate('library')}
-            onSettings={() => undefined}
-          />
         </ScreenShell>
       );
     }
@@ -461,6 +475,16 @@ export default function App() {
       <Animated.View style={[styles.app, transitionStyle]}>
         {screenNode}
       </Animated.View>
+
+      {showGlobalNav && (
+        <BottomNav
+          active={activeTab}
+          onHome={() => navigate('home')}
+          onCarnet={() => navigate('carnet')}
+          onIdeas={() => navigate('library')}
+          onSettings={() => navigate('settings')}
+        />
+      )}
     </View>
   );
 }

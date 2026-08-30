@@ -41,3 +41,13 @@ Le prototype local 0.1 est disponible dans `mobile/`.
 Voir :
 - `mobile/README.md`
 - `docs/PROTOTYPE.md`
+
+
+## Version 0.2
+
+Cette itération intègre les premiers retours du test réel sur iPhone :
+- navigation globale à quatre accès
+- correction du talon du chèque
+- statuts du Carnet cohérents
+- révélation plus progressive
+- dépendances Expo SDK 54 alignées

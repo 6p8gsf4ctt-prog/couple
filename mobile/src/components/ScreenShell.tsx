@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
   content: {
     flex: 1,
     paddingHorizontal: spacing.l,
-    paddingBottom: 116,
+    paddingBottom: 96,
   },
   header: {
     minHeight: 70,

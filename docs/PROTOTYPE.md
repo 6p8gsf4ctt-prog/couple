@@ -2,7 +2,7 @@
 
 ## Statut
 
-**EN COURS — Prototype 0.1 livré**
+**EN COURS — Prototype 0.2 livré après test réel sur iPhone**
 
 ## Intention
 
@@ -101,3 +101,73 @@ La Phase 6 installera les fondations réelles :
 - fonctions serveur
 - notifications
 - règles de confidentialité
+
+
+---
+
+# Itération 0.2 — retours figés
+
+## Retour 1 — Navigation
+
+### Constat
+La flèche de retour était trop souvent le seul moyen de sortir d'un sous-parcours.
+
+### Correction
+Navigation persistante à quatre entrées :
+- Accueil
+- Carnet
+- Idées
+- Réglages
+
+Elle reste visible sur les écrans ordinaires.
+
+Elle disparaît uniquement pendant les moments immersifs ou de confirmation :
+- envoi confirmé
+- révélation
+- confirmation d'utilisation
+
+Le brouillon reste en mémoire locale lorsqu'on change de section.
+
+---
+
+## Retour 2 — Marquage vertical du Chèque Signature
+
+### Constat
+Le mot `COUPLE` pouvait dépasser visuellement du chèque.
+
+### Correction
+Le marquage reste vertical, mais il est désormais contenu et masqué à l'intérieur de la zone du talon.
+
+---
+
+## Retour 3 — Révélation trop rapide
+
+### Constat
+La version 0.1 donnait l'impression qu'un simple glissement ouvrait immédiatement le bon.
+
+### Correction
+La 0.2 rend le geste beaucoup plus progressif :
+1. le rabat commence par s'ouvrir ;
+2. le chèque reste presque immobile au début ;
+3. le papier commence ensuite à suivre le doigt ;
+4. la résistance réduit le déplacement réel ;
+5. un seuil de bascule plus éloigné doit être franchi ;
+6. relâcher trop tôt referme l'enveloppe ;
+7. haptique au point de bascule ;
+8. la sortie finale prend encore un temps perceptible.
+
+Le but reste un seul geste naturel, mais vécu comme une séquence physique et non comme un changement d'écran.
+
+---
+
+## Retour 4 — Disponibles / Utilisés / Offerts
+
+### Constat
+Un bon estampillé `UTILISÉ` apparaissait dans `Disponibles`, ce qui rendait les catégories incompréhensibles.
+
+### Règles désormais strictes
+- **Disponibles** : découverts et non utilisés.
+- **Utilisés** : utilisés uniquement, avec marque `UTILISÉ`.
+- **Offerts** : bons envoyés par l'utilisateur.
+
+Aucun bon utilisé ne doit apparaître dans `Disponibles`.

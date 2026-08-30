@@ -340,3 +340,61 @@ Les comptes, RLS, notifications push et synchronisation à deux téléphones res
 
 ### Statut
 VALIDÉ
+
+
+---
+
+## DEC-022 — Navigation principale persistante
+
+### Décision
+La navigation mobile principale comporte quatre accès : **Accueil · Carnet · Idées · Réglages**.
+
+### Pourquoi
+Le test sur téléphone a montré qu'une navigation reposant trop souvent sur la flèche retour enferme l'utilisateur dans les parcours.
+
+### Conséquence
+La barre reste visible sur les écrans ordinaires et disparaît seulement dans les moments immersifs.
+
+### Statut
+VALIDÉ APRÈS TEST 0.1
+
+---
+
+## DEC-023 — Statuts du Carnet strictement séparés
+
+### Décision
+Un bon `Utilisé` ne peut jamais apparaître dans `Disponibles`.
+
+### Définition
+- Disponible = découvert et non utilisé
+- Utilisé = utilisé
+- Offert = envoyé par l'utilisateur
+
+### Statut
+VALIDÉ APRÈS TEST 0.1
+
+---
+
+## DEC-024 — Révélation plus progressive
+
+### Décision
+Le tirage reste un geste unique, mais l'ouverture du rabat, la sortie du papier et le point de bascule doivent être perceptiblement séparés dans le mouvement.
+
+### Pourquoi
+Le prototype 0.1 rendait la révélation trop instantanée par rapport au storyboard validé.
+
+### Conséquence
+Résistance accrue, course plus longue, seuil plus éloigné, retour doux avant le seuil et haptique au basculement.
+
+### Statut
+VALIDÉ APRÈS TEST 0.1
+
+---
+
+## DEC-025 — Marquage COUPLE contenu dans le talon
+
+### Décision
+Le marquage vertical `COUPLE` est conservé, mais ne doit jamais sortir des limites visuelles du chèque.
+
+### Statut
+VALIDÉ APRÈS TEST 0.1

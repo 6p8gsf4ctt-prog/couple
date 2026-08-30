@@ -4,8 +4,8 @@
 
 **Phase actuelle : 5 — Prototype mobile — EN COURS**  
 **Dernier jalon validé : Phase 4 — UX complète**  
-**Livrable actuel : Prototype 0.1 navigable et animé**  
-**Objectif suivant : test sur téléphone et ajustements de ressenti**  
+**Livrable actuel : Prototype 0.2 corrigé après test réel sur iPhone**  
+**Objectif suivant : re-test de la v0.2 sur téléphone, avec priorité à la navigation et à la révélation**  
 **Backend : non commencé**
 
 ---

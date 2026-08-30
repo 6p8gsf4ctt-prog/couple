@@ -173,3 +173,21 @@ Pas de demande automatique après un bon intime/personnel.
 `Disponible` est dérivé de `Découvert` tant que `used_at` est vide.
 
 Pas de statut `Expiré` par défaut.
+
+
+---
+
+# Navigation globale — validation après prototype 0.1
+
+Accès permanents :
+- Accueil
+- Carnet
+- Idées
+- Réglages
+
+La flèche `‹` sert à remonter dans un sous-parcours, jamais à remplacer la navigation principale.
+
+Masquer la navigation globale uniquement lorsque sa présence détournerait du rituel :
+- envoi confirmé
+- révélation
+- confirmation irréversible d'utilisation

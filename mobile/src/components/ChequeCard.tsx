@@ -14,24 +14,33 @@ export function ChequeCard({ cheque, used, compact }: Props) {
     <View style={[styles.card, compact && styles.compact]}>
       <View style={styles.stub}>
         <Text style={styles.stubHeart}>♡</Text>
-        <View style={styles.stubLine} />
-        <Text style={styles.stubText}>COUPLE</Text>
+        <View style={styles.stubRule} />
+
+        <View style={styles.stubBrandClip}>
+          <Text style={styles.stubBrand}>COUPLE</Text>
+        </View>
       </View>
 
       <View style={styles.perforation} />
 
       <View style={styles.body}>
         <Text style={styles.kicker}>BON POUR</Text>
+
         <Text numberOfLines={2} style={[styles.title, compact && styles.titleCompact]}>
           {cheque.title || '…'}
         </Text>
+
         <Text numberOfLines={compact ? 1 : 2} style={styles.message}>
           {cheque.message || 'Une attention rien que pour toi.'}
         </Text>
 
         <View style={styles.names}>
-          <Text style={styles.meta}>POUR : <Text style={styles.script}>{cheque.to || 'Toi'}</Text></Text>
-          <Text style={styles.meta}>DE : <Text style={styles.script}>{cheque.from || 'Moi'}</Text></Text>
+          <Text style={styles.meta}>
+            POUR : <Text style={styles.script}>{cheque.to || 'Toi'}</Text>
+          </Text>
+          <Text style={styles.meta}>
+            DE : <Text style={styles.script}>{cheque.from || 'Moi'}</Text>
+          </Text>
         </View>
       </View>
 
@@ -65,29 +74,45 @@ const styles = StyleSheet.create({
   compact: {
     minHeight: 176,
   },
+
   stub: {
-    width: 52,
+    width: 58,
     alignItems: 'center',
-    paddingVertical: spacing.m,
-    justifyContent: 'space-between',
+    paddingTop: 16,
+    paddingBottom: 12,
+    position: 'relative',
+    overflow: 'hidden',
   },
   stubHeart: {
     color: colors.burgundy,
     fontSize: 18,
+    lineHeight: 20,
   },
-  stubLine: {
+  stubRule: {
     width: 1,
-    height: 20,
+    height: 24,
     backgroundColor: colors.line,
+    marginTop: 18,
   },
-  stubText: {
+  stubBrandClip: {
+    position: 'absolute',
+    left: 4,
+    right: 4,
+    bottom: 14,
+    height: 66,
+    overflow: 'hidden',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  stubBrand: {
+    width: 74,
+    textAlign: 'center',
     transform: [{ rotate: '-90deg' }],
-    letterSpacing: 2.4,
+    letterSpacing: 2.2,
     color: colors.muted,
     fontSize: 9,
-    width: 70,
-    textAlign: 'center',
   },
+
   perforation: {
     width: 1,
     borderStyle: 'dashed',
@@ -95,6 +120,7 @@ const styles = StyleSheet.create({
     borderColor: '#BCA99B',
     marginVertical: 8,
   },
+
   body: {
     flex: 1,
     paddingHorizontal: spacing.l,
@@ -147,6 +173,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: colors.graphite,
   },
+
   seal: {
     position: 'absolute',
     right: -18,
@@ -164,6 +191,7 @@ const styles = StyleSheet.create({
     fontSize: 22,
     color: colors.white,
   },
+
   usedStamp: {
     position: 'absolute',
     right: 48,
@@ -176,7 +204,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     transform: [{ rotate: '-9deg' }],
-    backgroundColor: 'rgba(251,247,239,0.72)',
+    backgroundColor: 'rgba(251,247,239,0.76)',
   },
   usedText: {
     color: colors.burgundy,
