@@ -7,7 +7,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
   <meta name="apple-mobile-web-app-title" content="Couple" />
-  <title>Couple — Prototype web 0.5</title>
+  <title>Couple — Prototype web 0.5 · final</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='16' fill='%23F7F2E8'/><path d='M32 45C27 41 15 33 15 23c0-6 4-10 10-10 3 0 6 2 7 4 2-2 4-4 8-4 5 0 9 4 9 10 0 10-12 18-17 22z' fill='none' stroke='%237B3239' stroke-width='3'/></svg>">
 <style>
 
@@ -52,9 +52,9 @@ button:disabled{cursor:default}
   min-height:calc(100dvh - var(--safe-top));
   margin:0 auto;
   padding:0 24px 42px;
-  animation:screenIn .24s ease both
+  animation:screenIn .16s ease-out both
 }
-@keyframes screenIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@keyframes screenIn{from{opacity:0;transform:translateY(3px)}to{opacity:1;transform:none}}
 .header{
   height:70px;
   display:grid;
@@ -164,84 +164,142 @@ button:disabled{cursor:default}
 .event-copy{position:relative;margin:8px auto 0;max-width:330px;text-align:center;color:var(--muted);line-height:1.5}
 .event-actions{position:relative;margin-top:22px}
 
-/* Enveloppe */
+/* Enveloppe premium */
 .envelope-art{
   --scale:1;
   position:relative;
-  width:min(86%,360px);
-  aspect-ratio:1.55/1;
+  width:min(88%,370px);
+  aspect-ratio:1.56/1;
   margin:0 auto;
-  transform:scale(var(--scale))
+  transform:scale(var(--scale));
+  perspective:900px
 }
 .env-shadow{
-  position:absolute;left:10%;right:10%;bottom:-16px;height:26px;border-radius:50%;
-  background:rgba(88,58,45,.10);filter:blur(12px)
+  position:absolute;left:9%;right:9%;bottom:-17px;height:28px;border-radius:50%;
+  background:rgba(88,58,45,.12);filter:blur(13px)
 }
 .env-back{
-  position:absolute;inset:9% 0 0;border:1px solid var(--line);
-  border-radius:25px;background:#F1E3D2;box-shadow:var(--shadow)
+  position:absolute;inset:12% 0 0;border:1px solid #D7C5B1;
+  border-radius:24px;background:linear-gradient(180deg,#F5E9D9,#EEDDC8);
+  box-shadow:var(--shadow)
+}
+.env-open-inside{
+  position:absolute;left:2%;right:2%;top:12%;height:43%;
+  border-radius:22px 22px 4px 4px;
+  background:linear-gradient(180deg,#D9C2AB,#E9D8C5);
+  opacity:.82
 }
 .env-paper{
-  position:absolute;left:5%;right:5%;top:2%;height:72%;
-  border:1px solid #E7DACB;border-radius:18px;background:var(--paper);
+  position:absolute;z-index:2;left:7%;right:7%;top:6%;height:64%;
+  border:1px solid #E5D6C7;border-radius:16px;background:var(--paper);
+  box-shadow:0 8px 20px rgba(74,52,40,.06)
 }
 .env-front{
-  position:absolute;left:0;right:0;bottom:0;height:65%;
-  border:1px solid var(--line);border-radius:0 0 25px 25px;
-  background:linear-gradient(180deg,#F5EADB,#EFE0CD);
+  position:absolute;z-index:4;left:0;right:0;bottom:0;height:67%;
+  border:1px solid #D7C5B1;border-radius:4px 4px 24px 24px;
+  background:linear-gradient(160deg,#F6EADB 0%,#EFE0CD 75%);
   overflow:hidden
 }
 .env-front:before,.env-front:after{
-  content:"";position:absolute;top:37%;width:65%;height:1px;background:#DAC8B5
+  content:"";position:absolute;top:38%;width:68%;height:1px;background:#D8C5B2
 }
-.env-front:before{left:-18%;transform:rotate(31deg)}
-.env-front:after{right:-18%;transform:rotate(-31deg)}
+.env-front:before{left:-20%;transform:rotate(31deg)}
+.env-front:after{right:-20%;transform:rotate(-31deg)}
+.env-address{
+  position:absolute;left:50%;top:38%;transform:translate(-50%,-50%);
+  font-family:Georgia,"Times New Roman",serif;font-size:13px;letter-spacing:.18em;
+  color:#75695F
+}
+.env-address-line{
+  position:absolute;left:34%;right:34%;top:49%;height:1px;background:#D4C0AD
+}
+.env-corner-mark{
+  position:absolute;right:15px;bottom:12px;font-size:8px;letter-spacing:.2em;color:#9A8B80
+}
 .env-flap{
-  position:absolute;left:0;right:0;top:9%;height:48%;
+  position:absolute;z-index:5;left:0;right:0;top:12%;height:49%;
   clip-path:polygon(0 0,100% 0,50% 100%);
-  background:#F7EEDF;border-top:1px solid var(--line);
+  background:linear-gradient(180deg,#FBF2E6,#F1E1CF);
+  border-top:1px solid #D7C5B1;
   transform-origin:50% 0%;
-  z-index:3
+  transition:transform .62s cubic-bezier(.2,.75,.2,1),filter .4s ease
+}
+.envelope-art.is-closed .env-flap{transform:translateY(0) rotate(0deg)}
+.envelope-art.is-open .env-flap{
+  transform:translateY(-76%) rotate(180deg);
+  filter:brightness(.98);
+  z-index:1
 }
 .env-seal{
-  position:absolute;z-index:5;left:50%;top:47%;transform:translate(-50%,-50%);
-  width:48px;height:48px;border-radius:50%;
-  display:grid;place-items:center;background:var(--blush);color:white;
-  border:1px solid #E8C5BD;font-size:23px;box-shadow:0 6px 12px rgba(80,45,45,.08)
+  position:absolute;z-index:7;left:50%;top:49%;transform:translate(-50%,-50%);
+  width:50px;height:50px;border-radius:50%;
+  display:grid;place-items:center;background:radial-gradient(circle at 35% 28%,#EDC4BB,var(--blush));
+  color:white;border:1px solid #E4BFB6;font-size:23px;
+  box-shadow:0 7px 15px rgba(80,45,45,.11);
+  transition:opacity .24s ease,transform .35s ease
 }
-.env-mini{width:250px;margin:18px auto 24px}
+.envelope-art.is-open .env-seal{
+  opacity:0;transform:translate(-50%,-50%) scale(.72)
+}
+.env-mini{width:258px;margin:18px auto 24px}
 
 /* Chèque Signature */
 .cheque{
-  position:relative;display:grid;grid-template-columns:60px 1px 1fr;
+  position:relative;display:grid;grid-template-columns:66px 1px 1fr;
   width:100%;min-height:216px;background:var(--paper);
-  border:1px solid #E6D9CB;border-radius:28px;box-shadow:var(--shadow);
+  border:1px solid #E3D4C5;border-radius:28px;box-shadow:var(--shadow);
   overflow:visible
 }
 .cheque.compact{min-height:174px}
-.cheque-stub{position:relative;overflow:hidden;display:grid;justify-items:center;padding-top:15px}
-.stub-heart{color:var(--burgundy);font-size:20px}
-.stub-rule{width:1px;height:25px;background:var(--line);margin-top:18px}
-.stub-brand-clip{position:absolute;left:4px;right:4px;bottom:10px;height:64px;overflow:hidden;display:grid;place-items:center}
-.stub-brand{
-  width:76px;transform:rotate(-90deg);text-align:center;color:var(--muted);
-  letter-spacing:.2em;font-size:9px
+.cheque-stub{
+  position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;
+  padding:13px 6px 10px;background:linear-gradient(180deg,rgba(240,216,209,.22),rgba(242,232,218,.20));
+  border-radius:27px 0 0 27px
+}
+.stub-number{
+  font-size:8px;letter-spacing:.13em;color:var(--muted);white-space:nowrap
+}
+.stub-category-glyph{
+  margin-top:14px;width:31px;height:31px;border-radius:50%;
+  display:grid;place-items:center;border:1px solid #D8C4B6;
+  color:var(--burgundy);font-family:Georgia,"Times New Roman",serif;font-size:17px;
+  background:rgba(252,248,240,.72)
+}
+.stub-category-code{
+  margin-top:8px;font-size:8px;letter-spacing:.13em;color:var(--burgundy);font-weight:750
+}
+.stub-ledger-clip{
+  position:absolute;left:5px;right:5px;bottom:10px;height:50px;overflow:hidden;display:grid;place-items:center
+}
+.stub-ledger{
+  width:62px;transform:rotate(-90deg);text-align:center;
+  font-size:8px;letter-spacing:.22em;color:#978A80
 }
 .perforation{margin:9px 0;border-left:1px dashed #BBA899}
 .cheque-body{
-  min-width:0;padding:19px 21px 17px;display:grid;justify-items:center;grid-template-rows:auto auto auto 1fr
+  min-width:0;padding:18px 20px 16px;display:grid;justify-items:center;
+  grid-template-rows:auto auto auto auto 1fr
 }
 .bon-pour{
   font-family:Georgia,"Times New Roman",serif;font-size:clamp(22px,5.7vw,28px);
-  letter-spacing:.11em;color:var(--burgundy);margin-bottom:12px
+  letter-spacing:.11em;color:var(--burgundy);margin-bottom:11px
 }
 .cheque-title{
   max-width:100%;font-family:Georgia,"Times New Roman",serif;font-style:italic;
   font-size:clamp(20px,5.5vw,26px);line-height:1.08;text-align:center;overflow-wrap:anywhere
 }
 .cheque-message{
-  margin-top:8px;min-height:38px;font-family:Georgia,"Times New Roman",serif;font-style:italic;
+  margin-top:8px;min-height:34px;font-family:Georgia,"Times New Roman",serif;font-style:italic;
   font-size:14px;line-height:1.35;color:var(--muted);text-align:center
+}
+.cheque-timing{
+  width:100%;margin:9px 0 2px;padding-top:7px;border-top:1px solid rgba(220,205,190,.75);
+  display:flex;align-items:baseline;justify-content:center;gap:7px;color:var(--muted)
+}
+.cheque-timing span{font-size:7px;letter-spacing:.16em}
+.cheque-timing strong{
+  font-family:Georgia,"Times New Roman",serif;font-size:13px;font-style:italic;
+  font-weight:400;color:var(--burgundy)
 }
 .cheque-names{
   align-self:end;width:100%;display:flex;justify-content:space-between;gap:9px;
@@ -252,7 +310,7 @@ button:disabled{cursor:default}
   font-style:italic;letter-spacing:0
 }
 .cheque-seal{
-  position:absolute;right:-18px;top:42%;width:45px;height:45px;border-radius:50%;
+  position:absolute;right:-17px;top:42%;width:44px;height:44px;border-radius:50%;
   display:grid;place-items:center;background:var(--blush);color:white;font-size:22px;
   border:1px solid #E8C5BD
 }
@@ -263,10 +321,6 @@ button:disabled{cursor:default}
 }
 .used-stamp b{font-size:10px;letter-spacing:.13em}
 .used-stamp span{font-size:19px;margin-top:3px}
-.activation-mark{
-  position:absolute;right:36px;top:18px;padding:7px 10px;border-radius:15px;
-  background:var(--blush2);color:var(--burgundy);font-size:10px;font-weight:750
-}
 
 /* Bibliothèque */
 .library-lead{margin-bottom:40px}
@@ -307,7 +361,7 @@ button:disabled{cursor:default}
   position:absolute;left:8%;right:8%;bottom:36px;z-index:3;
   animation:envRise .35s ease both
 }
-.send-envelope .env-flap{animation:closeFlap .48s .94s ease forwards}
+.send-envelope .env-flap{animation:sendCloseFlap .58s 1.02s cubic-bezier(.2,.75,.2,1) forwards}
 .send-envelope .env-seal{opacity:0;animation:sealIn .3s 1.26s ease forwards}
 .send-message{
   opacity:0;transform:translateY(8px);
@@ -320,7 +374,7 @@ button:disabled{cursor:default}
   100%{transform:translateY(282px) scale(.72);opacity:0}
 }
 @keyframes envRise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
-@keyframes closeFlap{from{transform:rotateX(0deg)}to{transform:perspective(800px) rotateX(178deg)}}
+@keyframes sendCloseFlap{from{transform:translateY(-76%) rotate(180deg)}to{transform:translateY(0) rotate(0deg)}}
 @keyframes sealIn{from{opacity:0;transform:translate(-50%,-50%) scale(.7)}to{opacity:1;transform:translate(-50%,-50%) scale(1)}}
 @keyframes messageIn{to{opacity:1;transform:none}}
 
@@ -334,41 +388,73 @@ button:disabled{cursor:default}
   background:var(--blush2);color:var(--burgundy);font-size:37px
 }
 
-/* Révélation signature */
+/* Révélation signature en chapitres */
+.reveal-chapter{position:relative}
+.chapter-index{
+  width:34px;height:34px;border-radius:50%;display:grid;place-items:center;
+  margin:0 auto 18px;border:1px solid var(--line);color:var(--burgundy);
+  font-family:Georgia,"Times New Roman",serif;font-size:12px;background:rgba(252,248,240,.72)
+}
+.clue-orb{
+  width:112px;height:112px;border-radius:50%;display:grid;place-items:center;
+  margin:0 auto 20px;background:radial-gradient(circle at 35% 28%,#F7E9E4,#E8BDB5);
+  color:var(--burgundy);font-family:Georgia,"Times New Roman",serif;font-size:42px;
+  box-shadow:0 15px 36px rgba(123,50,57,.10)
+}
+.clue-label{text-align:center;font-size:9px;letter-spacing:.24em;color:var(--muted)}
+.clue-category{
+  margin:10px 0 0;text-align:center;font-family:Georgia,"Times New Roman",serif;
+  color:var(--burgundy);font-size:36px;font-weight:400
+}
+.clue-rule{width:46px;height:1px;background:var(--line);margin:22px auto 0}
+.clue-secret{text-align:center;color:var(--muted);font-size:11px;margin:10px 0 0}
+.envelope-interaction{
+  width:100%;border:0;background:transparent;padding:18px 0 8px;color:inherit;
+  position:relative
+}
+.envelope-interaction .envelope-art{transition:transform .3s ease}
+.envelope-interaction:active .envelope-art{transform:scale(.985)}
+.env-ticket-edge{
+  position:absolute;z-index:3;left:50%;top:33%;transform:translate(-50%,16px);
+  width:58%;height:46px;border:1px solid #E3D4C5;border-radius:13px 13px 4px 4px;
+  background:var(--paper);display:grid;place-items:center;
+  font-family:Georgia,"Times New Roman",serif;font-size:12px;letter-spacing:.14em;color:var(--burgundy);
+  opacity:0;transition:opacity .35s .25s ease,transform .45s .2s ease
+}
+.envelope-interaction.opened .env-ticket-edge,
+.env-ticket-edge.visible{opacity:1;transform:translate(-50%,-10px)}
+.envelope-open-cta{
+  width:100%;max-height:0;opacity:0;overflow:hidden;
+  transition:max-height .35s ease,opacity .3s .15s ease,margin .35s ease
+}
+.envelope-open-cta.visible{max-height:90px;opacity:1;margin-top:14px}
+
 .reveal-wrap{margin-top:2px}
-.reveal-stage{
+.extract-stage{
   --p:0;
-  position:relative;width:100%;height:430px;margin-top:24px;
-  touch-action:none;user-select:none;-webkit-user-select:none;cursor:grab
+  position:relative;width:100%;height:430px;margin-top:20px;
+  touch-action:none;user-select:none;-webkit-user-select:none;cursor:grab;overflow:hidden
 }
-.reveal-stage.dragging{cursor:grabbing}
-.reveal-envelope{
-  position:absolute;left:5%;right:5%;bottom:5px;height:240px;z-index:3;
-  transform:translateY(calc(var(--p) * 18px))
+.extract-stage.dragging{cursor:grabbing}
+.extract-envelope{
+  position:absolute;z-index:4;left:3%;right:3%;bottom:-12px;height:260px;
+  pointer-events:none
 }
-.reveal-envelope .env-back{inset:16% 0 0}
-.reveal-envelope .env-flap{
-  top:16%;
-  transform:perspective(900px) rotateX(calc(var(--p) * -170deg));
-  transition:none
-}
-.reveal-envelope .env-seal{
-  top:55%;
-  opacity:calc(1 - min(1, var(--p) * 2.2));
-  transform:translate(-50%,-50%) scale(calc(1 - min(.2,var(--p)*.25)))
-}
-.reveal-ticket{
-  position:absolute;z-index:2;left:8%;right:8%;bottom:78px;
-  transform:
-    translateY(calc(74px - max(0, (var(--p) - .22)) * 405px))
-    scale(calc(.84 + var(--p) * .10));
-  opacity:calc(.30 + var(--p) * .70);
+.extract-envelope .envelope-art{width:100%}
+.extract-ticket{
+  position:absolute;z-index:3;left:8%;right:8%;bottom:78px;
+  transform:translateY(calc(105px - (var(--p) * 350px))) scale(calc(.88 + var(--p)*.08));
+  opacity:calc(.48 + var(--p)*.52);
   will-change:transform,opacity
 }
-.reveal-stage.settling .reveal-ticket,
-.reveal-stage.settling .reveal-envelope{pointer-events:none}
+.extract-grip{
+  position:absolute;z-index:6;left:50%;bottom:136px;transform:translateX(-50%);
+  width:56px;height:5px;border-radius:4px;background:rgba(123,50,57,.28);pointer-events:none
+}
+.extract-stage.settling .extract-ticket,
+.extract-stage.settling .extract-envelope{pointer-events:none}
 .reveal-arrow{
-  position:absolute;z-index:6;left:50%;bottom:34px;transform:translateX(-50%);
+  position:absolute;z-index:7;left:50%;bottom:48px;transform:translateX(-50%);
   color:var(--burgundy);font-size:30px;pointer-events:none;
   animation:arrowFloat 1.5s ease-in-out infinite
 }
@@ -381,7 +467,7 @@ button:disabled{cursor:default}
 .reveal-progress i{display:block;height:100%;width:calc(var(--p)*100%);background:var(--burgundy)}
 .reveal-threshold{
   width:7px;height:7px;border-radius:50%;background:var(--blush);margin:-5px auto 0;
-  transform:translateX(17%);opacity:.75
+  transform:translateX(13%);opacity:.75
 }
 
 /* Découverte */
@@ -391,7 +477,7 @@ button:disabled{cursor:default}
   font-family:Georgia,"Times New Roman",serif;font-style:italic
 }
 
-/* Carnet album */
+/* Carnet — pile verticale type Wallet */
 .segmented{
   margin-top:18px;padding:4px;border-radius:28px;background:var(--paper2);
   display:grid;grid-template-columns:repeat(3,1fr);gap:2px
@@ -400,30 +486,38 @@ button:disabled{cursor:default}
   min-height:46px;border:0;background:transparent;border-radius:24px;color:var(--muted);font-size:13px
 }
 .segment-btn.active{background:var(--paper);color:var(--burgundy);font-weight:750;box-shadow:0 4px 12px rgba(70,45,35,.05)}
-.album-shell{margin-top:34px;min-height:370px}
-.album-stack{
-  position:relative;height:286px;margin:0 8px
+.album-shell{margin-top:24px;min-height:0}
+.wallet-stack{display:flex;flex-direction:column;gap:9px}
+.wallet-card{
+  position:relative;transition:transform .22s ease,filter .22s ease;cursor:pointer
 }
-.album-shadow-card{
-  position:absolute;left:7%;right:7%;height:205px;border-radius:26px;border:1px solid var(--line);background:#F0E4D5
+.wallet-card.collapsed{height:84px}
+.wallet-card.collapsed .wallet-clip{
+  height:84px;overflow:hidden;border-radius:27px;
+  box-shadow:0 9px 20px rgba(60,43,34,.08)
 }
-.album-shadow-card.one{top:0;transform:scale(.91)}
-.album-shadow-card.two{top:13px;transform:scale(.95);background:#F6ECDF}
-.album-front{position:absolute;left:0;right:0;top:28px}
-.album-controls{
-  margin-top:20px;display:grid;grid-template-columns:46px 1fr 46px;align-items:center;gap:10px
+.wallet-card.collapsed .cheque{
+  transform:translateY(0) scale(.985);transform-origin:top center;
+  box-shadow:none
 }
-.album-arrow{
-  height:44px;border:1px solid var(--line);border-radius:50%;background:var(--paper);color:var(--burgundy);font-size:23px
+.wallet-card.selected{
+  margin:3px 0 5px;z-index:5
 }
-.album-count{text-align:center;color:var(--muted);font-size:12px}
+.wallet-card.selected .wallet-clip{overflow:visible;padding-right:18px}
+.wallet-card:not(.selected):active{transform:translateY(-2px)}
+.wallet-selected-meta{
+  margin:11px 10px 0;text-align:center;color:var(--muted);font-size:11px;line-height:1.4
+}
+.wallet-actions{display:grid;gap:9px;margin-top:14px}
+.wallet-hint{
+  margin-top:12px;text-align:center;color:var(--muted);font-size:10px;min-height:14px
+}
 .album-note{
-  margin:18px auto 0;max-width:420px;text-align:center;color:var(--muted);
-  font-family:Georgia,"Times New Roman",serif;font-size:16px;font-style:italic;line-height:1.45
+  margin:20px auto 0;max-width:420px;text-align:center;color:var(--muted);
+  font-family:Georgia,"Times New Roman",serif;font-size:15px;font-style:italic;line-height:1.45
 }
-.record-status{text-align:center;margin-top:11px;color:var(--muted);font-size:12px}
 .empty-state{
-  padding:42px 24px;border-radius:28px;background:var(--paper2);text-align:center
+  padding:40px 24px;border-radius:28px;background:var(--paper2);text-align:center
 }
 .empty-book{
   width:118px;height:76px;margin:0 auto 20px;position:relative
@@ -527,6 +621,16 @@ button:disabled{cursor:default}
   .screen{padding-left:30px;padding-right:30px}
 }
 
+/* Patch final V0.5 */
+.send-envelope .envelope-art{width:100%}
+.send-envelope .env-address{opacity:.9}
+.send-envelope .env-seal{opacity:0;animation:sealIn .3s 1.52s ease forwards}
+.send-message{animation-delay:1.72s}
+@media (prefers-reduced-motion: reduce){
+  .screen,.event-glow,.reveal-arrow{animation:none!important}
+  *{scroll-behavior:auto!important}
+}
+
 </style>
 </head>
 <body>
@@ -576,6 +680,7 @@ button:disabled{cursor:default}
       albumIndex:{available:0,used:0,offered:0},
       settings:{notifications:true,faceId:true},
       perspective:'recipient',
+      envelopeOpened:false,
       modal:null
     };
   }
@@ -656,7 +761,7 @@ button:disabled{cursor:default}
   function nav() {
     const active =
       ['carnet','discovered','usedScene','activation','timing'].includes(state.screen) ? 'carnet'
-      : state.screen==='library' ? 'ideas'
+      : ['library','ideas'].includes(state.screen) ? 'ideas'
       : state.screen==='settings' ? 'settings'
       : 'home';
 
@@ -691,37 +796,70 @@ button:disabled{cursor:default}
     return `<button class="btn ${cls} ${extra}" data-action="${action}">${escapeHtml(label)}</button>`;
   }
 
+  function categoryCode(category='') {
+    const map={
+      'Romantique':'ROM',
+      'Sorties':'SORT',
+      'Aventure':'AV',
+      'Maison':'MAI',
+      'Petites attentions':'ATT',
+      'Intime / Couple':'NOUS'
+    };
+    return map[category]||'PERS';
+  }
+
+  function categoryGlyph(category='') {
+    const map={
+      'Romantique':'♡',
+      'Sorties':'↗',
+      'Aventure':'✦',
+      'Maison':'⌂',
+      'Petites attentions':'·',
+      'Intime / Couple':'∞'
+    };
+    return map[category]||'◇';
+  }
+
   function chequeHTML(c,{compact=false,used=false,activation=null}={}) {
+    const serial=c.serial?String(c.serial).padStart(2,'0'):'—';
+    const catCode=categoryCode(c.category);
+    const catGlyph=categoryGlyph(c.category);
     return `
       <article class="cheque ${compact?'compact':''}">
         <div class="cheque-stub">
-          <div class="stub-heart">♡</div>
-          <div class="stub-rule"></div>
-          <div class="stub-brand-clip"><div class="stub-brand">COUPLE</div></div>
+          <div class="stub-number">N° ${serial}</div>
+          <div class="stub-category-glyph">${catGlyph}</div>
+          <div class="stub-category-code">${catCode}</div>
+          <div class="stub-ledger-clip"><div class="stub-ledger">CARNET</div></div>
         </div>
         <div class="perforation"></div>
         <div class="cheque-body">
           <div class="bon-pour">BON POUR</div>
           <div class="cheque-title">${escapeHtml(c.title||'…')}</div>
           <div class="cheque-message">${escapeHtml(c.message||'Une attention rien que pour toi.')}</div>
+          ${activation?`<div class="cheque-timing"><span>À FAIRE VIVRE</span><strong>${escapeHtml(activation)}</strong></div>`:''}
           <div class="cheque-names">
             <div>POUR : <span class="script">${escapeHtml(c.to||'Toi')}</span></div>
             <div>DE : <span class="script">${escapeHtml(c.from||'Moi')}</span></div>
           </div>
         </div>
         <div class="cheque-seal">♡</div>
-        ${activation?`<div class="activation-mark">${escapeHtml(activation)}</div>`:''}
         ${used?`<div class="used-stamp"><b>UTILISÉ</b><span>♡</span></div>`:''}
       </article>`;
   }
 
-  function envelopeHTML({mini=false,paper=false}={}) {
-    return `<div class="envelope-art ${mini?'env-mini':''}">
+  function envelopeHTML({mini=false,paper=false,open=false,label='POUR TOI'}={}) {
+    return `<div class="envelope-art ${mini?'env-mini':''} ${open?'is-open':'is-closed'}">
       <div class="env-shadow"></div>
       <div class="env-back"></div>
       ${paper?'<div class="env-paper"></div>':''}
+      <div class="env-open-inside"></div>
       <div class="env-flap"></div>
-      <div class="env-front"></div>
+      <div class="env-front">
+        <div class="env-address">${escapeHtml(label)}</div>
+        <div class="env-address-line"></div>
+        <div class="env-corner-mark">COUPLE</div>
+      </div>
       <div class="env-seal">♡</div>
     </div>`;
   }
@@ -814,7 +952,7 @@ button:disabled{cursor:default}
     `,{title:'PRÉPARER',back:'home'});
   }
 
-  function library() {
+  function library(fromMainNav=false) {
     return page(`
       <div class="library-lead">
         <h1 class="page-title">Qu’est-ce qui ferait plaisir aujourd’hui ?</h1>
@@ -835,7 +973,7 @@ button:disabled{cursor:default}
             </button>`).join('')}
         </section>`;
       }).join('')}
-    `,{title:'IDÉES',back:'prepare'});
+    `,{title:'IDÉES',back:fromMainNav?null:'prepare'});
   }
 
   function surprise() {
@@ -905,7 +1043,7 @@ button:disabled{cursor:default}
     return page(`
       <div class="send-stage">
         <div class="send-cheque-wrap">${chequeHTML(rec.cheque,{compact:true})}</div>
-        <div class="send-envelope">${envelopeHTML()}</div>
+        <div class="send-envelope">${envelopeHTML({open:true})}</div>
       </div>
       <div class="send-message">
         <h1 class="center-title">C’est envoyé.</h1>
@@ -919,44 +1057,95 @@ button:disabled{cursor:default}
     `,{title:'OFFERT',immersive:true});
   }
 
+  function clueText(category='') {
+    const map={
+      'Romantique':'Quelque chose pour vous rapprocher.',
+      'Sorties':'Quelque chose à vivre ailleurs, ensemble.',
+      'Aventure':'Un petit pas hors de la routine.',
+      'Maison':'Un moment doux, sans avoir besoin de partir.',
+      'Petites attentions':'Un détail pensé juste pour toi.',
+      'Intime / Couple':'Un moment à garder entre vous.'
+    };
+    return map[category]||'Un indice seulement. Le reste est encore secret.';
+  }
+
   function receiveIntro() {
     const rec=currentRecord();
     if(!rec) return home();
     return page(`
-      <div class="center-stage">
+      <div class="center-stage reveal-chapter">
+        <div class="chapter-index">01</div>
         ${envelopeHTML()}
         <h1 class="center-title">Pour toi.</h1>
-        <p class="center-copy">Quelque chose t’attend. Tu choisis le moment où tu l’ouvres.</p>
-        <div style="width:100%;margin-top:22px">${btn('Découvrir','start-reveal')}</div>
+        <p class="center-copy">Quelque chose t’attend. Rien ne sera révélé tant que tu ne le décideras pas.</p>
+        <div style="width:100%;margin-top:22px">${btn('Voir un indice','show-clue')}</div>
       </div>
-    `,{title:'POUR TOI',back:'home'});
+    `,{title:'POUR TOI',back:'home',immersive:true});
   }
 
-  function reveal() {
+  function clue() {
+    const rec=currentRecord();
+    if(!rec) return home();
+    const category=rec.cheque.category||'Pour toi';
+    return page(`
+      <div class="center-stage reveal-chapter">
+        <div class="chapter-index">02</div>
+        <div class="clue-orb">${categoryGlyph(category)}</div>
+        <div class="clue-label">UN INDICE</div>
+        <h1 class="clue-category">${escapeHtml(category)}</h1>
+        <p class="center-copy">${escapeHtml(clueText(category))}</p>
+        <div class="clue-rule"></div>
+        <p class="clue-secret">Le titre et le message restent cachés.</p>
+        <div style="width:100%;margin-top:24px">${btn('Ouvrir l’enveloppe','to-envelope')}</div>
+      </div>
+    `,{title:'INDICE',back:'receiveIntro',immersive:true});
+  }
+
+  function openEnvelope() {
+    const rec=currentRecord();
+    if(!rec) return home();
+    return page(`
+      <div class="center-stage reveal-chapter envelope-chapter">
+        <div class="chapter-index">03</div>
+        <h1 class="center-title">Ouvre ton enveloppe.</h1>
+        <p class="center-copy" id="envelope-copy">${state.envelopeOpened?'Elle est ouverte. Le bon t’attend à l’intérieur.':'Touchez le sceau. Rien d’autre ne se révélera encore.'}</p>
+
+        <button class="envelope-interaction ${state.envelopeOpened?'opened':''}" data-open-envelope="1" aria-label="Ouvrir l’enveloppe">
+          ${envelopeHTML({open:state.envelopeOpened,paper:state.envelopeOpened})}
+          <div class="env-ticket-edge">BON POUR</div>
+        </button>
+
+        <div class="envelope-open-cta ${state.envelopeOpened?'visible':''}" id="envelope-open-cta">
+          ${btn('Prendre le bon','start-extract')}
+        </div>
+      </div>
+    `,{title:'OUVRIR',back:'clue',immersive:true});
+  }
+
+  function extract() {
     const rec=currentRecord();
     if(!rec) return home();
     return page(`
       <div class="reveal-wrap">
-        <h1 class="center-title">Pour toi.</h1>
-        <p class="center-copy">Prends simplement le bon et tire doucement.</p>
+        <div class="chapter-index">04</div>
+        <h1 class="center-title">À toi de le découvrir.</h1>
+        <p class="center-copy">Le bon est là. Tire-le doucement hors de l’enveloppe.</p>
 
-        <div class="reveal-stage" id="reveal-stage">
-          <div class="reveal-ticket">${chequeHTML(rec.cheque,{compact:true})}</div>
-          <div class="reveal-envelope">
-            <div class="env-back"></div>
-            <div class="env-flap"></div>
-            <div class="env-front"></div>
-            <div class="env-seal">♡</div>
+        <div class="extract-stage" id="reveal-stage">
+          <div class="extract-ticket">${chequeHTML(rec.cheque,{compact:true})}</div>
+          <div class="extract-envelope">
+            ${envelopeHTML({open:true})}
           </div>
+          <div class="extract-grip"></div>
           <div class="reveal-arrow">↑</div>
         </div>
 
         <div class="reveal-instruction" id="reveal-instruction">Tire doucement.</div>
-        <div class="reveal-detail">Tu peux relâcher tant que le point de bascule n’est pas franchi : le bon retournera simplement dans son enveloppe.</div>
+        <div class="reveal-detail">Si tu relâches trop tôt, le bon revient dans son enveloppe. Après le point de bascule, la découverte se termine toute seule.</div>
         <div class="reveal-progress" id="reveal-progress"><i></i></div>
         <div class="reveal-threshold"></div>
       </div>
-    `,{title:'DÉCOUVRIR',immersive:true});
+    `,{title:'DÉCOUVRIR',back:'openEnvelope',immersive:true});
   }
 
   function discovered() {
@@ -1062,10 +1251,9 @@ button:disabled{cursor:default}
     let idx=state.albumIndex[state.carnetFilter]||0;
     if(idx>=list.length) idx=Math.max(0,list.length-1);
     state.albumIndex[state.carnetFilter]=idx;
-    const rec=list[idx]||null;
 
     let album='';
-    if(!rec) {
+    if(!list.length) {
       const copy=state.carnetFilter==='available'
         ? 'Aucun bon disponible pour le moment. Les prochains bons découverts t’attendront ici.'
         : state.carnetFilter==='used'
@@ -1077,32 +1265,36 @@ button:disabled{cursor:default}
         <div class="empty-copy">${copy}</div>
       </div>`;
     } else {
-      const activation=rec.status==='scheduled'?timingLabel(rec.timing):null;
       album=`
-        <div class="album-stack">
-          ${list.length>2?'<div class="album-shadow-card one"></div>':''}
-          ${list.length>1?'<div class="album-shadow-card two"></div>':''}
-          <div class="album-front">${chequeHTML(rec.cheque,{compact:true,used:rec.status==='used',activation})}</div>
+        <div class="wallet-stack">
+          ${list.map((rec,i)=>{
+            const selected=i===idx;
+            const activation=rec.status==='scheduled'?timingLabel(rec.timing):null;
+            return `
+              <div class="wallet-card ${selected?'selected':'collapsed'}" data-wallet-index="${i}" style="--wallet-i:${i}">
+                <div class="wallet-clip">
+                  ${chequeHTML(rec.cheque,{compact:true,used:rec.status==='used',activation})}
+                </div>
+                ${selected?`
+                  <div class="wallet-selected-meta">${recordStatus(rec)}</div>
+                  ${state.carnetFilter==='available'?`
+                    <div class="wallet-actions">
+                      ${rec.status==='scheduled'
+                        ? btn('Marquer comme utilisé',`confirm-use:${rec.id}`)
+                        : btn('Utiliser ce bon',`timing:${rec.id}`)}
+                      ${btn('Voir les détails',`details:${rec.id}`,'secondary')}
+                    </div>`:''}
+                `:''}
+              </div>`;
+          }).join('')}
         </div>
-        <div class="album-controls">
-          <button class="album-arrow" data-album="-1" ${idx===0?'disabled':''}>‹</button>
-          <div class="album-count">${idx+1} / ${list.length}</div>
-          <button class="album-arrow" data-album="1" ${idx===list.length-1?'disabled':''}>›</button>
-        </div>
-        <div class="record-status">${recordStatus(rec)}</div>
-        ${state.carnetFilter==='available'?`
-          <div class="btn-stack">
-            ${rec.status==='scheduled'
-              ? btn('Marquer comme utilisé',`confirm-use:${rec.id}`)
-              : btn('Utiliser ce bon',`timing:${rec.id}`)}
-            ${btn('Voir les détails',`details:${rec.id}`,'secondary')}
-          </div>`:''}
+        <div class="wallet-hint">${list.length>1?'Touchez un bon pour le placer au premier plan.':''}</div>
       `;
     }
 
     return page(`
       <h1 class="page-title">Notre carnet</h1>
-      <p class="page-copy">Un album à feuilleter, pas une liste à gérer.</p>
+      <p class="page-copy">Une pile de moments à retrouver, pas une liste à gérer.</p>
 
       <div class="segmented">
         ${segment('available','Disponibles')}
@@ -1126,7 +1318,7 @@ button:disabled{cursor:default}
   }
 
   function ideas() {
-    return library();
+    return library(true);
   }
 
   function settings() {
@@ -1211,12 +1403,12 @@ button:disabled{cursor:default}
   function render() {
     const screens={
       home,prepare,library,ideas,surprise,custom,edit,ready,
-      sendScene,receiveIntro,reveal,discovered,carnet,timing,activation,senderEvent,usedScene,settings
+      sendScene,receiveIntro,clue,openEnvelope,extract,discovered,carnet,timing,activation,senderEvent,usedScene,settings
     };
     const fn=screens[state.screen]||home;
     document.getElementById('app').innerHTML=fn()+modalHTML();
     bind();
-    if(state.screen==='reveal') setupReveal();
+    if(state.screen==='extract') setupReveal();
   }
 
   function bind() {
@@ -1272,6 +1464,37 @@ button:disabled{cursor:default}
         state.currentRecordId=rec.id;
         persist();
         navigate('activation');
+      });
+    });
+
+
+    document.querySelectorAll('[data-wallet-index]').forEach(el=>{
+      el.addEventListener('click',e=>{
+        if(e.target.closest('[data-action]')) return;
+        state.albumIndex[state.carnetFilter]=Number(el.dataset.walletIndex)||0;
+        persist();
+        render();
+      });
+    });
+
+    document.querySelectorAll('[data-open-envelope]').forEach(el=>{
+      el.addEventListener('click',()=>{
+        if(el.classList.contains('opened')) return;
+        el.classList.add('opened');
+        const art=el.querySelector('.envelope-art');
+        if(art){
+          art.classList.remove('is-closed');
+          art.classList.add('is-open');
+        }
+        const edge=el.querySelector('.env-ticket-edge');
+        if(edge) edge.classList.add('visible');
+        const cta=document.getElementById('envelope-open-cta');
+        if(cta) cta.classList.add('visible');
+        const copy=document.getElementById('envelope-copy');
+        if(copy) copy.textContent='Elle est ouverte. Le bon t’attend à l’intérieur.';
+        state.envelopeOpened=true;
+        persist();
+        if(navigator.vibrate){ try{navigator.vibrate(16)}catch(_){} }
       });
     });
 
@@ -1332,7 +1555,7 @@ button:disabled{cursor:default}
     if(name==='send'){
       const rec={
         id:makeId(),
-        cheque:{...state.draft},
+        cheque:{...state.draft,serial:state.records.length+1},
         status:'offered',
         createdAt:Date.now(),
         timing:null,
@@ -1353,6 +1576,7 @@ button:disabled{cursor:default}
       state.perspective='recipient';
       state.currentRecordId=arg;
       state.selectedRecordId=arg;
+      state.envelopeOpened=false;
       persist();
       navigate('receiveIntro');
       return;
@@ -1361,13 +1585,24 @@ button:disabled{cursor:default}
     if(name==='receive-intro'){
       state.currentRecordId=arg;
       state.selectedRecordId=arg;
+      state.envelopeOpened=false;
       persist();
       navigate('receiveIntro');
       return;
     }
 
-    if(name==='start-reveal'){
-      navigate('reveal');return;
+    if(name==='show-clue'){
+      navigate('clue');return;
+    }
+
+    if(name==='to-envelope'){
+      state.envelopeOpened=false;
+      persist();
+      navigate('openEnvelope');return;
+    }
+
+    if(name==='start-extract'){
+      navigate('extract');return;
     }
 
     if(name==='keep'){
@@ -1463,8 +1698,8 @@ button:disabled{cursor:default}
     let startY=0;
     let p=0;
     let locked=false;
-    const distance=320;
-    const threshold=.74;
+    const distance=300;
+    const threshold=.72;
 
     const setP=value=>{
       p=Math.max(0,Math.min(1,value));
@@ -1504,9 +1739,9 @@ button:disabled{cursor:default}
       if(e.pointerId!==pointer||locked) return;
       const dy=Math.max(0,startY-e.clientY);
       setP(dy/distance);
-      if(p>.20 && p<.46) instruction.textContent='L’enveloppe s’ouvre…';
-      else if(p>=.46 && p<threshold) instruction.textContent='Le bon se libère…';
-      else if(p>=threshold) instruction.textContent='Encore un peu…';
+      if(p>.12 && p<.42) instruction.textContent='Le papier glisse…';
+      else if(p>=.42 && p<threshold) instruction.textContent='Tu y es presque…';
+      else if(p>=threshold) instruction.textContent='Le point de bascule est franchi…';
     });
 
     const finish=e=>{
