@@ -7,7 +7,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
   <meta name="apple-mobile-web-app-title" content="Couple" />
-  <title>Couple — Prototype web 0.7 · Scratch Signature</title>
+  <title>Couple — Prototype web 0.7.1 · Accueil épuré</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='16' fill='%23F7F2E8'/><path d='M32 45C27 41 15 33 15 23c0-6 4-10 10-10 3 0 6 2 7 4 2-2 4-4 8-4 5 0 9 4 9 10 0 10-12 18-17 22z' fill='none' stroke='%237B3239' stroke-width='3'/></svg>">
 <style>
 
@@ -851,6 +851,269 @@ button:disabled{cursor:default}
   .scratch-send-cover,#scratch-send-btn.ready,.scratch-dust{animation:none!important;transition-duration:.01ms!important}
 }
 
+
+/* ============================================================
+   V0.7.1 — ACCUEIL ÉPURÉ + MASQUE SCRATCH OPAQUE
+   ============================================================ */
+
+/* Accueil */
+.home-simple{
+  padding:5px 0 12px;
+}
+.home-brand-kicker{
+  text-align:center;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:22px;
+  letter-spacing:.32em;
+  padding-left:.32em;
+  color:var(--graphite);
+  margin:9px 0 0;
+}
+.home-calm-hero{
+  min-height:388px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:26px 10px 22px;
+}
+.home-signature-visual{
+  position:relative;
+  width:146px;height:126px;
+  margin-bottom:20px;
+}
+.home-ring{
+  position:absolute;
+  width:86px;height:108px;
+  border:1px solid rgba(123,50,57,.19);
+  border-radius:50% 50% 46% 46%;
+  background:
+    radial-gradient(circle at 42% 28%,rgba(255,255,255,.68),transparent 42%),
+    rgba(235,199,193,.13);
+}
+.home-ring.ring-a{left:18px;top:6px;transform:rotate(-13deg)}
+.home-ring.ring-b{right:18px;top:6px;transform:rotate(13deg)}
+.home-signature-heart{
+  position:absolute;
+  left:50%;top:50%;
+  transform:translate(-50%,-45%);
+  width:48px;height:48px;border-radius:50%;
+  display:grid;place-items:center;
+  background:rgba(252,248,240,.84);
+  border:1px solid rgba(123,50,57,.15);
+  color:var(--burgundy);
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:25px;
+  box-shadow:0 10px 25px rgba(72,47,34,.06)
+}
+.home-calm-eyebrow,
+.home-event-eyebrow{
+  color:var(--burgundy);
+  font-size:8px;
+  letter-spacing:.22em;
+  font-weight:750;
+}
+.home-calm-hero h1,
+.home-live-event h1,
+.home-pending h1{
+  margin:12px 0 0;
+  font-family:Georgia,"Times New Roman",serif;
+  font-weight:400;
+  letter-spacing:-.025em;
+  line-height:1.03;
+  color:var(--graphite);
+}
+.home-calm-hero h1{
+  font-size:clamp(38px,10vw,53px)
+}
+.home-calm-hero p,
+.home-live-event p,
+.home-pending p{
+  color:var(--muted);
+  line-height:1.5;
+}
+.home-calm-hero p{
+  margin:13px 0 0;
+  font-family:Georgia,"Times New Roman",serif;
+  font-style:italic;
+  font-size:15px
+}
+
+.home-nav-grid{
+  display:grid;
+  gap:10px;
+  margin-top:8px;
+}
+.home-nav-card{
+  width:100%;
+  min-height:82px;
+  display:grid;
+  grid-template-columns:44px 1fr 18px;
+  align-items:center;
+  gap:13px;
+  padding:0 17px;
+  border:1px solid var(--line);
+  border-radius:24px;
+  background:rgba(252,248,240,.76);
+  color:var(--graphite);
+  text-align:left;
+  box-shadow:0 8px 20px rgba(64,43,31,.035);
+}
+.home-nav-card:active{
+  transform:scale(.992)
+}
+.home-nav-primary{
+  border-color:rgba(123,50,57,.18);
+  background:linear-gradient(135deg,rgba(239,219,212,.42),rgba(252,248,240,.88))
+}
+.home-nav-icon{
+  width:42px;height:42px;border-radius:50%;
+  display:grid;place-items:center;
+  border:1px solid rgba(123,50,57,.13);
+  color:var(--burgundy);
+  background:rgba(252,248,240,.76);
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:19px
+}
+.home-nav-text{
+  display:grid;gap:4px
+}
+.home-nav-text strong{
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:17px;font-weight:400
+}
+.home-nav-text small{
+  color:var(--muted);
+  font-size:10px;
+  line-height:1.35
+}
+.home-nav-arrow{
+  color:var(--burgundy);
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:25px
+}
+.home-divider{
+  width:44px;height:1px;
+  background:var(--line);
+  margin:29px auto 24px
+}
+
+/* Événement destinataire */
+.home-with-event .home-brand-kicker{margin-bottom:24px}
+.home-pending{
+  position:relative;
+  text-align:center;
+  padding:14px 0 2px
+}
+.home-pending h1{
+  font-size:clamp(39px,10vw,52px)
+}
+.home-pending>p{
+  max-width:370px;
+  margin:11px auto 0;
+  font-size:12px
+}
+.home-mystery-ticket{
+  width:min(100%,430px);
+  margin:25px auto 0;
+  padding-right:17px
+}
+.home-open-button{
+  width:100%;
+  min-height:56px;
+  margin-top:21px;
+  border:0;
+  border-radius:28px;
+  background:var(--burgundy);
+  color:white;
+  font-weight:750;
+  box-shadow:0 13px 25px rgba(123,50,57,.13)
+}
+
+/* Événement expéditeur */
+.home-live-event{
+  text-align:center;
+  padding:88px 8px 35px
+}
+.home-live-event h1{
+  font-size:clamp(36px,9vw,49px)
+}
+.home-live-event p{
+  margin:12px auto 0;
+  max-width:370px;
+  font-size:12px
+}
+.home-event-button{
+  width:100%;
+  min-height:54px;
+  margin-top:28px;
+  border-radius:27px;
+  border:1px solid rgba(123,50,57,.16);
+  background:rgba(252,248,240,.78);
+  color:var(--burgundy);
+  display:flex;align-items:center;justify-content:center;gap:9px;
+  font-weight:700
+}
+.home-event-button span{
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:22px
+}
+
+/* Le masque statique et le masque à gratter couvrent réellement le contenu. */
+.scratch-static-mask{
+  z-index:30 !important;
+  inset:1px 18px 1px 1px !important;
+  opacity:1 !important;
+  background:
+    radial-gradient(circle at 26% 20%,rgba(255,255,255,.34),transparent 20%),
+    repeating-linear-gradient(114deg,rgba(105,78,56,.026) 0 1px,transparent 1px 5px),
+    linear-gradient(135deg,#E8DCC7 0%,#D4BD96 42%,#E5D5BA 72%,#C9AC7D 100%) !important;
+}
+.scratch-preview-card .cheque-seal,
+.scratch-reveal-card .cheque-seal{
+  z-index:8 !important
+}
+.scratch-static-label strong{
+  font-size:18px
+}
+
+/* Avant l'initialisation du canvas, ce fond opaque empêche tout flash du bon. */
+.scratch-canvas-zone{
+  z-index:30 !important;
+  inset:1px 18px 1px 1px !important;
+  background:
+    radial-gradient(circle at 26% 20%,rgba(255,255,255,.34),transparent 20%),
+    repeating-linear-gradient(114deg,rgba(105,78,56,.026) 0 1px,transparent 1px 5px),
+    linear-gradient(135deg,#E8DCC7 0%,#D4BD96 42%,#E5D5BA 72%,#C9AC7D 100%);
+}
+.scratch-canvas{
+  opacity:1 !important
+}
+.scratch-canvas-label{
+  color:rgba(77,59,47,.72) !important
+}
+.scratch-canvas-label strong{
+  font-size:19px
+}
+.scratch-canvas-label span{
+  margin-top:9px
+}
+
+/* Sur le bon à envoyer, le masque passe également devant le sceau. */
+.scratch-send-cover{
+  z-index:30 !important;
+  inset:1px 18px 1px 1px !important
+}
+.scratch-send-card .cheque-seal{
+  z-index:8 !important
+}
+
+@media(max-width:390px){
+  .home-calm-hero{min-height:350px}
+  .home-nav-card{min-height:78px}
+}
+
 </style>
 </head>
 <body>
@@ -1136,68 +1399,109 @@ button:disabled{cursor:default}
     return state.records.find(r=>r.status==='scheduled')||null;
   }
 
+  function homeNavHTML() {
+    return `
+      <div class="home-nav-grid">
+        <button class="home-nav-card home-nav-primary" data-action="prepare">
+          <span class="home-nav-icon">＋</span>
+          <span class="home-nav-text">
+            <strong>Préparer un bon</strong>
+            <small>Créer une attention quand tu en as envie.</small>
+          </span>
+          <span class="home-nav-arrow">›</span>
+        </button>
+
+        <button class="home-nav-card" data-action="carnet">
+          <span class="home-nav-icon">▤</span>
+          <span class="home-nav-text">
+            <strong>Carnet</strong>
+            <small>Retrouver les bons et les moments vécus.</small>
+          </span>
+          <span class="home-nav-arrow">›</span>
+        </button>
+
+        <button class="home-nav-card" data-action="ideas">
+          <span class="home-nav-icon">◇</span>
+          <span class="home-nav-text">
+            <strong>Idées</strong>
+            <small>Parcourir tranquillement les inspirations.</small>
+          </span>
+          <span class="home-nav-arrow">›</span>
+        </button>
+      </div>`;
+  }
+
+  function homeVisualHTML() {
+    return `
+      <div class="home-signature-visual" aria-hidden="true">
+        <div class="home-ring ring-a"></div>
+        <div class="home-ring ring-b"></div>
+        <div class="home-signature-heart">♡</div>
+      </div>`;
+  }
+
   function home() {
     const pending=pendingRecord();
     const senderActive=activeRecordForSender();
 
     if(state.perspective==='sender' && senderActive) {
       return page(`
-        <div class="eyebrow">UN MOMENT VA PRENDRE VIE</div>
-        <div class="sender-event">
-          <h1 class="center-title">Ton bon va prendre vie ${scheduleSentence(senderActive)}.</h1>
-          <p class="center-copy">La personne à qui tu l’as offert a choisi son moment.</p>
-          <div class="sender-fragment">${chequeHTML(senderActive.cheque,{compact:true,activation:scheduleLabel(senderActive)})}</div>
-          <div class="btn-stack">${btn('Voir le bon',`sender-event:${senderActive.id}`)}</div>
-        </div>
+        <section class="home-simple">
+          <div class="home-brand-kicker">COUPLE</div>
 
-        <div class="section-label">TON BON À OFFRIR</div>
-        ${chequeHTML(state.draft,{compact:true})}
-        <div class="btn-stack">${btn('Préparer un bon','prepare')}</div>
+          <div class="home-live-event">
+            <div class="home-event-eyebrow">UN MOMENT À VENIR</div>
+            <h1>Ton bon va prendre vie<br>${escapeHtml(scheduleSentence(senderActive))}.</h1>
+            <p>La personne à qui tu l’as offert a choisi son moment.</p>
+            <button class="home-event-button" data-action="sender-event:${senderActive.id}">
+              Voir ce bon <span>›</span>
+            </button>
+          </div>
+
+          <div class="home-divider"></div>
+          ${homeNavHTML()}
+        </section>
       `);
     }
 
     if(pending && state.perspective==='recipient') {
       return page(`
-        <div class="scratch-event-hero">
-          <div class="event-glow"></div>
-          <div class="scratch-event-kicker">UNE ATTENTION POUR TOI</div>
-          <h1 class="event-title">Un bon t’attend.</h1>
-          <p class="event-copy">Son contenu est encore entièrement caché. Il ne se révélera que sous ton doigt.</p>
+        <section class="home-simple home-with-event">
+          <div class="home-brand-kicker">COUPLE</div>
 
-          <div class="home-scratch-preview">
-            ${scratchPreviewHTML(pending.cheque,{compact:true,label:'À DÉCOUVRIR'})}
+          <div class="home-pending">
+            <div class="home-event-eyebrow">UNE ATTENTION POUR TOI</div>
+            <h1>Un bon t’attend.</h1>
+            <p>Son contenu reste entièrement secret jusqu’au premier geste de grattage.</p>
+
+            <div class="home-mystery-ticket">
+              ${scratchPreviewHTML(pending.cheque,{compact:true,label:'À DÉCOUVRIR'})}
+            </div>
+
+            <button class="home-open-button" data-action="receive-intro:${pending.id}">
+              Gratter mon bon
+            </button>
           </div>
 
-          <div class="event-actions">${btn('Gratter mon bon',`receive-intro:${pending.id}`)}</div>
-        </div>
-
-        <div class="section-label">TON BON À OFFRIR</div>
-        ${chequeHTML(state.draft,{compact:true})}
-        <div class="btn-stack">
-          ${btn('Préparer un bon','prepare','secondary')}
-          ${btn('Me surprendre','surprise','quiet')}
-        </div>
+          <div class="home-divider"></div>
+          ${homeNavHTML()}
+        </section>
       `);
     }
 
     return page(`
-      <div class="eyebrow">NOTRE CARNET</div>
-      <h1 class="hero">Chaque moment<br>compte.</h1>
+      <section class="home-simple home-calm">
+        <div class="home-brand-kicker">COUPLE</div>
 
-      <div class="section-label">TON BON À OFFRIR</div>
-      ${chequeHTML(state.draft,{compact:true})}
-      <div class="btn-stack">
-        ${btn('Préparer un bon','prepare')}
-        ${btn('Me surprendre','surprise','secondary')}
-      </div>
+        <div class="home-calm-hero">
+          ${homeVisualHTML()}
+          <div class="home-calm-eyebrow">POUR NOUS</div>
+          <h1>Des attentions,<br>quand l’envie est là.</h1>
+          <p>Créer, offrir, découvrir. Sans rythme imposé.</p>
+        </div>
 
-      <div class="section-label">LE CARNET</div>
-      <div class="soft-card">
-        <div class="soft-title">${state.records.length?'Vos moments restent ici.':'Votre carnet commence ici.'}</div>
-        <div class="soft-copy">${state.records.length
-          ? `${state.records.length} bon${state.records.length>1?'s':''} conservé${state.records.length>1?'s':''}, qu’il soit encore disponible ou déjà vécu.`
-          : 'Les bons découverts et les moments vécus resteront ensemble, sans disparaître.'}</div>
-      </div>
+        ${homeNavHTML()}
+      </section>
     `);
   }
 
@@ -1565,7 +1869,7 @@ button:disabled{cursor:default}
       </div>
 
       <div class="info-card">
-        <div class="info-title">Prototype web 0.7 · Scratch Signature</div>
+        <div class="info-title">Prototype web 0.7.1 · Accueil épuré</div>
         <div class="info-copy">Cette version simule les deux personnes sur un seul appareil. Les bons restent stockés localement dans Safari.</div>
       </div>
 
@@ -1981,10 +2285,10 @@ button:disabled{cursor:default}
       }
       ctx.globalAlpha=1;
 
-      ctx.fillStyle='rgba(94,71,54,.27)';
-      ctx.font='600 10px -apple-system, BlinkMacSystemFont, sans-serif';
-      ctx.textAlign='center';
-      ctx.fillText('COUPLE',w/2,h/2+4);
+      // Le masque doit être totalement opaque avant le premier grattage.
+      // Aucun texte du bon n'est reproduit sur la matière.
+      zone.style.background='transparent';
+      zone.classList.add('scratch-ready');
     }
 
     function point(e){
