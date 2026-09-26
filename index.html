@@ -2,12 +2,12 @@
 <html lang="fr">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover, user-scalable=no" />
   <meta name="theme-color" content="#F7F2E8" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
   <meta name="apple-mobile-web-app-title" content="Couple" />
-  <title>Couple — Prototype web 0.7.1 · Accueil épuré</title>
+  <title>Couple — Prototype web 0.7.2 · Stabilité mobile</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='16' fill='%23F7F2E8'/><path d='M32 45C27 41 15 33 15 23c0-6 4-10 10-10 3 0 6 2 7 4 2-2 4-4 8-4 5 0 9 4 9 10 0 10-12 18-17 22z' fill='none' stroke='%237B3239' stroke-width='3'/></svg>">
 <style>
 
@@ -30,12 +30,23 @@
   --safe-bottom:env(safe-area-inset-bottom,0px);
 }
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html,body{margin:0;min-height:100%;background:var(--ivory);color:var(--graphite)}
-body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue",Arial,sans-serif;overscroll-behavior-y:none}
-button,input,textarea{font:inherit}
-button{cursor:pointer}
+html,body{
+  margin:0;min-height:100%;width:100%;max-width:100%;overflow-x:hidden;
+  background:var(--ivory);color:var(--graphite);
+  -webkit-text-size-adjust:100%;text-size-adjust:100%
+}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue",Arial,sans-serif;
+  overscroll-behavior-x:none;overscroll-behavior-y:none;
+  -webkit-overflow-scrolling:touch
+}
+button,input,textarea,select{font:inherit}
+button{
+  cursor:pointer;-webkit-appearance:none;appearance:none;
+  touch-action:manipulation;-webkit-user-select:none;user-select:none
+}
 button:disabled{cursor:default}
-#app{min-height:100dvh}
+#app{min-height:100dvh;width:100%;max-width:100%;overflow-x:hidden}
 .serif{font-family:Georgia,"Times New Roman",serif}
 
 .shell{
@@ -607,7 +618,10 @@ button:disabled{cursor:default}
   height:64px;max-width:530px;margin:0 auto;border:1px solid var(--line);border-radius:34px;
   background:rgba(252,248,240,.96);box-shadow:0 12px 34px rgba(60,45,37,.10);
   display:grid;grid-template-columns:repeat(4,1fr);
-  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  transform:translateZ(0);-webkit-transform:translateZ(0);
+  backface-visibility:hidden;-webkit-backface-visibility:hidden;
+  will-change:transform
 }
 .nav-btn{
   border:0;background:transparent;color:var(--muted);
@@ -1198,6 +1212,18 @@ button:disabled{cursor:default}
 
   let state = loadState();
 
+  function installMobileStabilityGuards() {
+    const preventMultiTouch=(event)=>{
+      if(event.touches && event.touches.length>1) event.preventDefault();
+    };
+    document.addEventListener('touchstart',preventMultiTouch,{passive:false});
+    document.addEventListener('touchmove',preventMultiTouch,{passive:false});
+    ['gesturestart','gesturechange','gestureend'].forEach(type=>{
+      document.addEventListener(type,event=>event.preventDefault(),{passive:false});
+    });
+  }
+  installMobileStabilityGuards();
+
   function persist() {
     const snapshot = {...state,screen:'home',modal:null};
     localStorage.setItem(STORAGE_KEY,JSON.stringify(snapshot));
@@ -1264,7 +1290,7 @@ button:disabled{cursor:default}
   function navigate(screen,patch={}) {
     state={...state,...patch,screen,modal:null};
     persist();
-    try { window.scrollTo({top:0,behavior:'instant'}); } catch (_) { window.scrollTo(0,0); }
+    try { window.scrollTo({top:0,left:0,behavior:'auto'}); } catch (_) { window.scrollTo(0,0); }
     render();
   }
 
@@ -1299,11 +1325,11 @@ button:disabled{cursor:default}
     </nav>`;
   }
 
-  function page(inner,{title='COUPLE',back=null,immersive=false}={}) {
+  function page(inner,{title='COUPLE',back=null,immersive=false,showHeader=true}={}) {
     return `
       <main class="shell ${immersive?'immersive':''}">
         <section class="screen">
-          ${header(title,back)}
+          ${showHeader?header(title,back):''}
           ${inner}
         </section>
         ${immersive?'':nav()}
@@ -1461,7 +1487,7 @@ button:disabled{cursor:default}
           <div class="home-divider"></div>
           ${homeNavHTML()}
         </section>
-      `);
+      `,{showHeader:false});
     }
 
     if(pending && state.perspective==='recipient') {
@@ -1472,7 +1498,7 @@ button:disabled{cursor:default}
           <div class="home-pending">
             <div class="home-event-eyebrow">UNE ATTENTION POUR TOI</div>
             <h1>Un bon t’attend.</h1>
-            <p>Son contenu reste entièrement secret jusqu’au premier geste de grattage.</p>
+            <p>Son contenu reste secret jusqu’à ce que tu le découvres.</p>
 
             <div class="home-mystery-ticket">
               ${scratchPreviewHTML(pending.cheque,{compact:true,label:'À DÉCOUVRIR'})}
@@ -1486,7 +1512,7 @@ button:disabled{cursor:default}
           <div class="home-divider"></div>
           ${homeNavHTML()}
         </section>
-      `);
+      `,{showHeader:false});
     }
 
     return page(`
@@ -1496,15 +1522,14 @@ button:disabled{cursor:default}
         <div class="home-calm-hero">
           ${homeVisualHTML()}
           <div class="home-calm-eyebrow">POUR NOUS</div>
-          <h1>Des attentions,<br>quand l’envie est là.</h1>
-          <p>Créer, offrir, découvrir. Sans rythme imposé.</p>
+          <h1>Des attentions,<br>à partager à deux.</h1>
+          <p>Créez un bon ou laissez-vous inspirer.</p>
         </div>
 
         ${homeNavHTML()}
       </section>
-    `);
+    `,{showHeader:false});
   }
-
 
   function prepare() {
     const choices=[
@@ -1828,30 +1853,108 @@ button:disabled{cursor:default}
     return '';
   }
 
-  function miniAvailableHTML(rec,index) {
-    return `<button class="available-mini" data-available-index="${index}"><div class="available-mini-stub">${categoryGlyph(rec.cheque.category)}</div><div class="available-mini-body"><div class="available-mini-kicker">BON POUR</div><div class="available-mini-title">${escapeHtml(rec.cheque.title)}</div><div class="available-mini-status">${escapeHtml(rec.status==='scheduled'?scheduleLabel(rec):'Disponible')}</div></div></button>`;
+  function carnetStatusLabel(rec,filter) {
+    if(filter==='used') return 'UTILISÉ';
+    if(filter==='offered') {
+      if(rec.status==='used') return 'UTILISÉ';
+      if(rec.status==='scheduled') return 'MOMENT PRÉVU';
+      if(rec.status==='revealed') return 'DÉCOUVERT';
+      return 'OFFERT';
+    }
+    return rec.status==='scheduled'?'MOMENT PRÉVU':'DISPONIBLE';
+  }
+
+  function carnetMiniStatus(rec,filter) {
+    if(filter==='used') return 'Utilisé';
+    if(filter==='offered') {
+      if(rec.status==='used') return 'Utilisé';
+      if(rec.status==='scheduled') return 'Moment prévu';
+      if(rec.status==='revealed') return 'Découvert';
+      return 'Offert';
+    }
+    return rec.status==='scheduled'?'Moment prévu':'Disponible';
+  }
+
+  function carnetOthersLabel(filter) {
+    if(filter==='used') return 'Autres bons utilisés';
+    if(filter==='offered') return 'Autres bons offerts';
+    return 'Autres bons disponibles';
+  }
+
+  function carnetActionsHTML(rec,filter) {
+    if(filter==='available') {
+      return rec.status==='scheduled'
+        ? `${btn('Marquer comme utilisé',`confirm-use:${rec.id}`)}${btn('Modifier le moment',`timing:${rec.id}`,'secondary')}${btn('Voir le détail',`details:${rec.id}`,'quiet')}`
+        : `${btn('Utiliser maintenant',`use-now:${rec.id}`)}${btn('Planifier ce bon',`plan-soon:${rec.id}`,'secondary')}${btn('Voir le détail',`details:${rec.id}`,'quiet')}`;
+    }
+    return btn('Voir le détail',`details:${rec.id}`,'secondary');
+  }
+
+  function miniAvailableHTML(rec,index,filter=state.carnetFilter) {
+    return `<button class="available-mini" data-available-index="${index}">
+      <div class="available-mini-stub">${categoryGlyph(rec.cheque.category)}</div>
+      <div class="available-mini-body">
+        <div class="available-mini-kicker">BON POUR</div>
+        <div class="available-mini-title">${escapeHtml(rec.cheque.title)}</div>
+        <div class="available-mini-status">${escapeHtml(carnetMiniStatus(rec,filter))}</div>
+      </div>
+    </button>`;
   }
 
   function carnet() {
-    const list=carnetRecords(state.carnetFilter);let idx=state.albumIndex[state.carnetFilter]||0;if(idx>=list.length)idx=Math.max(0,list.length-1);state.albumIndex[state.carnetFilter]=idx;let album='';
-    if(!list.length){const copy=state.carnetFilter==='available'?'Aucun bon disponible pour le moment. Les prochains bons découverts t’attendront ici.':state.carnetFilter==='used'?'Aucun bon utilisé pour le moment. Les moments vécus resteront ici.':'Aucun bon offert pour le moment.';album=`<div class="empty-state"><div class="empty-book"></div><div class="empty-title">Le carnet est calme.</div><div class="empty-copy">${copy}</div></div>`}
-    else if(state.carnetFilter==='available'){
-      const rec=list[idx],activation=rec.status==='scheduled'?scheduleLabel(rec):null,others=list.filter((_,i)=>i!==idx);
-      album=`<div class="available-focus"><div class="available-status-pill">${rec.status==='scheduled'?'MOMENT PRÉVU':'DISPONIBLE MAINTENANT'}</div><div class="available-main-cheque">${chequeHTML(rec.cheque,{compact:false,activation})}</div><div class="record-status">${recordStatus(rec)}</div><div class="available-actions-v6">${rec.status==='scheduled'?`${btn('Marquer comme utilisé',`confirm-use:${rec.id}`)}${btn('Modifier le moment',`timing:${rec.id}`,'secondary')}`:`${btn('Utiliser maintenant',`use-now:${rec.id}`)}${btn('Planifier ce bon',`plan-soon:${rec.id}`,'secondary')}`}${btn('Voir le détail',`details:${rec.id}`,'quiet')}</div></div>${others.length?`<div class="available-others-head"><span>Autres bons disponibles</span><small>${others.length}</small></div><div class="available-strip">${others.map(other=>miniAvailableHTML(other,list.indexOf(other))).join('')}</div>`:''}`;
+    const filter=state.carnetFilter;
+    const list=carnetRecords(filter);
+    let idx=state.albumIndex[filter]||0;
+    if(idx>=list.length) idx=Math.max(0,list.length-1);
+    state.albumIndex[filter]=idx;
+
+    let album='';
+    if(!list.length) {
+      const copy=filter==='available'
+        ? 'Aucun bon disponible pour le moment.'
+        : filter==='used'
+          ? 'Aucun bon utilisé pour le moment.'
+          : 'Aucun bon offert pour le moment.';
+      album=`<div class="empty-state">
+        <div class="empty-book"></div>
+        <div class="empty-title">Aucun bon ici.</div>
+        <div class="empty-copy">${copy}</div>
+      </div>`;
     } else {
-      album=`<div class="wallet-stack">${list.map((rec,i)=>{const selected=i===idx,activation=rec.status==='scheduled'?scheduleLabel(rec):null;return `<div class="wallet-card ${selected?'selected':'collapsed'}" data-wallet-index="${i}"><div class="wallet-clip">${chequeHTML(rec.cheque,{compact:true,used:rec.status==='used',activation})}</div>${selected?`<div class="wallet-selected-meta">${recordStatus(rec)}</div>`:''}</div>`}).join('')}</div><div class="wallet-hint">${list.length>1?'Touchez un bon pour le placer au premier plan.':''}</div>`;
+      const rec=list[idx];
+      const activation=rec.status==='scheduled'?scheduleLabel(rec):null;
+      const others=list.filter((_,i)=>i!==idx);
+      album=`
+        <div class="available-focus">
+          <div class="available-status-pill">${carnetStatusLabel(rec,filter)}</div>
+          <div class="available-main-cheque">
+            ${chequeHTML(rec.cheque,{compact:false,used:rec.status==='used',activation})}
+          </div>
+          <div class="available-actions-v6">${carnetActionsHTML(rec,filter)}</div>
+        </div>
+        ${others.length?`
+          <div class="available-others-head">
+            <span>${carnetOthersLabel(filter)}</span><small>${others.length}</small>
+          </div>
+          <div class="available-strip">
+            ${others.map(other=>miniAvailableHTML(other,list.indexOf(other),filter)).join('')}
+          </div>`:''}`;
     }
-    return page(`<h1 class="page-title">Notre carnet</h1><p class="page-copy">${state.carnetFilter==='available'?'Un bon disponible doit être immédiatement clair et facile à faire vivre.':'Une pile de moments à retrouver, pas une liste à gérer.'}</p><div class="segmented">${segment('available','Disponibles')}${segment('used','Utilisés')}${segment('offered','Offerts')}</div><div class="album-shell">${album}</div><div class="album-note">${albumPhrase()}</div>`,{title:'CARNET'});
+
+    return page(`
+      <h1 class="page-title">Notre carnet</h1>
+      <p class="page-copy">Retrouvez ici vos bons, passés et à venir.</p>
+      <div class="segmented">
+        ${segment('available','Disponibles')}
+        ${segment('used','Utilisés')}
+        ${segment('offered','Offerts')}
+      </div>
+      <div class="album-shell">${album}</div>
+    `,{title:'CARNET'});
   }
 
   function segment(key,label) {
     return `<button class="segment-btn ${state.carnetFilter===key?'active':''}" data-filter="${key}">${label}</button>`;
-  }
-
-  function albumPhrase() {
-    if(state.carnetFilter==='available') return 'Des attentions découvertes, à faire vivre quand le moment sera juste.';
-    if(state.carnetFilter==='used') return 'Les bons vécus restent là, comme des pages déjà écrites.';
-    return 'Les bons offerts racontent leur propre chemin : attente, découverte, moment à venir, souvenir.';
   }
 
   function ideas() {
@@ -1869,7 +1972,7 @@ button:disabled{cursor:default}
       </div>
 
       <div class="info-card">
-        <div class="info-title">Prototype web 0.7.1 · Accueil épuré</div>
+        <div class="info-title">Prototype web 0.7.2 · Stabilité mobile</div>
         <div class="info-copy">Cette version simule les deux personnes sur un seul appareil. Les bons restent stockés localement dans Safari.</div>
       </div>
 
@@ -2004,7 +2107,7 @@ button:disabled{cursor:default}
     document.querySelectorAll('[data-plan-quick]').forEach(el=>{
       el.addEventListener('click',()=>{const rec=currentRecord();if(!rec)return;const choice=el.dataset.planQuick;if(choice==='tomorrow-evening'){const d=addDays(new Date(),1);scheduleRecord(rec,{type:'tomorrow-evening',date:toLocalISO(d),moment:'evening',label:'Demain soir',note:''})}else if(choice==='saturday'){const d=nextSaturdayDate();scheduleRecord(rec,{type:'saturday',date:toLocalISO(d),moment:'evening',label:`Samedi · ${formatDateShort(toLocalISO(d))}`,note:''})}else{state.plannerDate=toLocalISO(addDays(new Date(),1));state.plannerMoment='evening';persist();navigate('planner')}});
     });
-    document.querySelectorAll('[data-available-index]').forEach(el=>{el.addEventListener('click',()=>{state.albumIndex.available=Number(el.dataset.availableIndex)||0;persist();render()})});
+    document.querySelectorAll('[data-available-index]').forEach(el=>{el.addEventListener('click',()=>{state.albumIndex[state.carnetFilter]=Number(el.dataset.availableIndex)||0;persist();render()})});
     const sealTarget=document.getElementById('seal-hold-target');
     if(sealTarget){let holdTimer=null,completed=false;const ritual=document.getElementById('envelope-ritual'),instruction=document.getElementById('seal-instruction');const cancelHold=()=>{if(completed)return;if(holdTimer)clearTimeout(holdTimer);holdTimer=null;ritual?.classList.remove('pressing');sealTarget.classList.remove('pressing');if(instruction)instruction.textContent='Maintiens le sceau un court instant.'};const completeHold=()=>{if(completed)return;completed=true;holdTimer=null;ritual?.classList.remove('pressing');ritual?.classList.add('unsealing');if(instruction)instruction.textContent='Le sceau se libère…';if(navigator.vibrate){try{navigator.vibrate([14,30,22])}catch(_){}}setTimeout(()=>{ritual?.classList.remove('unsealing');ritual?.classList.add('opened');const env=ritual?.querySelector('.envelope-v6');env?.classList.remove('is-closed');env?.classList.add('is-open');sealTarget.classList.add('hidden');state.envelopeOpened=true;persist();document.getElementById('envelope-open-cta')?.classList.add('visible');const copy=document.getElementById('envelope-copy');if(copy)copy.textContent='Elle est ouverte. Le bon t’attend à l’intérieur.';if(instruction)instruction.textContent='Le rabat est ouvert.'},420)};sealTarget.addEventListener('pointerdown',e=>{if(completed)return;e.preventDefault();ritual?.classList.add('pressing');sealTarget.classList.add('pressing');if(instruction)instruction.textContent='Encore un instant…';holdTimer=setTimeout(completeHold,560);try{sealTarget.setPointerCapture(e.pointerId)}catch(_){}});sealTarget.addEventListener('pointerup',cancelHold);sealTarget.addEventListener('pointercancel',cancelHold);sealTarget.addEventListener('lostpointercapture',cancelHold)}
     const plannerForm=document.getElementById('planner-form');if(plannerForm){const note=document.getElementById('planner-note'),count=document.getElementById('planner-count'),dateEl=document.getElementById('planner-date'),momentEl=document.getElementById('planner-moment');note?.addEventListener('input',()=>{if(count)count.textContent=String(note.value.length)});const remember=()=>{state.plannerDate=dateEl?.value||state.plannerDate;state.plannerMoment=momentEl?.value||state.plannerMoment;persist()};dateEl?.addEventListener('change',remember);momentEl?.addEventListener('change',remember)}

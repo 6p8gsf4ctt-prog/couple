@@ -1,0 +1,35 @@
+COUPLE — CHANGELOG v0.7.2
+
+STABILITÉ MOBILE
+- Verrouillage du niveau de zoom de l'interface.
+- Blocage du pinch-to-zoom et des gestes de zoom Safari dans l'application.
+- Conservation du défilement vertical à un doigt.
+- Suppression des débordements horizontaux involontaires.
+- Boutons configurés pour une interaction tactile directe (touch-action: manipulation).
+- Stabilisation graphique de la barre de navigation inférieure fixe.
+- Retour en haut des pages avec un comportement standard et stable.
+
+ACCUEIL
+- Suppression du double affichage du titre COUPLE.
+- Le bandeau générique n'est plus rendu sur l'accueil.
+- Remplacement du texte :
+  « Créer, offrir, découvrir. Sans rythme imposé. »
+  par :
+  « Créez un bon ou laissez-vous inspirer. »
+- Titre principal plus universel :
+  « Des attentions, à partager à deux. »
+
+CARNET
+- Même présentation pour Disponibles, Utilisés et Offerts.
+- Un bon principal en grand dans chacun des trois onglets.
+- Les autres bons apparaissent sous forme de cartes horizontales.
+- Les bons utilisés conservent leur tampon UTILISÉ.
+- Les bons planifiés conservent leur date directement dans le bon.
+- Suppression de la date répétée sous le bon.
+- Suppression des phrases éditoriales issues du cahier des charges.
+- Nouveau sous-titre universel :
+  « Retrouvez ici vos bons, passés et à venir. »
+- Les onglets Utilisés et Offerts gardent une action simple « Voir le détail ».
+
+VERSION
+- Affichage mis à jour vers « Prototype web 0.7.2 · Stabilité mobile ».
