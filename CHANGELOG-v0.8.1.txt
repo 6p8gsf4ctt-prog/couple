@@ -1,0 +1,31 @@
+COUPLE — CHANGELOG v0.8.1
+
+NAVIGATION INFÉRIEURE
+- Comportement aligné sur le bandeau de l'application Patrimoine : barre réellement ancrée à bottom:0, left:0, right:0.
+- Largeur 100 %, aucun rayon externe, aucune ombre de carte flottante.
+- Fond légèrement translucide avec flou système et bordure supérieure fine.
+- Zone de sécurité iPhone intégrée dans la hauteur de la barre.
+- Réduction de l'espace réservé sous le contenu pour éviter l'impression d'un menu détaché.
+- Retour tactile discret au toucher sur les onglets.
+
+CARNET — SUPPRESSION DES REDONDANCES
+- Suppression du commentaire « Moment validé · … » sous le bon.
+- Suppression du commentaire « Offert — il attend encore d'être découvert » sous le bon.
+- Suppression de toute la bande descriptive placée sous le bon principal : l'état est désormais porté par le badge et les informations imprimées dans le bon.
+- Pour une proposition en attente ou un moment validé, la date/le moment apparaît directement dans le bon.
+- Suppression du sous-titre « Retrouvez ici vos bons, passés et à venir. » : le titre et les trois onglets suffisent.
+- Les actions utiles restent seules visibles sous le bon.
+
+GRATTAGE
+- Suppression du bouton « Découvrir le bon » après un grattage terminé.
+- Suppression des messages successifs « Révélation complète », « Le bon est entièrement découvert » et « Le bon est à toi ».
+- Une fois le grattage terminé, le bon est immédiatement enregistré comme découvert.
+- Les seules actions proposées sont alors utiles : « Choisir le moment » ou « Plus tard ».
+- Pour un bon à moment imposé, le bon est directement enregistré comme planifié et propose seulement le retour au Carnet.
+
+PASSE ÉDITORIALE
+- Suppression du sous-titre de Réglages qui décrivait une intention de conception plutôt qu'une information utile à l'utilisateur.
+- Conservation des textes qui ont une fonction réelle : consigne de grattage, règle de validation du partenaire, explication d'un refus ou d'un moment imposé, et instructions nécessaires à la saisie d'une date.
+
+VERSION
+- Prototype web 0.8.1 · Navigation et parcours épurés.

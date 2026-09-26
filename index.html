@@ -7,7 +7,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
   <meta name="apple-mobile-web-app-title" content="Couple" />
-  <title>Couple — Prototype web 0.8.0 · Validation à deux</title>
+  <title>Couple — Prototype web 0.8.1 · Navigation et parcours épurés</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='16' fill='%23F7F2E8'/><path d='M32 45C27 41 15 33 15 23c0-6 4-10 10-10 3 0 6 2 7 4 2-2 4-4 8-4 5 0 9 4 9 10 0 10-12 18-17 22z' fill='none' stroke='%237B3239' stroke-width='3'/></svg>">
 <style>
 
@@ -52,7 +52,7 @@ button:disabled{cursor:default}
 .shell{
   min-height:100dvh;
   padding-top:calc(var(--safe-top) + 6px);
-  padding-bottom:calc(94px + var(--safe-bottom));
+  padding-bottom:calc(76px + var(--safe-bottom));
   background:
     radial-gradient(circle at 50% 8%,rgba(255,255,255,.42),transparent 32%),
     linear-gradient(180deg,#F9F4EB 0%,var(--ivory) 60%,#F5EEE4 100%);
@@ -615,20 +615,24 @@ button:disabled{cursor:default}
 /* Navigation */
 .bottom-nav{
   position:fixed;z-index:50;left:0;right:0;bottom:0;
-  width:100%;height:calc(72px + var(--safe-bottom));margin:0;border:0;border-top:1px solid var(--line);border-radius:0;
-  padding:0 max(8px,env(safe-area-inset-right)) var(--safe-bottom) max(8px,env(safe-area-inset-left));
-  background:var(--paper);box-shadow:0 -8px 24px rgba(60,45,37,.06);
+  width:100%;height:calc(68px + var(--safe-bottom));margin:0;border:0;border-top:1px solid rgba(133,111,92,.18);border-radius:0;
+  padding:5px max(8px,calc((100vw - 560px)/2)) var(--safe-bottom);
+  background:rgba(250,247,241,.90);box-shadow:none;
+  -webkit-backdrop-filter:saturate(180%) blur(26px);backdrop-filter:saturate(180%) blur(26px);
   display:grid;grid-template-columns:repeat(4,1fr);
   transform:translateZ(0);-webkit-transform:translateZ(0);
   backface-visibility:hidden;-webkit-backface-visibility:hidden
 }
 .nav-btn{
-  border:0;background:transparent;color:var(--muted);
-  display:grid;place-content:center;justify-items:center;gap:1px
+  position:relative;border:0;background:transparent;color:var(--muted);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;padding:3px;min-width:0;
+  transition:color .16s ease,transform .16s ease
 }
-.nav-btn b{font-size:18px;line-height:1.05;font-weight:500}
+.nav-btn:active{transform:scale(.95)}
+.nav-btn b{display:grid;place-items:center;width:30px;height:27px;border-radius:10px;font-size:18px;line-height:1.05;font-weight:500}
 .nav-btn span{font-size:10px}
 .nav-btn.active{color:var(--burgundy);font-weight:750}
+.nav-btn.active b{background:rgba(134,48,56,.08)}
 .plan-state-note{margin:14px 0 0;padding:14px 16px;border-radius:18px;background:var(--paper2);color:var(--muted);font-size:12px;line-height:1.45;text-align:center}
 .plan-state-note strong{display:block;color:var(--burgundy);font-size:12px;letter-spacing:.08em;margin-bottom:4px}
 .imposed-note{border:1px solid #d8c5b1;background:#fbf4e8}
@@ -843,13 +847,12 @@ button:disabled{cursor:default}
   transition:max-height .42s ease,opacity .3s .1s ease,margin .35s ease
 }
 .scratch-reveal-finish.visible{
-  max-height:120px;opacity:1;margin-top:18px
+  max-height:190px;opacity:1;margin-top:18px
 }
-.scratch-finish-copy{
-  margin-bottom:11px;text-align:center;
-  color:var(--burgundy);
-  font-family:Georgia,"Times New Roman",serif;font-style:italic;font-size:15px
-}
+.scratch-reveal-finish .btn-stack{margin-top:0}
+.scratch-reveal-page.is-complete .scratch-progress,
+.scratch-reveal-page.is-complete .scratch-progress-copy,
+.scratch-reveal-page.is-complete #scratch-reveal-copy{display:none}
 .scratch-dust{
   position:fixed;z-index:999;
   width:3px;height:3px;border-radius:50%;
@@ -1772,8 +1775,9 @@ button:disabled{cursor:default}
         <div class="scratch-progress-copy" id="scratch-progress-copy">Fais glisser ton doigt sur la matière.</div>
 
         <div class="scratch-reveal-finish" id="scratch-reveal-finish">
-          <div class="scratch-finish-copy">Le bon est à toi.</div>
-          ${btn('Découvrir le bon','scratch-finish')}
+          <div class="btn-stack">
+            ${rec.schedule?.imposed?btn('Retour au carnet',`keep:${rec.id}`):`${btn('Choisir le moment',`timing:${rec.id}`)}${btn('Plus tard',`keep:${rec.id}`,'secondary')}`}
+          </div>
         </div>
       </div>
     `,{title:'À GRATTER',back:'home',immersive:true});
@@ -1957,7 +1961,7 @@ button:disabled{cursor:default}
       </div>`;
     } else {
       const rec=list[idx];
-      const activation=isAccepted(rec)?scheduleLabel(rec):null;
+      const activation=(rec.schedule&&!isRejected(rec))?scheduleLabel(rec):null;
       const others=list.filter((_,i)=>i!==idx);
       album=`
         <div class="available-focus">
@@ -1965,7 +1969,6 @@ button:disabled{cursor:default}
           <div class="available-main-cheque">
             ${chequeHTML(rec.cheque,{compact:false,used:rec.status==='used',activation})}
           </div>
-          <div class="plan-state-note ${rec.schedule?.imposed?'imposed-note':''}">${escapeHtml(recordStatus(rec))}</div>
           <div class="available-actions-v6">${carnetActionsHTML(rec,filter)}</div>
         </div>
         ${others.length?`
@@ -1979,7 +1982,6 @@ button:disabled{cursor:default}
 
     return page(`
       <h1 class="page-title">Notre carnet</h1>
-      <p class="page-copy">Retrouvez ici vos bons, passés et à venir.</p>
       <div class="segmented">
         ${segment('available','Disponibles')}
         ${segment('used','Utilisés')}
@@ -2000,7 +2002,6 @@ button:disabled{cursor:default}
   function settings() {
     return page(`
       <h1 class="page-title">Réglages</h1>
-      <p class="page-copy">Peu d’options, uniquement celles qui protègent ou simplifient l’expérience.</p>
 
       <div class="settings-list">
         ${settingCard('notifications','Notifications discrètes','Aucun titre de bon ni message personnel ne doit apparaître publiquement.')}
@@ -2008,7 +2009,7 @@ button:disabled{cursor:default}
       </div>
 
       <div class="info-card">
-        <div class="info-title">Prototype web 0.8.0 · Validation à deux</div>
+        <div class="info-title">Prototype web 0.8.1 · Navigation et parcours épurés</div>
         <div class="info-copy">Cette version simule les deux personnes sur un seul appareil. Les bons restent stockés localement dans Safari.</div>
       </div>
 
@@ -2496,15 +2497,17 @@ button:disabled{cursor:default}
         canvas.style.opacity='0';
         label?.classList.add('hidden');
         if(fill)fill.style.width='100%';
-        if(progressCopy)progressCopy.textContent='Révélation complète';
-        if(pageCopy)pageCopy.textContent='Le bon est entièrement découvert.';
-
-        updateRecord(rec.id,{status:'revealed',revealedAt:Date.now()});
+        const finalStatus=rec.schedule?.imposed?'scheduled':'revealed';
+        updateRecord(rec.id,{status:finalStatus,revealedAt:Date.now()});
         state.currentRecordId=rec.id;
         state.selectedRecordId=rec.id;
         persist();
 
-        setTimeout(()=>finish?.classList.add('visible'),420);
+        const revealPage=document.querySelector('.scratch-reveal-page');
+        setTimeout(()=>{
+          revealPage?.classList.add('is-complete');
+          finish?.classList.add('visible');
+        },360);
         setTimeout(()=>canvas.style.pointerEvents='none',460);
       }
     }
