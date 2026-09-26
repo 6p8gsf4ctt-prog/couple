@@ -1,0 +1,35 @@
+COUPLE — CHANGELOG v0.8.0
+
+NAVIGATION
+- Barre principale fixée tout en bas de l'écran, sur toute la largeur.
+- Suppression de l'apparence flottante et des coins arrondis du menu principal.
+- Prise en compte de la zone de sécurité iPhone.
+
+PARCOURS D'UN BON
+- Suppression de « Voir le détail » dans le Carnet.
+- Suppression de « Marquer comme utilisé » et de sa confirmation.
+- Un bon classique est piloté par le destinataire : il choisit ou modifie le moment.
+- Chaque proposition ou modification remet automatiquement la validation en attente.
+- Le donneur peut uniquement accepter ou refuser la proposition.
+- Après un refus, seul le destinataire peut proposer un nouveau moment.
+
+VALIDATION
+- Nouveaux états : disponible, en attente de validation, moment validé, à reproposer, utilisé.
+- Le donneur dispose d'actions directes « Accepter ce moment » et « Refuser ».
+- Un moment accepté reste planifié jusqu'à son échéance.
+
+PASSAGE AUTOMATIQUE EN UTILISÉ
+- Les bons validés passent automatiquement dans « Utilisés » après le moment prévu.
+- Vérification au rendu, au retour dans l'application et toutes les 60 secondes lorsque l'application reste ouverte.
+- Aucun clic manuel n'est nécessaire.
+
+2 MOMENTS IMPOSÉS PAR AN
+- Lors de l'offre d'un bon, le donneur peut exceptionnellement choisir lui-même le moment.
+- Limite : 2 bons par année civile.
+- Le compteur restant est affiché avant l'envoi.
+- Le destinataire voit clairement « Moment choisi par ton partenaire ».
+- Le destinataire ne peut pas modifier le moment d'un bon exceptionnel.
+- Le bon exceptionnel passe lui aussi automatiquement dans « Utilisés » après l'échéance.
+
+COMPATIBILITÉ
+- Les anciens bons planifiés de la version précédente sont migrés comme déjà validés afin de ne pas casser les données existantes.
