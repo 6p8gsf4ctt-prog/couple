@@ -1,0 +1,58 @@
+COUPLE — V2 / NUIT ÉLECTRIQUE
+
+1. ARCHITECTURE MOBILE
+- html, body et #app sont verrouillés à la hauteur du viewport et ne scrollent plus.
+- Seule la zone centrale .scroll-stage défile verticalement.
+- La navigation inférieure est un élément séparé du conteneur de scroll.
+- Le bandeau inférieur ne dépend donc plus du rebond élastique de la page.
+- Fond du bandeau opaque, bordure haute et safe area iPhone intégrée.
+- Pinch-to-zoom et gestes de zoom involontaires neutralisés, scroll vertical à un doigt conservé.
+
+2. IDENTITÉ NUIT ÉLECTRIQUE
+- Fond graphite/prune profond.
+- Ivoire chaud pour les contenus principaux.
+- Rouge électrique, violet, ambre et menthe comme accents.
+- Hiérarchie plus contrastée et compositions plus éditoriales.
+- Accueil entièrement redessiné.
+
+3. NOUVEAU DESIGN DES BONS
+- Suppression du numéro.
+- Le repère principal devient le mois et l'année : JANVIER 26, AOÛT 26, etc.
+- Suppression de POUR TOI / DE MOI.
+- Suppression du bandeau latéral CARNET / ROM / MAI.
+- Suppression du cœur flottant décoratif.
+- Suppression de la fausse perforation et du bruit graphique associé.
+- Informations conservées : mois, BON POUR, titre, petit mot et moment uniquement lorsqu'il existe.
+- Variations chromatiques discrètes pour donner du rythme à un carnet rempli.
+
+4. CRÉATION ET ENVOI
+- Parcours ramené à un seul écran après le choix de l'idée.
+- Champs : titre + petit mot facultatif.
+- Suppression complète de Validité.
+- Suppression des étapes intermédiaires de préparation/masquage.
+- Un seul bouton : Envoyer le bon.
+- Le masquage à gratter est automatique.
+
+5. RÉCEPTION ET GRATTAGE
+- Un bon reçu mène directement au grattage.
+- Plus de bouton Découvrir après le grattage.
+- À la fin du geste, le bon est automatiquement enregistré et le Carnet s'affiche.
+- Aucun clic supplémentaire n'est nécessaire pour terminer la découverte.
+
+6. MOMENT ET VALIDATION
+- Le destinataire choisit le moment d'un bon classique.
+- Toute proposition doit être acceptée ou refusée par le donneur.
+- Une modification crée une nouvelle proposition et exige une nouvelle validation.
+- Après refus, le destinataire repropose un moment.
+- Un bon validé passe automatiquement en Utilisé lorsque son moment est dépassé.
+- Le donneur conserve 2 possibilités annuelles d'imposer un moment.
+
+7. MODE DÉMO 6 MOIS
+- 42 bons de démonstration.
+- Bons reçus, offerts, à gratter, disponibles, propositions en attente, refusés, validés, imposés et utilisés.
+- Titres/messages de longueurs variées.
+- Répartition sur plusieurs mois pour éprouver le Carnet en conditions réalistes.
+- Les données normales sont sauvegardées puis restaurées lorsqu'on quitte le mode démo.
+
+8. DONNÉES
+- Nouvelle clé locale couple-v2-electric pour isoler la V2 de l'ancien prototype.
