@@ -1,14 +1,21 @@
-COUPLE — V2 NUIT ÉLECTRIQUE
+COUPLE — V2.1 NUIT ÉLECTRIQUE
 
 INSTALLATION
-1. Décompressez le ZIP.
-2. Dans le dépôt GitHub 6p8gsf4ctt-prog/couple, remplacez le fichier index.html situé à la racine par celui fourni ici.
-3. Commit conseillé : V2 - Nuit électrique
-4. Attendez la publication GitHub Pages.
-5. Sur iPhone, fermez complètement l'application ajoutée à l'écran d'accueil puis rouvrez-la.
+1. Décompressez Couple-V2-1-Nuit-Electrique.zip.
+2. Dans le dépôt GitHub du prototype Couple, remplacez le fichier index.html à la racine par celui fourni.
+3. Validez le changement puis attendez la mise à jour de GitHub Pages.
+4. Sur iPhone, fermez complètement l'application ajoutée à l'écran d'accueil puis rouvrez-la.
 
-IMPORTANT
-- Cette V2 utilise une nouvelle clé de stockage local : couple-v2-electric.
-- Elle n'écrase donc pas les données locales de l'ancien prototype.
-- Le mode démo peut être activé depuis Réglages et restaurera les données normales lorsqu'on le quitte.
-- Cette version reste un prototype local : la synchronisation réelle entre deux téléphones nécessitera le backend prévu ultérieurement.
+DONNÉES
+- La V2.1 utilise la clé locale : couple-v2-1-electric.
+- Elle démarre donc sur une base propre et ne supprime pas les données de la V2 précédente.
+- Le mode démo V2.1 se trouve dans Réglages.
+- Le prototype reste local : il ne synchronise pas encore deux téléphones.
+
+OBJECTIF DE CETTE VERSION
+La V2.1 ne cherche pas à ajouter des fonctions. Elle sépare les contextes :
+- Accueil : ce qui mérite l'attention maintenant.
+- Mes bons : cadeaux reçus encore utilisables.
+- Fiche du bon : état et éventuelle action.
+- Carnet : uniquement historique des bons utilisés et offerts.
+- Idées : recherche par intention.

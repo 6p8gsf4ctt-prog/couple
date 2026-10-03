@@ -1,0 +1,78 @@
+COUPLE — V2.1 / ARCHITECTURE MINIMALISTE
+
+1. ACCUEIL
+- Identité Nuit électrique conservée mais allégée.
+- Zone « À faire » uniquement lorsqu'une action réelle est attendue.
+- Une ligne = une situation ; toucher ouvre directement le bon concerné.
+- Accès compact à « Mes bons ».
+- Création d'un bon reste l'action éditoriale principale.
+- Les informations techniques et statistiques disparaissent.
+
+2. MES BONS
+- Nouvel écran distinct du Carnet.
+- Contient uniquement les bons reçus encore utilisables ou déjà planifiés.
+- Les cartes sont compactes et entièrement cliquables.
+- Aucune série de boutons sous les cartes.
+
+3. FICHE D'UN BON
+- Nouvel écran dédié.
+- Un écran = un bon.
+- Affiche le ticket, un état compréhensible et au maximum une action principale.
+- Les actions ne peuvent plus être visuellement rattachées au mauvais bon.
+
+4. CARNET
+- Recentré sur son rôle d'archive.
+- Page d'entrée avec deux espaces clairement séparés : Utilisés / Offerts.
+- Plus de mélange avec les bons disponibles.
+- Plus de validations ou de choix de date dans la liste.
+- Suppression des statistiques du mode démo dans le Carnet.
+
+5. IDÉES
+- Organisation par intention :
+  Romantique
+  Prendre soin
+  S'amuser
+  S'évader
+  Surprendre
+- 20 idées dans le prototype, pour une cible produit de 30 maximum.
+- Une intention ouvre une liste courte dédiée.
+- « Créer le mien » reste accessible directement.
+
+6. CRÉATION
+- Parcours standard : titre + petit mot + Envoyer.
+- Le choix exceptionnel du moment est déplacé dans « Options ».
+- Cette fonction rare ne concurrence plus le contenu principal du bon.
+
+7. BON CLASSIQUE
+- Le receveur choisit le moment.
+- Le donneur accepte ou refuse.
+- Après un refus ou une annulation, seul le receveur peut reproposer.
+- Les deux partenaires peuvent annuler un moment déjà validé.
+
+8. BON EXCEPTIONNEL — 2 PAR AN
+- Le donneur choisit le moment.
+- Le receveur accepte ou refuse toujours.
+- Après refus ou annulation, seul le donneur repropose.
+- Une possibilité annuelle est consommée dès l'envoi.
+- Elle n'est jamais recréditée.
+- Les nouvelles propositions sur le même bon ne consomment pas d'autre possibilité.
+- « Maintenant » ou une date peuvent être proposés.
+- « Maintenant » devient utilisé dès acceptation.
+
+9. GRATTAGE
+- Conservé comme moment émotionnel.
+- Après grattage, ouverture directe de la fiche du bon.
+- Un bon classique devient prêt à planifier.
+- Un bon exceptionnel révèle immédiatement la proposition du donneur.
+
+10. MODE DÉMO
+- 40 bons sur environ six mois.
+- Actions à réaliser, bons disponibles, propositions, refus, validations,
+  bons à gratter, bons exceptionnels, bons utilisés et bons offerts.
+- Une possibilité exceptionnelle reste disponible afin de tester la création.
+
+11. ARCHITECTURE MOBILE
+- Le document racine reste verrouillé.
+- Seule la zone centrale défile.
+- La navigation inférieure reste physiquement hors de la zone de scroll.
+- Fond de navigation opaque et safe area iPhone conservés.
