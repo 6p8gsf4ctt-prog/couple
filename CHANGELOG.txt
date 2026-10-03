@@ -1,0 +1,28 @@
+MISE À JOUR — PROPORTIONS, RESPIRATION, ACCUEIL
+
+DATES
+- Correction spécifique du champ datetime-local sur iPhone.
+- Largeur forcée à l’intérieur du conteneur.
+- Hauteur ramenée à 54 px.
+- Suppression de la largeur intrinsèque Safari qui pouvait faire dépasser le champ.
+- Modale de choix du moment plus compacte.
+- Bloc du privilège annuel protégé contre les débordements.
+
+ESPACEMENTS
+- Plus d’espace entre le titre d’une interaction et sa date/métadonnée.
+- Plus d’air avant les boutons d’action.
+- Espacements de la fiche d’un bon rééquilibrés.
+- Formulaire de création légèrement plus respirant.
+
+ACCUEIL
+- Composition plus dense sans ajouter de notifications.
+- Visuel organique agrandi lorsque rien ne demande d’attention.
+- Carte « Créer un bon » légèrement renforcée.
+- L’ancien simple lien « Ouvrir notre carnet » devient une vraie carte secondaire.
+- Ajout d’une présence graphique organique discrète dans la partie basse pour éviter l’impression de grand vide.
+- Le principe reste inchangé : un seul événement important maximum sur l’accueil.
+
+VERSION
+- Suppression du numéro de version dans l’en-tête.
+- Suppression de la version dans Réglages.
+- Le numéro de version n’est plus affiché dans l’interface.
