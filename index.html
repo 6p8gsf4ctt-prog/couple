@@ -185,6 +185,55 @@ input[type="datetime-local"]::-webkit-datetime-edit{
   .modal.date-modal{width:calc(100vw - 20px);padding:17px}
 }
 
+
+/* Catalogue annuel — 37 idées / 4 univers */
+.annual-progress{margin-top:22px;border:1px solid var(--line);border-radius:22px;background:linear-gradient(135deg,rgba(255,255,255,.035),rgba(139,92,246,.035));padding:15px 16px;display:flex;justify-content:space-between;align-items:center;gap:16px}
+.annual-progress span{display:block;font-size:9px;font-weight:850;letter-spacing:.17em;text-transform:uppercase;color:var(--red2)}
+.annual-progress strong{display:block;font-family:Georgia,"Times New Roman",serif;font-size:20px;font-weight:400;margin-top:5px}
+.annual-total{font-family:Georgia,"Times New Roman",serif;font-size:30px;text-align:right;color:#d8ccd8}
+.annual-total small{display:block;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text",system-ui,sans-serif;font-size:9px;font-weight:750;line-height:1.15;color:var(--muted);max-width:76px}
+.catalogue-grid{display:grid;grid-template-columns:1fr 1fr;gap:11px;margin-top:16px}
+.catalogue-card{--cat:var(--red);width:100%;min-height:184px;border:1px solid var(--line);border-radius:24px;padding:15px;background:linear-gradient(145deg,#211827,#17131d);text-align:left;position:relative;overflow:hidden;display:flex;flex-direction:column}
+.catalogue-card::after{content:"";position:absolute;width:120px;height:90px;right:-45px;top:-24px;border-radius:55% 45% 58% 42%/48% 55% 45% 52%;background:linear-gradient(120deg,transparent,var(--cat));opacity:.11;transform:rotate(-12deg)}
+.catalogue-card.tender{--cat:#ff7892}.catalogue-card.gourmand{--cat:#ffc96b}.catalogue-card.experience{--cat:#8f73ff}.catalogue-card.desire{--cat:#ff5a8b}
+.catalogue-card.complete{opacity:.7}
+.catalogue-card-top{display:flex;justify-content:space-between;align-items:center;gap:8px;position:relative;z-index:1}
+.catalogue-card-top span{font-size:9px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.catalogue-card-top b{font-size:11px;color:#e4d9e3}
+.catalogue-card>strong{position:relative;z-index:1;display:block;font-family:Georgia,"Times New Roman",serif;font-size:23px;font-weight:400;line-height:1.02;margin-top:28px}
+.catalogue-card>small{position:relative;z-index:1;display:block;color:var(--muted);font-size:11px;line-height:1.3;margin-top:7px}
+.catalogue-meter{height:3px;border-radius:99px;background:rgba(255,255,255,.07);margin-top:auto;overflow:hidden}
+.catalogue-meter i{display:block;height:100%;border-radius:99px;background:var(--cat)}
+.catalogue-card em{display:block;font-style:normal;font-size:9.5px;color:#8f8491;margin-top:7px}
+.joker-card{width:100%;margin-top:12px;border:1px solid rgba(255,202,106,.24);border-radius:24px;padding:18px;text-align:left;background:linear-gradient(135deg,rgba(255,202,106,.07),rgba(139,92,246,.08),rgba(255,255,255,.018));position:relative;overflow:hidden}
+.joker-card::after{content:"✦";position:absolute;right:20px;top:15px;font-size:26px;color:rgba(255,202,106,.55)}
+.joker-card.used{opacity:.58}
+.joker-kicker{display:block;font-size:9px;font-weight:850;letter-spacing:.17em;text-transform:uppercase;color:var(--amber)}
+.joker-card strong{display:block;font-family:Georgia,"Times New Roman",serif;font-size:27px;font-weight:400;margin-top:9px}
+.joker-card small{display:block;color:var(--muted);font-size:11.5px;line-height:1.35;margin-top:6px;max-width:82%}
+.joker-status{display:inline-flex;margin-top:12px;border:1px solid rgba(255,202,106,.18);border-radius:999px;padding:6px 9px;font-size:9.5px;font-weight:800;color:#ddc38d}
+.category-quota{margin:18px 0 4px;border-left:2px solid var(--red);padding:5px 0 5px 14px}
+.category-quota.complete{border-left-color:#766e7a}
+.category-quota>span{display:block;font-size:9px;font-weight:850;letter-spacing:.14em;text-transform:uppercase;color:var(--red2)}
+.category-quota>strong{display:block;font-family:Georgia,"Times New Roman",serif;font-size:20px;font-weight:400;margin-top:5px}
+.category-quota>small{display:block;color:var(--muted);font-size:11px;line-height:1.35;margin-top:4px}
+.idea-row{position:relative}
+.idea-row.locked{opacity:.58}
+.idea-lock{display:block;margin-top:9px;font-size:9px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#8f8491}
+.reveal-more{width:100%;margin-top:10px;border:1px solid var(--line);border-radius:17px;background:transparent;color:#b4a9b5;min-height:48px;font-weight:760}
+.custom-origin{border-left:2px solid var(--amber);padding:3px 0 3px 13px}
+.custom-origin span{display:block;font-size:9px;font-weight:850;letter-spacing:.14em;text-transform:uppercase;color:var(--amber)}
+.custom-origin p{margin:6px 0 0;color:var(--muted);font-size:11px;line-height:1.35}
+.custom-details{border:1px solid var(--line);border-radius:20px;background:#17131d;overflow:hidden}
+.custom-details summary{list-style:none;padding:15px 16px;font-weight:760;font-size:13px;cursor:pointer}
+.custom-details summary::-webkit-details-marker{display:none}
+.custom-details summary::after{content:"+";float:right;color:#8f8491;font-size:19px;font-weight:400;line-height:.8}
+.custom-details[open] summary::after{content:"–"}
+.custom-details-body{display:grid;gap:16px;padding:2px 16px 16px}
+select{width:100%;max-width:100%;min-width:0;min-height:52px;border:1px solid var(--line);border-radius:15px;background:#15111a;color:var(--ink);padding:0 13px;font:inherit}
+@media(max-width:370px){.catalogue-grid{gap:8px}.catalogue-card{min-height:174px;padding:13px}.catalogue-card>strong{font-size:21px}}
+@media(min-width:600px){.catalogue-grid{grid-template-columns:repeat(2,1fr)}}
+
 @media(min-width:600px){.screen{padding-left:30px;padding-right:30px}.ticket-grid{grid-template-columns:1fr 1fr}.intent-grid{grid-template-columns:repeat(3,1fr)}}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
 </style>
@@ -194,34 +243,53 @@ input[type="datetime-local"]::-webkit-datetime-edit{
 const STORAGE='couple-v2-1-electric';
 const MONTHS=['JANVIER','FÉVRIER','MARS','AVRIL','MAI','JUIN','JUILLET','AOÛT','SEPTEMBRE','OCTOBRE','NOVEMBRE','DÉCEMBRE'];
 const COLORS=['red','violet','amber','mint'];
-const INTENTS=[
- {id:'romance',label:'Romantique',desc:'Se retrouver à deux'},
- {id:'care',label:'Prendre soin',desc:'Faire du bien à l’autre'},
- {id:'fun',label:'S’amuser',desc:'Rire et partager'},
- {id:'escape',label:'S’évader',desc:'Changer d’air'},
- {id:'surprise',label:'Surprendre',desc:'Créer l’inattendu'}
+const CATALOG_CATEGORIES=[
+ {id:'tender',label:'Tendresse & bien-être',desc:'Douceur, repos et attentions',total:9},
+ {id:'gourmand',label:'Sorties & gourmandise',desc:'Sortir, partager et se régaler',total:8},
+ {id:'experience',label:'Évasion & expériences',desc:'Changer d’air et créer des souvenirs',total:10},
+ {id:'desire',label:'Désir & intimité',desc:'Sensualité, désir et complicité',total:10}
 ];
 const IDEAS=[
- {title:'Un dîner en amoureux',message:'Je t’invite, tu choisis le moment.',intent:'romance'},
- {title:'Une nuit rien que nous',message:'On coupe tout, sauf nous.',intent:'romance'},
- {title:'Une soirée cinéma',message:'Tu choisis le film, je m’occupe du reste.',intent:'romance'},
- {title:'Un verre en tête-à-tête',message:'Juste toi et moi, ailleurs.',intent:'romance'},
- {title:'Un massage maison',message:'Une vraie pause, rien que pour toi.',intent:'care'},
- {title:'Petit-déjeuner au lit',message:'Tu ne t’occupes de rien ce matin.',intent:'care'},
- {title:'Une heure rien que pour toi',message:'Je m’occupe du reste, profite.',intent:'care'},
- {title:'Ton plat préféré',message:'Ce soir-là, je cuisine.',intent:'care'},
- {title:'Une soirée jeux',message:'Le perdant prépare le dessert.',intent:'fun'},
- {title:'Un défi à deux',message:'On choisit quelque chose qu’on n’a jamais fait.',intent:'fun'},
- {title:'Un karaoké improvisé',message:'Aucune dignité requise.',intent:'fun'},
- {title:'Une activité surprise',message:'Je prépare, tu découvres.',intent:'fun'},
- {title:'Une escapade surprise',message:'Je prépare tout, tu viens avec moi.',intent:'escape'},
- {title:'Une balade au hasard',message:'On part sans itinéraire.',intent:'escape'},
- {title:'Une nuit ailleurs',message:'On change de décor.',intent:'escape'},
- {title:'Un dimanche ailleurs',message:'Une journée sans horaires.',intent:'escape'},
- {title:'Une table surprise',message:'Je réserve, tu découvres.',intent:'surprise'},
- {title:'Une surprise après le travail',message:'Sois prêt(e), je m’occupe du reste.',intent:'surprise'},
- {title:'Ton dessert préféré',message:'Une petite surprise juste pour toi.',intent:'surprise'},
- {title:'Une soirée mystère',message:'Tu n’as rien à préparer.',intent:'surprise'}
+ {id:'tender-01',category:'tender',title:'Massage rien que pour toi',message:'Je prends le temps de te faire un vrai massage, sans regarder l’heure.'},
+ {id:'tender-02',category:'tender',title:'Soirée papouilles',message:'Une soirée entièrement consacrée à la tendresse et aux câlins.'},
+ {id:'tender-03',category:'tender',title:'Petit-déjeuner au lit',message:'Ce matin, tu ne t’occupes de rien.'},
+ {id:'tender-04',category:'tender',title:'Soirée cocooning',message:'Plaid, douceur, gourmandises et programme choisi ensemble.'},
+ {id:'tender-05',category:'tender',title:'Bain relaxant préparé pour toi',message:'Ambiance, musique et détente : je m’occupe de tout.'},
+ {id:'tender-06',category:'tender',title:'Une grasse matinée sans contraintes',message:'Je prends le relais, tu profites de ton matin.'},
+ {id:'tender-07',category:'tender',title:'Ta soirée idéale à la maison',message:'Tu choisis ce qui te ferait vraiment du bien et je l’organise.'},
+ {id:'tender-08',category:'tender',title:'Une heure rien que pour toi',message:'Je crée les conditions pour que tu puisses vraiment déconnecter.'},
+ {id:'tender-09',category:'tender',title:'Une surprise bien-être',message:'Je choisis pour toi une activité qui devrait te faire du bien.'},
+
+ {id:'gourmand-01',category:'gourmand',title:'Restaurant en amoureux',message:'Je t’invite au restaurant pour une vraie soirée à deux.'},
+ {id:'gourmand-02',category:'gourmand',title:'Brunch à deux',message:'Une matinée gourmande sans se presser.'},
+ {id:'gourmand-03',category:'gourmand',title:'Apéro en amoureux',message:'Un verre, quelques bonnes choses et du temps pour discuter.'},
+ {id:'gourmand-04',category:'gourmand',title:'Dîner fait maison',message:'Je cuisine pour toi et tu n’as rien à préparer.'},
+ {id:'gourmand-05',category:'gourmand',title:'Soirée dégustation',message:'Fromages, chocolat, pâtisseries, thés, cafés ou autre thème gourmand.'},
+ {id:'gourmand-06',category:'gourmand',title:'Pique-nique en amoureux',message:'Je prépare tout, nous choisissons seulement l’endroit.'},
+ {id:'gourmand-07',category:'gourmand',title:'Soirée cocktails',message:'À la maison ou dans un bar, on découvre de nouvelles saveurs.'},
+ {id:'gourmand-08',category:'gourmand',title:'Notre repas préféré',message:'Je t’offre exactement ce qui te ferait plaisir aujourd’hui.'},
+
+ {id:'experience-01',category:'experience',title:'Week-end en amoureux',message:'Une escapade pour couper complètement avec le quotidien.'},
+ {id:'experience-02',category:'experience',title:'Une nuit ailleurs',message:'Hôtel, chambre d’hôtes, cabane ou autre hébergement inhabituel.'},
+ {id:'experience-03',category:'experience',title:'Journée surprise',message:'Tu ne connais pas le programme avant de partir.'},
+ {id:'experience-04',category:'experience',title:'Une activité jamais testée',message:'Nous découvrons quelque chose de nouveau ensemble.'},
+ {id:'experience-05',category:'experience',title:'Road trip improvisé',message:'Nous partons pour la journée et décidons du programme en chemin.'},
+ {id:'experience-06',category:'experience',title:'Activité à sensations',message:'Une expérience qui change de nos habitudes.'},
+ {id:'experience-07',category:'experience',title:'Atelier à deux',message:'Cuisine, poterie, peinture, danse ou autre activité créative.'},
+ {id:'experience-08',category:'experience',title:'Une journée dans la nature',message:'Randonnée, lac, forêt, montagne ou bord de mer.'},
+ {id:'experience-09',category:'experience',title:'Une expérience culturelle',message:'Exposition, spectacle, concert, théâtre ou musée.'},
+ {id:'experience-10',category:'experience',title:'Lever ou coucher de soleil ensemble',message:'Je choisis un bel endroit et nous prenons le temps d’en profiter.'},
+
+ {id:'desire-01',category:'desire',title:'Soirée torride',message:'Ce soir, nous faisons monter la température.'},
+ {id:'desire-02',category:'desire',title:'Ton fantasme',message:'Tu me proposes une envie ou un fantasme à explorer ensemble, dans nos limites communes.'},
+ {id:'desire-03',category:'desire',title:'Carte blanche au désir',message:'Tu choisis l’ambiance et ce qui te ferait envie.'},
+ {id:'desire-04',category:'desire',title:'Je réalise une de tes envies',message:'Tu me confies quelque chose que tu aimerais partager avec moi.'},
+ {id:'desire-05',category:'desire',title:'Massage sensuel',message:'Un moment de détente qui peut devenir plus intime si nous en avons tous les deux envie.'},
+ {id:'desire-06',category:'desire',title:'Douche à deux',message:'Une douche ou un bain à partager, avec la suite que l’on aura envie de lui donner.'},
+ {id:'desire-07',category:'desire',title:'Je te fais plaisir ce soir',message:'Ce soir, mon attention est entièrement tournée vers ton plaisir.'},
+ {id:'desire-08',category:'desire',title:'Tu prends les commandes',message:'Ce soir, c’est toi qui décides.'},
+ {id:'desire-09',category:'desire',title:'Un nouveau jeu à deux',message:'On essaie quelque chose de nouveau pour pimenter notre intimité.'},
+ {id:'desire-10',category:'desire',title:'Surprends-moi au lit',message:'Tu imagines une surprise intime et je me laisse surprendre.'}
 ];
 const now=()=>Date.now();
 const uid=()=>Math.random().toString(36).slice(2,10)+Date.now().toString(36).slice(-4);
@@ -231,7 +299,7 @@ const addDays=(d,n)=>new Date(new Date(d).getTime()+n*86400000);
 const addMonths=(d,n)=>{const x=new Date(d);x.setMonth(x.getMonth()+n);return x};
 function monthStamp(date){const d=new Date(date);return `${MONTHS[d.getMonth()]} ${String(d.getFullYear()).slice(-2)}`}
 function momentLabel(date){if(!date)return'';const d=new Date(date);let day=d.toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long'});day=day.charAt(0).toUpperCase()+day.slice(1);return `${day} · ${String(d.getHours()).padStart(2,'0')}h${String(d.getMinutes()).padStart(2,'0')}`}
-function baseState(){return{view:'home',perspective:'recipient',demo:false,draft:null,records:[],selectedIntent:null,version:22}}
+function baseState(){return{view:'home',perspective:'recipient',demo:false,draft:null,records:[],selectedIntent:null,showAllIdeas:false,version:23}}
 function migrateRecord(r){const x={...r};if(x.momentMode==='giver')x.mode='exceptional';else x.mode=x.mode||'classic';if(x.status==='revealed')x.status='ready';if(x.status==='forced')x.status='validated';if(x.status==='rejected')x.status='replan';if(x.cancelledAt&&x.status==='ready')x.status='replan';return x}
 function load(){try{const cur=localStorage.getItem(STORAGE);if(cur){const parsed=JSON.parse(cur);return{...baseState(),...parsed,records:(parsed.records||[]).map(migrateRecord)}}}catch{}return baseState()}
 let state=load();
@@ -306,10 +374,26 @@ function categoryGroup(title,list){return `<section class="state-group"><h2 clas
 function stateCard(meta){const n=categoryRecords(meta.id).length;return `<button class="state-card ${meta.className}" data-category="${meta.id}"><span><strong>${esc(meta.label)}</strong><small>${esc(meta.desc)}</small></span><span class="state-count">${n}</span></button>`}
 function categoryPage(){normalize();const id=state.view.split(':')[1],meta=categoryMeta(id);if(!meta)return carnet();const list=categoryRecords(id);return frame(`${topbar({back:true,label:'CARNET'})}<div class="category-head"><p class="eyebrow">${esc(meta.group==='archive'?'Archives':'Carnet')}</p><h1 class="display" style="font-size:52px">${esc(meta.label)}.</h1><p class="category-action">${esc(meta.desc)}</p></div><div class="category-list">${list.length?list.map(r=>categoryTicket(r,id)).join(''):`<div class="empty category-empty">Aucun bon dans cette catégorie.</div>`}</div>`)}
 function categoryTicket(r,id){return ticketMini(r)}
-function ideas(){return frame(`${topbar()}<p class="eyebrow">Nouveau bon</p><h1 class="display" style="font-size:54px">Quelle<br><em>intention ?</em></h1><p class="lead">Choisis simplement ce que tu veux lui faire ressentir.</p><div class="intent-grid">${INTENTS.map(x=>`<button class="intent ${x.id}" data-intent="${x.id}"><strong>${esc(x.label)}</strong><small>${esc(x.desc)}</small></button>`).join('')}<button class="intent custom" data-custom><strong>Créer le mien</strong><small>Partir d’une page blanche</small></button></div>`)}
-function intentPage(){const meta=INTENTS.find(x=>x.id===state.selectedIntent),list=IDEAS.filter(x=>x.intent===state.selectedIntent);if(!meta)return ideas();return frame(`${topbar({back:true,label:'IDÉES'})}<p class="eyebrow">${esc(meta.label)}</p><h1 class="display" style="font-size:52px">Choisir<br>une idée.</h1><div class="idea-list">${list.map((x,i)=>`<button class="idea-row" data-idea-title="${esc(x.title)}" data-idea-message="${esc(x.message)}"><strong>${esc(x.title)}</strong><small>${esc(x.message)}</small></button>`).join('')}</div>`)}
+function currentYear(){return new Date().getFullYear()}
+function sentThisYear(){const y=currentYear();return state.records.filter(r=>r.direction==='sent'&&r.offeredAt&&new Date(r.offeredAt).getFullYear()===y)}
+function catalogueSentThisYear(){return sentThisYear().filter(r=>r.source==='catalogue')}
+function customSentThisYear(){return sentThisYear().filter(r=>r.source==='custom')}
+function catalogueCount(){return catalogueSentThisYear().length}
+function customCount(){return customSentThisYear().length}
+function categoryCount(id){return catalogueSentThisYear().filter(r=>r.catalogueCategory===id).length}
+function annualStructuredCount(){return catalogueCount()+customCount()}
+function catalogueRemaining(){return Math.max(0,11-catalogueCount())}
+function customRemaining(){return Math.max(0,1-customCount())}
+function categoryRemaining(id){return Math.max(0,3-categoryCount(id))}
+function categoryLabel(id){return (CATALOG_CATEGORIES.find(x=>x.id===id)||{}).label||''}
+function annualProgress(){const used=annualStructuredCount();return `<div class="annual-progress"><div><span>Cette année</span><strong>${used} attention${used===1?'':'s'} offerte${used===1?'':'s'}</strong></div><div class="annual-total">${Math.max(0,12-used)}<small>encore possible${12-used===1?'':'s'}</small></div></div>`}
+function ideas(){const customLeft=customRemaining();return frame(`${topbar()}<p class="eyebrow">Idées à offrir</p><h1 class="display" style="font-size:52px">Choisir<br><em>un univers.</em></h1><p class="lead">37 idées pour varier les attentions tout au long de l’année.</p>${annualProgress()}<div class="catalogue-grid">${CATALOG_CATEGORIES.map(c=>catalogueCategoryCard(c)).join('')}</div><button class="joker-card ${customLeft?'':'used'}" data-custom ${customLeft?'':'disabled'}><span class="joker-kicker">Joker de l’année</span><strong>${customLeft?'Ton bon libre':'Joker utilisé cette année'}</strong><small>${customLeft?'Une attention entièrement imaginée par toi.':'Ton bon personnalisé annuel a déjà été offert.'}</small><span class="joker-status">${customLeft?'1 création libre disponible':'0/1 disponible'}</span></button>`)}
+function catalogueCategoryCard(c){const n=categoryCount(c.id),full=n>=3,totalFull=catalogueRemaining()<=0;return `<button class="catalogue-card ${c.id} ${full||totalFull?'complete':''}" data-intent="${c.id}"><div class="catalogue-card-top"><span>${c.total} idées</span><b>${n}/3</b></div><strong>${esc(c.label)}</strong><small>${esc(c.desc)}</small><div class="catalogue-meter"><i style="width:${Math.min(100,n/3*100)}%"></i></div><em>${full?'Univers exploré cette année':totalFull?'11 bons catalogue déjà choisis':`${3-n} choix encore possible${3-n===1?'':'s'}`}</em></button>`}
+function intentPage(){const meta=CATALOG_CATEGORIES.find(x=>x.id===state.selectedIntent);if(!meta)return ideas();const list=IDEAS.filter(x=>x.category===state.selectedIntent),locked=categoryRemaining(meta.id)<=0||catalogueRemaining()<=0,shown=state.showAllIdeas?list:list.slice(0,5),left=list.length-shown.length;return frame(`${topbar({back:true,label:'IDÉES'})}<p class="eyebrow">${esc(meta.label)}</p><h1 class="display" style="font-size:50px">Choisir<br>une attention.</h1><div class="category-quota ${locked?'complete':''}"><span>${categoryCount(meta.id)}/3 cette année</span><strong>${locked?'Cet univers est complet pour cette année.':'Varier sans se compliquer.'}</strong><small>${locked?'Tu peux encore parcourir les idées, puis découvrir un autre univers.':'Tu peux choisir jusqu’à trois bons dans cet univers.'}</small></div><div class="idea-list">${shown.map(x=>ideaRow(x,locked)).join('')}</div>${left>0?`<button class="reveal-more" data-more-ideas>Découvrir les ${left} autres</button>`:''}`)}
+function ideaRow(x,locked){return `<button class="idea-row ${locked?'locked':''}" data-idea-id="${x.id}" ${locked?'disabled':''}><strong>${esc(x.title)}</strong><small>${esc(x.message)}</small>${locked?'<span class="idea-lock">Choisir un autre univers</span>':''}</button>`}
 function forcedRemaining(){const y=new Date().getFullYear();return Math.max(0,2-state.records.filter(r=>r.direction==='sent'&&r.mode==='exceptional'&&new Date(r.offeredAt).getFullYear()===y).length)}
-function edit(){const d=state.draft||{title:'',message:'',exceptional:false,exceptionWhen:'date',momentAt:''};const preview={...d,mode:d.exceptional?'exceptional':'classic',offeredAt:now(),color:'red',status:'ready'};const remaining=forcedRemaining();return frame(`${topbar({back:true,label:'NOUVEAU BON'})}<p class="eyebrow">Aperçu</p>${ticket(preview)}<div class="form"><div class="field"><label>Titre</label><input id="draft-title" value="${esc(d.title)}" placeholder="Un dîner en amoureux"></div><div class="field"><label>Petit mot · facultatif</label><textarea id="draft-message" placeholder="Quelques mots suffisent…">${esc(d.message)}</textarea></div><button class="privilege-card" data-options ${remaining<=0&&!d.exceptional?'disabled':''}><span class="privilege-kicker">Privilège annuel</span><strong>Choisir moi-même le moment</strong><small>Deux fois par an seulement. L’autre personne reste toujours libre d’accepter ou de refuser.</small><span class="privilege-count">${remaining} utilisation${remaining===1?'':'s'} restante${remaining===1?'':'s'} cette année</span></button>${exceptionEditor(d)}<button class="btn" data-send>Envoyer le bon</button></div>`,{immersive:true})}
+function edit(){const d=state.draft||{title:'',message:'',source:'custom',exceptional:false,exceptionWhen:'date',momentAt:''};const preview={...d,mode:d.exceptional?'exceptional':'classic',offeredAt:now(),color:'red',status:'ready'};const remaining=forcedRemaining(),isCustom=d.source==='custom';return frame(`${topbar({back:true,label:isCustom?'BON LIBRE':'NOUVEAU BON'})}<p class="eyebrow">${isCustom?'Joker de l’année':esc(categoryLabel(d.catalogueCategory))}</p>${ticket(preview)}<div class="form">${isCustom?`<div class="custom-origin"><span>Création libre · 1 fois par an</span><p>Ce bon n’entre pas dans la limite de trois choix par catégorie.</p></div>`:''}<div class="field"><label>Titre</label><input id="draft-title" value="${esc(d.title)}" placeholder="Ton idée"></div><div class="field"><label>${isCustom?'Description':'Petit mot'} · facultatif</label><textarea id="draft-message" placeholder="Quelques mots suffisent…">${esc(d.message)}</textarea></div>${isCustom?customFields(d):''}<button class="privilege-card" data-options ${remaining<=0&&!d.exceptional?'disabled':''}><span class="privilege-kicker">Privilège annuel</span><strong>Choisir moi-même le moment</strong><small>Deux fois par an seulement. L’autre personne reste toujours libre d’accepter ou de refuser.</small><span class="privilege-count">${remaining} utilisation${remaining===1?'':'s'} restante${remaining===1?'':'s'} cette année</span></button>${exceptionEditor(d)}<button class="btn" data-send>Envoyer le bon</button></div>`,{immersive:true})}
+function customFields(d){return `<details class="custom-details" ${d.content||d.usage||d.customCategory?'open':''}><summary>Ajouter des détails</summary><div class="custom-details-body"><div class="field"><label>Contenu du bon · facultatif</label><textarea id="draft-content" placeholder="Préciser ce que comprend ce bon…">${esc(d.content||'')}</textarea></div><div class="field"><label>Catégorie · facultatif</label><select id="draft-category"><option value="">Aucune catégorie</option>${CATALOG_CATEGORIES.map(c=>`<option value="${c.id}" ${d.customCategory===c.id?'selected':''}>${esc(c.label)}</option>`).join('')}</select></div><div class="field"><label>Modalités d’utilisation · facultatif</label><textarea id="draft-usage" placeholder="Une condition, une précision, une manière de l’utiliser…">${esc(d.usage||'')}</textarea></div></div></details>`}
 function exceptionEditor(d){const remaining=forcedRemaining();return `<div class="exception-box ${d.exceptional?'':'is-hidden'}" data-exception-box><div class="rare-mark">✦ Choix rare activé</div><h3>Tu choisis le moment</h3><p>Cette possibilité sera consommée à l’envoi. Il te restera alors ${Math.max(0,remaining-1)} utilisation${Math.max(0,remaining-1)===1?'':'s'} cette année.</p><div class="choice-row"><button class="choice ${d.exceptionWhen==='now'?'active':''}" data-when="now"><strong>Maintenant</strong><small>À accepter par l’autre</small></button><button class="choice ${d.exceptionWhen==='date'?'active':''}" data-when="date"><strong>Une date</strong><small>Tu proposes le moment</small></button></div><div class="field date-field ${d.exceptionWhen==='date'?'':'is-hidden'}" data-date-field><label>Date et heure</label><input id="draft-moment" type="datetime-local" value="${esc(d.momentAt||'')}"></div><button class="text-action" data-disable-exception>Ne pas utiliser ce privilège</button></div>`}
 function updateEditControls(){if(!state.draft)return;const box=document.querySelector('[data-exception-box]'),date=document.querySelector('[data-date-field]');if(box)box.classList.toggle('is-hidden',!state.draft.exceptional);document.querySelectorAll('[data-when]').forEach(b=>b.classList.toggle('active',b.dataset.when===state.draft.exceptionWhen));if(date)date.classList.toggle('is-hidden',state.draft.exceptionWhen!=='date');const preview=document.querySelector('.ticket');if(preview)preview.classList.toggle('exceptional',!!state.draft.exceptional)}
 function detail(){normalize();const id=state.view.split(':')[1],r=state.records.find(x=>x.id===id);if(!r)return home();const status=detailStatus(r);return frame(`${topbar({back:true,label:'BON'})}${ticket(r)}<div class="detail-status"><span class="status-label">${esc(status.label)}</span><strong>${esc(status.title)}</strong>${status.text?`<p>${esc(status.text)}</p>`:''}</div>${detailActions(r)}`)}
@@ -333,9 +417,10 @@ function bind(){
  document.querySelectorAll('[data-detail]').forEach(b=>b.onclick=()=>go('detail:'+b.dataset.detail));
  document.querySelectorAll('[data-category]').forEach(b=>b.onclick=()=>go('category:'+b.dataset.category));
  document.querySelectorAll('[data-scratch]').forEach(b=>b.onclick=()=>go('scratch:'+b.dataset.scratch));
- document.querySelectorAll('[data-intent]').forEach(b=>b.onclick=()=>{state.selectedIntent=b.dataset.intent;save();go('intent')});
- document.querySelectorAll('[data-custom]').forEach(b=>b.onclick=()=>{state.draft={title:'',message:'',exceptional:false,exceptionWhen:'date',momentAt:''};save();go('edit')});
- document.querySelectorAll('[data-idea-title]').forEach(b=>b.onclick=()=>{state.draft={title:b.dataset.ideaTitle,message:b.dataset.ideaMessage,exceptional:false,exceptionWhen:'date',momentAt:''};save();go('edit')});
+ document.querySelectorAll('[data-intent]').forEach(b=>b.onclick=()=>{state.selectedIntent=b.dataset.intent;state.showAllIdeas=false;save();go('intent')});
+ document.querySelectorAll('[data-custom]').forEach(b=>b.onclick=()=>{if(customRemaining()<=0){toast('Ton joker annuel a déjà été utilisé');return}state.draft={title:'',message:'',source:'custom',content:'',usage:'',customCategory:'',exceptional:false,exceptionWhen:'date',momentAt:''};save();go('edit')});
+ document.querySelectorAll('[data-idea-id]').forEach(b=>b.onclick=()=>{const idea=IDEAS.find(x=>x.id===b.dataset.ideaId);if(!idea)return;if(categoryRemaining(idea.category)<=0||catalogueRemaining()<=0){toast('Découvre un autre univers pour cette année');return}state.draft={title:idea.title,message:idea.message,source:'catalogue',catalogueId:idea.id,catalogueCategory:idea.category,exceptional:false,exceptionWhen:'date',momentAt:''};save();go('edit')});
+ document.querySelectorAll('[data-more-ideas]').forEach(b=>b.onclick=()=>{state.showAllIdeas=true;save();const hidden=b.closest('.screen');if(hidden){const y=document.querySelector('.scroll-stage')?.scrollTop||0;restoreScroll=y}render()});
  document.querySelectorAll('[data-options]').forEach(b=>b.onclick=()=>{syncDraft();if(!state.draft.exceptional){if(forcedRemaining()<=0){toast('Tes 2 possibilités ont déjà été utilisées');return}state.draft.exceptional=true;save();updateEditControls()}});
  document.querySelectorAll('[data-disable-exception]').forEach(b=>b.onclick=()=>{syncDraft();state.draft.exceptional=false;save();updateEditControls()});
  document.querySelectorAll('[data-when]').forEach(b=>b.onclick=()=>{syncDraft();state.draft.exceptionWhen=b.dataset.when;save();updateEditControls()});
@@ -349,8 +434,18 @@ function bind(){
  document.querySelectorAll('[data-perspective]').forEach(b=>b.onclick=togglePerspective);
  document.querySelectorAll('[data-reset]').forEach(b=>b.onclick=resetAll)
 }
-function syncDraft(){if(!state.draft)return;const t=document.querySelector('#draft-title'),m=document.querySelector('#draft-message'),d=document.querySelector('#draft-moment');if(t)state.draft.title=t.value.trim();if(m)state.draft.message=m.value.trim();if(d)state.draft.momentAt=d.value}
-function sendDraft(){syncDraft();const d=state.draft;if(!d.title){toast('Ajoute un titre');return}if(d.exceptional&&forcedRemaining()<=0){toast('Tes 2 possibilités ont déjà été utilisées');return}if(d.exceptional&&d.exceptionWhen==='date'&&!d.momentAt){toast('Choisis le moment');return}const momentAt=d.exceptional?(d.exceptionWhen==='now'?iso(now()):new Date(d.momentAt).toISOString()):null;const r={id:uid(),title:d.title,message:d.message,offeredAt:iso(now()),direction:'sent',status:'offered',mode:d.exceptional?'exceptional':'classic',momentAt,color:COLORS[state.records.length%COLORS.length],exceptionWhen:d.exceptional?d.exceptionWhen:null};markEvent(r,'sent');state.records.push(r);state.draft=null;save();modal('Bon envoyé.','Il attend maintenant d’être découvert.',[{key:'ok',label:'Retour à l’accueil',fn:()=>rootGo('home')}])}
+function syncDraft(){if(!state.draft)return;const t=document.querySelector('#draft-title'),m=document.querySelector('#draft-message'),d=document.querySelector('#draft-moment'),c=document.querySelector('#draft-content'),u=document.querySelector('#draft-usage'),cat=document.querySelector('#draft-category');if(t)state.draft.title=t.value.trim();if(m)state.draft.message=m.value.trim();if(d)state.draft.momentAt=d.value;if(c)state.draft.content=c.value.trim();if(u)state.draft.usage=u.value.trim();if(cat)state.draft.customCategory=cat.value}
+function sendDraft(){syncDraft();const d=state.draft;if(!d.title){toast('Ajoute un titre');return}
+ if(d.source==='catalogue'){
+   if(catalogueRemaining()<=0){toast('Tes 11 bons du catalogue ont déjà été choisis cette année');return}
+   if(categoryRemaining(d.catalogueCategory)<=0){toast('Cet univers a déjà atteint 3 choix cette année');return}
+ }
+ if(d.source==='custom'&&customRemaining()<=0){toast('Ton joker annuel a déjà été utilisé');return}
+ if(d.exceptional&&forcedRemaining()<=0){toast('Tes 2 possibilités ont déjà été utilisées');return}
+ if(d.exceptional&&d.exceptionWhen==='date'&&!d.momentAt){toast('Choisis le moment');return}
+ const momentAt=d.exceptional?(d.exceptionWhen==='now'?iso(now()):new Date(d.momentAt).toISOString()):null;
+ const r={id:uid(),title:d.title,message:d.message,offeredAt:iso(now()),direction:'sent',status:'offered',mode:d.exceptional?'exceptional':'classic',momentAt,color:COLORS[state.records.length%COLORS.length],exceptionWhen:d.exceptional?d.exceptionWhen:null,source:d.source||'custom',catalogueId:d.catalogueId||null,catalogueCategory:d.catalogueCategory||null,customCategory:d.customCategory||null,content:d.content||'',usage:d.usage||''};
+ markEvent(r,'sent');state.records.push(r);state.draft=null;save();modal('Bon envoyé.','Il attend maintenant d’être découvert.',[{key:'ok',label:'Retour à l’accueil',fn:()=>rootGo('home')}])}
 function defaultPlanDate(){const dt=new Date(Date.now()+3*86400000);dt.setHours(20,0,0,0);return new Date(dt.getTime()-dt.getTimezoneOffset()*60000).toISOString().slice(0,16)}
 function planModal(id,modifying=false){const r=state.records.find(x=>x.id===id);if(!r||!isOwner(r))return;const existing=r.momentAt?new Date(new Date(r.momentAt).getTime()-new Date(r.momentAt).getTimezoneOffset()*60000).toISOString().slice(0,16):defaultPlanDate();document.querySelector('#overlay').innerHTML=`<div class="modal-wrap"><div class="modal date-modal"><h2>${modifying?'Modifier le moment':'Choisir le moment'}</h2><div class="field modal-date-field"><label>Date et heure</label><input id="plan-date" type="datetime-local" value="${existing}"></div>${r.mode==='exceptional'?'<button class="text-action" id="plan-now">Proposer maintenant</button>':''}<div class="modal-actions"><button class="btn" id="plan-save">${modifying?'Envoyer la nouvelle date':'Proposer cette date'}</button><button class="btn secondary" id="plan-cancel">Annuler</button></div></div></div>`;document.querySelector('#plan-cancel').onclick=()=>document.querySelector('#overlay').innerHTML='';document.querySelector('#plan-save').onclick=()=>submitProposal(r,new Date(document.querySelector('#plan-date').value).toISOString(),'date',modifying);const n=document.querySelector('#plan-now');if(n)n.onclick=()=>submitProposal(r,iso(now()),'now',modifying)}
 function submitProposal(r,date,kind,modifying=false){if(!date)return;r.momentAt=date;r.exceptionWhen=kind;r.status='proposal';r.proposedAt=iso(now());delete r.validatedAt;markEvent(r,modifying?'modified':'proposal');save();document.querySelector('#overlay').innerHTML='';rerenderHere();toast(modifying?'Nouvelle date envoyée':'Proposition envoyée')}

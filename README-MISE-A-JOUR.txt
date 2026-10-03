@@ -1,9 +1,13 @@
-COUPLE — MISE À JOUR PROPORTIONS & ACCUEIL
+COUPLE — CATALOGUE ANNUEL
 
-Installation :
+INSTALLATION
 1. Décompressez le ZIP.
-2. Remplacez index.html à la racine du dépôt.
-3. Validez le changement et attendez GitHub Pages.
-4. Fermez complètement l’app sur iPhone puis rouvrez-la.
+2. Remplacez index.html à la racine du dépôt Couple.
+3. Validez le changement et attendez la mise à jour de GitHub Pages.
+4. Fermez complètement l’application sur iPhone puis rouvrez-la.
 
-Cette mise à jour conserve la même clé de stockage local et ne réinitialise donc pas les données existantes.
+DONNÉES
+- La clé locale existante est conservée.
+- Les anciens bons restent disponibles.
+- Les anciens bons ne sont pas classés rétroactivement dans le nouveau catalogue : l’application ne devine pas leur catégorie.
+- Les nouvelles règles annuelles sont appliquées aux nouveaux bons créés depuis le catalogue ou avec le joker.

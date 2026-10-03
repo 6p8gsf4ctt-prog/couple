@@ -1,0 +1,39 @@
+COUPLE — CATALOGUE ANNUEL
+
+RÈGLE ANNUELLE
+- 12 bons structurés par an.
+- 11 bons issus du catalogue.
+- 1 joker personnalisé.
+- Maximum 3 bons catalogue dans une même catégorie.
+- Les 2 privilèges annuels de choix du moment restent une mécanique séparée.
+
+CATALOGUE
+- 37 propositions validées.
+- Tendresse & bien-être : 9.
+- Sorties & gourmandise : 8.
+- Évasion & expériences : 10.
+- Désir & intimité : 10.
+- « Cinéma + restaurant » n’est pas présent.
+
+ÉCRAN IDÉES
+- Remplacement des anciennes intentions par les 4 catégories définitives.
+- Progression annuelle discrète.
+- Compteur x/3 directement sur chaque univers.
+- Les catégories restent consultables lorsqu’elles ont atteint 3/3.
+- La sélection y est alors désactivée et l’interface invite à découvrir un autre univers.
+- Affichage initial de 5 idées puis découverte progressive du reste.
+
+JOKER
+- Présentation distincte « Joker de l’année ».
+- Une seule création libre par année.
+- Titre et description.
+- Détails facultatifs : contenu du bon, catégorie indicative, modalités d’utilisation.
+- La catégorie facultative du joker ne compte pas dans la limite 3/3 du catalogue.
+
+PRIVILÈGE DE DATE
+- Toujours 2 utilisations par an.
+- Peut être utilisé sur un bon catalogue ou sur le joker.
+- Consommé à l’envoi, comme défini précédemment.
+
+COMPATIBILITÉ
+- Les bons déjà présents avant cette mise à jour ne sont pas arbitrairement reclassés dans une catégorie du catalogue.
