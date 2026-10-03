@@ -1,0 +1,78 @@
+COUPLE — V2.2 / FLUIDITÉ & INTERACTIONS
+
+1. NAVIGATION
+- Remplacement de l’ancien backView unique par une pile de navigation.
+- Chaque navigation mémorise l’écran précédent et son scroll.
+- Retour = exactement l’écran précédent.
+- Retour d’une fiche vers une liste : restauration de la position dans la liste.
+- Swipe retour depuis le bord gauche vers la droite.
+- Animation courte différente pour l’ouverture et le retour.
+- La barre inférieure reste une navigation racine : Accueil / Carnet / Idées / Réglages.
+
+2. DIMENSIONS ET DÉBORDEMENTS
+- min-width:0 et max-width:100% appliqués aux composants sensibles.
+- Champs datetime sécurisés sur petits écrans.
+- Grilles de choix passées en minmax(0,1fr).
+- Modal limitée en hauteur et scrollable indépendamment.
+- Safe areas gauche/droite prises en compte.
+- Adaptation renforcée sous 370 px de largeur.
+
+3. ESPACEMENTS
+- Accueil resserré verticalement.
+- Bouton Créer un bon rapproché du contenu principal.
+- Visuel décoratif réduit.
+- Marges basses et respirations harmonisées sans ajouter de contenu artificiel.
+
+4. FONDS
+- Suppression des petits ronds roses du visuel d’accueil.
+- Nouveau fond Nuit électrique avec grandes formes organiques et fluides.
+- Dégradés indigo, violet profond et reflets chauds très discrets.
+- Mouvement ambiant lent, désactivé automatiquement si l’utilisateur préfère réduire les animations.
+
+5. SECRET AVANT DÉCOUVERTE
+- Un bon reçu encore secret est totalement exclu du Carnet.
+- L’accueil indique seulement qu’un bon est arrivé.
+- Aucun titre ni message n’est affiché avant le grattage.
+- Le canvas de grattage possède une couverture opaque dès le premier rendu pour éviter un flash du contenu avant initialisation.
+- Après découverte seulement, le bon rejoint son état normal dans le Carnet.
+
+6. ACCUEIL VIVANT
+- Toujours un seul focus principal.
+- Gestion de :
+  aujourd’hui ;
+  demain ;
+  nouveau bon secret ;
+  proposition à valider ;
+  date modifiée ;
+  annulation ;
+  refus ;
+  confirmation.
+- Les événements sont attribués au partenaire qui les a provoqués afin que l’autre côté puisse les voir lors du test de perspective.
+- Une modification de date redevient une proposition à valider.
+
+7. MICRO-INTERACTIONS
+- Activation du privilège annuel sans rechargement de page.
+- Choix Maintenant / Une date sans rerender complet.
+- Affichage/masquage du champ de date localement.
+- La position de page ne saute plus lors de ces sélections.
+- Le titre de l’aperçu du bon se met à jour pendant la saisie.
+
+8. PRIVILÈGE — 2 FOIS PAR AN
+- Refonte visuelle complète dans la création.
+- Présentation « Privilège annuel » dédiée.
+- Compteur des utilisations restantes.
+- Traitement visuel premium or/violet.
+- Les bons exceptionnels reçoivent un marquage spécifique après découverte.
+- Le nombre d’utilisations restantes est également indiqué sur ces bons.
+- Le receveur conserve toujours Accepter / Refuser.
+- La règle de consommation à l’envoi reste inchangée.
+
+9. MODIFICATION / ANNULATION
+- Le propriétaire du choix de date peut modifier une proposition.
+- Après validation, le propriétaire du choix peut proposer une nouvelle date, qui nécessite une nouvelle validation.
+- Les deux partenaires peuvent toujours annuler.
+- L’autre partenaire reçoit alors l’interaction correspondante sur son accueil dans la simulation locale.
+
+10. LIMITATION DU PROTOTYPE
+- Les comportements croisés sont modélisés et testables via le changement de perspective.
+- Une vraie propagation instantanée entre deux iPhone nécessitera toujours le futur backend/système de synchronisation.
