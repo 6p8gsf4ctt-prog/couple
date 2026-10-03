@@ -1,0 +1,55 @@
+COUPLE — V2.1.1 / PRÉSENT & CARNET
+
+ACCUEIL
+- Suppression complète de la section « À faire ».
+- Suppression de l'accès séparé « Mes bons ».
+- Un seul focus contextuel peut occuper l'accueil.
+- Priorité du focus :
+  1. bon planifié aujourd'hui ;
+  2. bon reçu non découvert ;
+  3. proposition de date à valider ;
+  4. sinon accueil éditorial normal.
+- Les actions de planification et de replanification restent dans le Carnet.
+- « Créer un bon » reste l'action permanente principale.
+
+CARNET
+- Devient le centre de gestion de tous les bons.
+- Un bon appartient à une seule catégorie à la fois.
+- Catégories :
+  À découvrir
+  À planifier
+  À valider
+  À replanifier
+  En attente
+  Planifiés
+  Envoyés
+  Vécus
+  Offerts
+- Les catégories actives vides sont masquées.
+- Vécus et Offerts restent toujours accessibles comme archives.
+- Chaque page de catégorie contient uniquement des bons partageant la même situation.
+- À découvrir mène directement au grattage.
+- Les autres cartes ouvrent la fiche individuelle du bon.
+
+RÈGLES DE CLASSEMENT
+- À découvrir : reçu mais pas encore gratté.
+- À planifier : c'est à l'utilisateur de choisir la première date.
+- À valider : l'autre a proposé un moment et attend une réponse.
+- À replanifier : refus ou annulation ; c'est à l'utilisateur de reproposer.
+- En attente : l'autre personne doit agir.
+- Planifiés : moment accepté et futur.
+- Envoyés : envoyé mais pas encore découvert.
+- Vécus : bon reçu et déjà utilisé.
+- Offerts : bon envoyé et déjà utilisé.
+
+BONS CLASSIQUES / EXCEPTIONNELS
+- La personne propriétaire du choix du moment est déterminée par le type du bon.
+- Classique : le receveur propose.
+- Exceptionnel : le donneur propose.
+- Après refus ou annulation, le bon passe explicitement en replanification du côté de la personne qui possède le choix.
+- Les deux possibilités exceptionnelles annuelles et leur consommation à l'envoi sont conservées.
+
+DESIGN
+- Nuit électrique conservé.
+- Accueil plus sobre.
+- Le Carnet privilégie désormais la compréhension des situations plutôt que l'affichage immédiat de tickets.
