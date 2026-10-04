@@ -1,0 +1,51 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><title>Couple — Installation V3</title>
+<style>body{font-family:system-ui,-apple-system,sans-serif;max-width:900px;margin:40px auto;padding:0 24px;line-height:1.55;color:#211b25}h1,h2{font-family:Georgia,serif}code{background:#f3eef4;padding:2px 5px;border-radius:5px}pre{background:#17121d;color:#fff8ec;padding:16px;border-radius:14px;overflow:auto}.note{border-left:4px solid #ff4d6d;padding:10px 16px;background:#fff5f7}.ok{border-left:4px solid #38a982;padding:10px 16px;background:#f2fbf7}</style></head><body>
+<h1>Couple — V3 connectée</h1>
+<p>Cette version transforme le prototype local en application à deux appareils. Elle nécessite un projet Supabase avant la première utilisation réelle.</p>
+
+<h2>1. Créer le projet Supabase</h2>
+<ol><li>Créer un projet Supabase.</li><li>Ouvrir <strong>SQL Editor</strong>.</li><li>Copier l’intégralité de <code>supabase/schema.sql</code> puis l’exécuter.</li><li>Vérifier dans les réglages Realtime que le service Realtime est activé. Le script ajoute déjà <code>vouchers</code> à la publication <code>supabase_realtime</code>.</li></ol>
+
+<h2>2. Configurer l’authentification</h2>
+<ol><li>Dans Authentication → Sign In / Providers, conserver Email activé.</li><li>La confirmation d’e-mail peut rester activée — c’est recommandé.</li><li>Dans Authentication → URL Configuration, définir le <strong>Site URL</strong> sur l’URL GitHub Pages finale de Couple.</li><li>Ajouter également cette URL exacte aux Redirect URLs.</li></ol>
+<div class="note"><strong>Important :</strong> le lien de confirmation doit revenir vers l’URL réelle de l’application, et non vers localhost.</div>
+
+<h2>3. Renseigner la connexion publique</h2>
+<p>Dans les réglages/API du projet, récupérer l’URL Supabase et la clé <strong>publishable</strong> (ou l’ancienne clé <strong>anon</strong>).</p>
+<p>Ouvrir <code>config.js</code> :</p>
+<pre>window.COUPLE_CONFIG = {
+  url: "https://VOTRE-PROJET.supabase.co",
+  key: "VOTRE_CLE_PUBLISHABLE"
+};</pre>
+<div class="note"><strong>Ne jamais utiliser la clé service_role.</strong> Elle contourne les règles de sécurité et ne doit jamais être placée dans une application web.</div>
+
+<h2>4. Publier sur GitHub Pages</h2>
+<p>Mettre à jour le dépôt en conservant la structure :</p>
+<pre>index.html
+config.js
+manifest.webmanifest
+sw.js
+icons/
+  icon-180.png
+  icon-192.png
+  icon-512.png
+  icon-maskable-512.png</pre>
+
+<h2>5. Créer votre couple</h2>
+<ol><li>Premier téléphone : créer un compte, confirmer l’e-mail si demandé, puis choisir <strong>Créer notre espace</strong>.</li><li>Partager le code temporaire affiché.</li><li>Xiaomi : ouvrir la même URL, créer le second compte et choisir <strong>Rejoindre mon partenaire</strong>.</li><li>Saisir le second prénom et le code.</li><li>Une fois liés, les deux téléphones utilisent le même Carnet.</li></ol>
+
+<h2>6. Installer l’application</h2>
+<p><strong>iPhone :</strong> Safari → Partager → « Sur l’écran d’accueil ».</p>
+<p><strong>Xiaomi / Android :</strong> Chrome → « Installer l’application » ou « Ajouter à l’écran d’accueil ».</p>
+
+<h2>7. Test avant les vrais bons</h2>
+<ol><li>Envoyer un bon test.</li><li>Vérifier que le destinataire voit uniquement qu’un bon est arrivé avant découverte.</li><li>Vérifier qu’avant découverte il ne reçoit ni titre, ni message, ni catégorie, ni date exceptionnelle initiale.</li><li>Découvrir et gratter le bon.</li><li>Tester proposition de date, validation, refus et annulation sur les deux téléphones.</li><li>Tester un privilège annuel et les compteurs annuels.</li></ol>
+
+<h2>Sécurité fonctionnelle</h2>
+<p>Les données révélatrices sont stockées dans <code>voucher_secrets</code>. Le destinataire ne peut pas lire cette ligne avant d’avoir choisi de découvrir le bon. Les mutations importantes passent par des fonctions serveur et les tables sont protégées par RLS.</p>
+
+<h2>Limites de cette étape</h2>
+<ul><li>Pas encore de notification push lorsque l’application est complètement fermée.</li><li>Synchronisation temps réel quand l’application est ouverte, plus resynchronisation au retour au premier plan et périodiquement.</li><li>Pas de migration automatique des anciennes données locales de démonstration.</li><li>Le projet Supabase et le SQL doivent être configurés une fois manuellement.</li></ul>
+
+<div class="ok"><strong>Conseil :</strong> faites d’abord tout le parcours avec deux bons fictifs. Une fois validé, repartez avec des comptes définitifs et une base propre.</div>
+</body></html>
